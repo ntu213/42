@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 09:08:03 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/11 14:47:06 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/12 16:22:12 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 # include <string.h>
+# include <stdlib.h>
 
 int		main(void);
 void	ft_bzero(void *s, size_t n);
