@@ -12,28 +12,29 @@
 
 #include "libft.h"
 
-int	ft_strnstr(const char *src, const char *obj, size_t n)
+char	*ft_strnstr(const char *src, const char *obj, size_t n)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	if (obj == 0 || src == 0)
-		return (0);
+	if (!src && !obj)
+		return (NULL);
+	if (!obj[0])
+		return((char*)src);
 	while (n > 0 && src[i] && obj[i])
 	{
-		while (n > 0 && src[i + j] && obj[i + j] == *src)
+		while (n > 0 && src[i + j] && obj[i + j] == src[i + j])
 		{
-			if (obj[i + j + 1] == '\0')
-				return (i);
 			j++;
+			if (!obj[i + j])
+				return ((char*)(src + i));
 			n--;
 		}
-		i += j;
 		i++;
-		n--;
+		n -= j - 1;
 		j = 0;
 	}
-	return (0);
+	return (NULL);
 }

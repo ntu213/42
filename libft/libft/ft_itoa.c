@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-int	ft_pow(int n, int i);
-int	ft_cache(int *cache);
-int	ft_is_neg(int *n, char **str);
+static int	ft_pow(int n, int i);
+static int	ft_cache(int *cache);
+static int	ft_is_neg(int *n, char **str);
 
 char	*ft_itoa(int n)
 {
@@ -43,7 +43,7 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-int	ft_pow(int n, int i)
+static int	ft_pow(int n, int i)
 {
 	int	n2;
 
@@ -59,7 +59,7 @@ int	ft_pow(int n, int i)
 	return (n);
 }
 
-int	ft_cache(int *cache)
+static int	ft_cache(int *cache)
 {
 	int	i;
 
@@ -74,7 +74,7 @@ int	ft_cache(int *cache)
 	return (i);
 }
 
-int	ft_is_neg(int *n, char **str)
+static int	ft_is_neg(int *n, char **str)
 {
 	int	i;
 

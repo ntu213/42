@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 09:08:03 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/13 14:17:24 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:21:37 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	*ft_memset(void *s, int c, int n);
 char	*ft_strchr(char *s, int c);
 int		ft_strlcat(char *dest, const char *src, size_t n);
 int		ft_strlcpy(char *dest, const char *src, size_t n);
-size_t	ft_strlen(char *c);
+size_t	ft_strlen(const char *c);
 int		ft_strncmp( const char *s1, const char *s2, size_t n);
-int		ft_strnstr(const char *src, const char *obj, size_t n);
+char	*ft_strnstr(const char *src, const char *obj, size_t n);
 char	*ft_strrchr(char *s, int c);
 int		ft_atoi(char *str);
 void	*ft_calloc(size_t n, size_t size);
