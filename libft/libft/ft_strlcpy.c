@@ -14,7 +14,7 @@
 
 int	ft_strlcpy(char *dest, const char *src, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (!n)
