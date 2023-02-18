@@ -14,7 +14,7 @@
 
 static int	ft_pow(int n, int i);
 static int	ft_cache(int *cache);
-static int	ft_is_neg(int *n, char **str);
+static int	ft_is_neg(int *n);
 
 char	*ft_itoa(int n)
 {
@@ -25,7 +25,7 @@ char	*ft_itoa(int n)
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	is_neg = ft_is_neg(&n, &str);
+	is_neg = ft_is_neg(&n);
 	cache = n;
 	i = ft_cache(&cache);
 	str = malloc(sizeof(char) * (i + is_neg + 1));
@@ -74,11 +74,8 @@ static int	ft_cache(int *cache)
 	return (i);
 }
 
-static int	ft_is_neg(int *n, char **str)
+static int	ft_is_neg(int *n)
 {
-	int	i;
-
-	i = 0;
 	if (*n < 0)
 	{
 		*n *= -1;
