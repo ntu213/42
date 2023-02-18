@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgiraudo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vgiraudo <vgiraudo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 10:18:58 by vgiraudo          #+#    #+#             */
 /*   Updated: 2023/02/11 10:19:00 by vgiraudo         ###   ########.fr       */
