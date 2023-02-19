@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:01:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/18 12:02:02 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:21:09 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_words_count(char const *str, char c)
 			j++;
 		i++;
 	}
-	return(j);
+	return (j);
 }
 
 static char	*ft_word_def(char const *str, char c, int *i)
@@ -52,7 +52,7 @@ static char	*ft_word_def(char const *str, char c, int *i)
 
 static int	ft_error(char ***str, int j)
 {
-	while(0 <= j)
+	while (0 <= j)
 	{
 		free(*(str[j]));
 		j--;
@@ -61,7 +61,7 @@ static int	ft_error(char ***str, int j)
 	return (1);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**str;
 	int		i;
@@ -69,7 +69,7 @@ char **ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	str = malloc(sizeof(char*) * (ft_words_count(s, c) + 1));
+	str = malloc(sizeof(char *) * (ft_words_count(s, c) + 1));
 	if (!str)
 		return (NULL);
 	while (s[i])
@@ -77,11 +77,10 @@ char **ft_split(char const *s, char c)
 		while (s[i] == c)
 			i++;
 		str[j] = ft_word_def(s, c, &i);
-		if (!str[j])
-			if (ft_error(&str, j))
-				return (NULL);
+		if (!str[j] && ft_error(&str, j))
+			return (NULL);
 		j++;
 	}
-	str[j] = (char*)NULL;
+	str[j] = (char *) NULL;
 	return (str);
 }

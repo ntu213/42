@@ -12,64 +12,22 @@
 
 #include "libft.h"
 
-static int	ft_count(int n)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	while (n)
+	if (nb == -2147483648)
 	{
-		n /= 10;
-		i++;
+		write(fd, "-2147483648", 11);
 	}
-	return (i);
-}
-
-static char	*ft_reversed(char *src)
-{
-	int		i;
-	int		j;
-	char	*str;
-
-	i = 0;
-	j = ft_strlen(src);
-	while (j > i)
+	if (nb < 0 && nb > -2147483648)
 	{
-		str[i] = src[j - i];
-		i++;
+		ft_putchar_fd('-', fd);
+		nb = -nb;
 	}
-	return (str);
-}
-
-static char	*ft_not_itoa(int n, int is_neg)
-{
-	char	*str;
-	int		i;
-
-	i = is_neg + ft_count(n);
-	str[i + 1] = 0;
-	while (n)
+	if (nb >= 0 && nb <= 9)
+		ft_putchar_fd((nb + '0'), fd);
+	else if (nb > 9)
 	{
-		str[i--] = (n % 10) + 48;
-		n /= 10;
+		ft_putnbr_fd((nb / 10), fd);
+		ft_putchar_fd((nb % 10 + '0'), fd);
 	}
-	str = ft_reversed(str);
-	return (str);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	char	*str;
-	int		is_neg;
-
-	is_neg = 0;
-	if (n < 0)
-	{
-		is_neg = 1;
-		n *= -1;
-	}
-	str = ft_not_itoa(n, is_neg);
-	ft_putstr_fd(str, fd);
 }

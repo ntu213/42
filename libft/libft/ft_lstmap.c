@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/18 12:02:28 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/18 12:02:28 by vgiraudo         ###   ########.fr       */
+/*   Created: 2023/02/19 11:25:24 by vgiraudo          #+#    #+#             */
+/*   Updated: 2023/02/19 11:25:24 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*res;
 
-	i = 0;
-	while(s[i])
-		write(fd, &s[i++], 1);
+	res->content = malloc(sizeof(f(lst->content)));
+	if (!res->content)
+	res->content = f(lst->content);
+	if (!(lst->next))
+		res->next = NULL;
+	else
+		res->next = ft_lstmap(res, f, del);
+	return (res);
 }
+
+//non terminee
