@@ -6,81 +6,67 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:01:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/19 16:21:09 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/02/19 17:00:33 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_words_count(char const *str, char c)
+static int	ft_count_wrd(char *str, char c)
 {
 	int	i;
-	int	j;
+	int	count;
 
 	i = 0;
-	j = 0;
+	count = 0;
 	while (str[i])
 	{
-		if (str[i] == c && str[i - 1] != c)
-			j++;
-		i++;
+		while (str[i] && (str[i] == c))
+			i++;
+		if (str[i] && (str[i++] != c))
+			count ++;
+		while (str[i] != c && str[i])
+			i++;
 	}
-	return (j);
+	return (count);
 }
 
-static char	*ft_word_def(char const *str, char c, int *i)
+static char	*ft_wrd_dup(char *src, char c, int *i)
 {
 	char	*dest;
 	int		j;
 
-	j = *i;
-	while (str[j] && str[j] != c)
+	j = 0;
+	while (src[(*i) + j] && (src[(*i) + j] != c))
 		j++;
-	dest = malloc(j + 1);
+	dest = (char *)ft_calloc((j + 1), sizeof(char));
 	if (!dest)
 		return (NULL);
 	j = 0;
-	while (str[*i] && str[*i] != c)
-	{
-		dest[j] = str[*i];
-		j++;
-		(*i)++;
-	}
-	dest[j] = 0;
+	while ((src[(*i)] != c) && src[(*i)])
+		dest[j++] = src[(*i)++];
 	return (dest);
-}
-
-static int	ft_error(char ***str, int j)
-{
-	while (0 <= j)
-	{
-		free(*(str[j]));
-		j--;
-	}
-	free(*str);
-	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**str;
 	int		i;
 	int		j;
+	char	**res;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	j = 0;
-	str = malloc(sizeof(char *) * (ft_words_count(s, c) + 1));
-	if (!str)
+	res = ft_calloc((ft_count_wrd((char *)s, c) + 1), sizeof(char *));
+	if (!res)
 		return (NULL);
 	while (s[i])
 	{
 		while (s[i] == c)
 			i++;
-		str[j] = ft_word_def(s, c, &i);
-		if (!str[j] && ft_error(&str, j))
-			return (NULL);
-		j++;
+		if ((s[i] != c) && s[i])
+			res[j++] = ft_wrd_dup((char *)s, c, &i);
 	}
-	str[j] = (char *) NULL;
-	return (str);
+	return (res);
 }
