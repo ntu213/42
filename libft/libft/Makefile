@@ -6,7 +6,7 @@
 #    By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 15:51:07 by vgiraudo          #+#    #+#              #
-#    Updated: 2023/02/19 11:36:52 by vgiraudo         ###   ########.fr        #
+#    Updated: 2023/02/20 13:00:15 by vgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC =	ft_bzero.c		ft_isalnum.c	ft_isalpha.c	ft_isascii.c	\
 
 SRC_BONUS =		ft_lstnew.c		ft_lstadd_front.c	ft_lstsize.c	\
 				ft_lstlast.c	ft_lstadd_back.c	ft_lstdelone.c	\
-				ft_lstclear.c	ft_lstiter.c		
+				ft_lstclear.c	ft_lstiter.c		ft_lstmap.c
 
 OBJ = ${SRC:.c=.o}
 
