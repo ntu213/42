@@ -21,7 +21,7 @@ char	*ft_strnstr(const char *src, const char *obj, size_t n)
 	if (!src && !obj)
 		return (NULL);
 	if (!obj[0])
-		return((char*)src);
+		return ((char *)src);
 	while (n > 0 && src[i])
 	{
 		j = 0;
@@ -32,6 +32,7 @@ char	*ft_strnstr(const char *src, const char *obj, size_t n)
 				return ((char *)(src + i));
 			n--;
 		}
+		n--;
 		i++;
 	}
 	return (NULL);

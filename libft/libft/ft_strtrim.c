@@ -46,7 +46,7 @@ static int	ft_count_end(char const *s, char const *set)
 	return (i);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	int		start;
@@ -54,6 +54,8 @@ char *ft_strtrim(char const *s1, char const *set)
 	int		i;
 
 	i = 0;
+	if (!s1 || !set)
+		return (NULL);
 	start = ft_count_start(s1, set);
 	end = ft_count_end(s1, set);
 	if (!*set)

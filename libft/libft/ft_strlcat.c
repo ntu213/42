@@ -24,7 +24,7 @@ int	ft_strlcat(char *dest, const char *src, size_t n)
 	if (!n)
 		return (0);
 	len_src = ft_strlen(src);
-	len_dest = ft_strlen((const char*)dest);
+	len_dest = ft_strlen((const char *)dest);
 	i = len_dest;
 	if (n <= len_dest)
 		return (n + len_src);
