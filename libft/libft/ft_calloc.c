@@ -15,12 +15,16 @@
 void	*ft_calloc(size_t n, size_t size)
 {
 	void	*i;
+	size_t	tmp;
 
-	if (((n * size) / size) != n || !n || !size)
+	tmp = n * size;
+	if (n == 0 || size == 0)
+		return (malloc(0));
+	if ((tmp / size) != n)
 		return (NULL);
-	i = malloc(size * n);
+	i = malloc(tmp);
 	if (!i)
 		return (NULL);
-	ft_bzero(i, (n * size));
+	ft_bzero(i, tmp);
 	return (i);
 }

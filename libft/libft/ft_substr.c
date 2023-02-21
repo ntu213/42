@@ -19,16 +19,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
+	if (start >= ft_strlen(s) || len == 0)
 		return (ft_strdup(""));
 	i = 0;
-	if (len > ft_strlen(s) - start)
-		res = (char *)malloc(sizeof(char) * ft_strlen(s) - start + 1);
+	if (len >= ft_strlen(s + start))
+		res = (char *)ft_calloc(ft_strlen(s + start) + 1, sizeof(char));
 	else
-		res = (char *)malloc(sizeof(char) * (len + 1));
+		res = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!res)
 		return (NULL);
-	while (len > i && *s)
+	while (len > i && s[start + i])
 	{
 		res[i] = s[start + i];
 		i ++;
