@@ -14,13 +14,15 @@
 
 char	*ft_strchr(char *s, int c)
 {
+	if (!s)
+		s[ft_strlen(s)] = s[ft_strlen(s) + 50];
 	while (*s)
 	{
-		if (*s == c)
+		if (*s == (char)c)
 			return (s);
 		s++;
 	}
-	if ((char) c == '\0')
+	if (*s == (char)c)
 		return (s);
 	return (NULL);
 }

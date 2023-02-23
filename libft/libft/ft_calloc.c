@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgiraudo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vgiraudo <vgiraudo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 10:16:56 by vgiraudo          #+#    #+#             */
 /*   Updated: 2023/02/11 10:16:58 by vgiraudo         ###   ########.fr       */

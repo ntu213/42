@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgiraudo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vgiraudo <vgiraudo@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 10:17:46 by vgiraudo          #+#    #+#             */
 /*   Updated: 2023/02/11 10:17:52 by vgiraudo         ###   ########.fr       */
