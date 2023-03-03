@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:10:21 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/02 21:08:47 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:59:21 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,34 +99,32 @@ void	ft_unsint_writer(unsigned int nbr, int n)
 	free(str);
 }
 
-int	ft_error()
+int	ft_error(int i)
 {
 	write(1, "%", 1);
-	return (1);
+	return (i + 1);
 }
 
-int	ft_tester(va_list *arg, const char* origin)
+int	ft_tester(va_list *arg, const char* origin, int i)
 {
-	int		i;
 	t_obj	*item;
 
-	i = 1;
+	i++;
 	item = malloc(sizeof(t_obj));
 	while (origin[i] && !ft_comp(origin[i], "cspdiuxX%"))
 	{
 		if (!ft_midverif(item, origin[i]))
-			return (ft_error());
+			return (ft_error(i));
 		i++;
 	}
 	if (!origin[i])
-		return (ft_error());
-	if (item->space)
+		return (ft_error(i));
+	if (item->space && !item->plus)
 		write(1, " ", 1);
 	if ((origin[i] == 'x' || origin[i] == 'X') && item->hash)
 		write(1, "0x", 2);
-write(1, "OK", 2);
 	if (origin[i] == 'c')
-		ft_putchar_fd((char)va_arg(*arg, int), 1);
+		ft_putchar_fd(va_arg(*arg, int), 1);
 	else if (origin[i] == 's')
 		ft_putstr_fd(va_arg(*arg, char *), 1);
 	else if (origin[i] == 'p')
@@ -138,26 +136,24 @@ write(1, "OK", 2);
 	else if (origin[i] == 'd' || origin[i] == 'i')
 		ft_int_writer(va_arg(*arg, int), item->plus);
 	else if (origin[i] == '%')
-		ft_error();
+		ft_error(i);
 	else
 		ft_unsint_writer(va_arg(*arg, int), item->plus);
-	return (i);
+	return (i + 1);
 }
 
 int	ft_printf(const char *origin, ...)
 {
-	va_list	*arg;
+	va_list	arg;
 	int		i;
-	int		j;
 
 	i = 0;
-	j = ft_count(origin) + 1;
-	while (j && origin[i])
+	va_start(arg, origin);
+	while (origin[i])
 	{
 		if (origin[i] == '%')
 		{
-			i += ft_tester(arg, origin + i);
-			j--;
+			i = ft_tester(&arg, origin, i);
 		}
 		else
 		{
@@ -171,12 +167,38 @@ void	main(int argc, char ** argv)
 {
 	int	i = 1;
 
-	ft_printf("salut j'ai %c", 'y');
-/*	while (i < argc)
-	{
-		printf(argv[i], argv[i + 1]);
-		ft_printf(argv[i], argv[i + 1]);
-		write (1, "\n", 1);
-		i += 2;
-	}*/
+	ft_printf("c:%c\n", 'K');
+printf("c:%c\n", 'K');
+	ft_printf(" c:% c\n", 'K');
+printf(" c:% c\n", 'K');
+	ft_printf("s:%s\n", "OK");
+printf("s:%s\n", "OK");
+	ft_printf(" s:% s\n", "OK");
+printf(" s:% s\n", "OK");
+	ft_printf("p:%p\n", &i);
+printf("p:%p\n", &i);
+	ft_printf("x:%x\n", 1023);
+printf("x:%x\n", 1023);
+	ft_printf("#x:%#x\n", 1024);
+printf("#x:%#x\n", 1024);
+	ft_printf("X:%X\n", 1023);
+printf("X:%X\n", 1023);
+	ft_printf("#X:%#X\n", 1024);
+printf("#X:%#X\n", 1024);
+	ft_printf("d:%d\n", 213);
+printf("d:%d\n", 213);
+	ft_printf("+d:%+d\n", 213);
+printf("+d:%+d\n", 213);
+	ft_printf("+-d:%+d\n", -213);
+printf("+-d:%+d\n", -213);
+	ft_printf("-d:%d\n", -213);
+printf("-d:%d\n", -213);
+	ft_printf(" -d:% d\n", -213);
+printf(" -d:% d\n", -213);
+	ft_printf(" +d:% +d\n", 213);
+printf(" +d:% +d\n", 213);
+	ft_printf(" d:% d\n", 213);
+printf(" d:% d\n", 213);
+	ft_printf("%:%%\n", 213);
+printf("%:%%\n", 213);
 }
