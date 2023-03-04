@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:05:38 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/03 18:14:13 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:17:27 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 int	hash:		ajouter "0x" devant pour %X et %x
 int	space:		met un espace avant
 int	plus:		si int positif, afficher '+'
+int	total:		le nombre total de caracteres ecrits
 */
 
 typedef struct s_obj
@@ -27,10 +28,11 @@ typedef struct s_obj
 	int	hash;
 	int	space;
 	int	plus;
+	int	total;
 }	t_obj;
 
-char	*int_base(int n, char *base);
-char	*ft_ptochar(void *p, char *base);
+char	*int_base(int n, char *base, t_obj *item);
+void	ft_ptochar(void *p, char *base, t_obj *item);
 void	ft_reverse(char *str);
 
 #endif
