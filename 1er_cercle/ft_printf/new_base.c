@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*int_base(int n, char *base, t_obj *item)//convertit un int en base de "base"
+char	*int_base(int n, char *base, t_obj *item)
 {
 	int		base_count;
 
@@ -26,11 +26,12 @@ char	*int_base(int n, char *base, t_obj *item)//convertit un int en base de "bas
 	return ("");
 }
 
-void	ft_ptochar(void *p, char *base, t_obj *item)//renvoie l'adresse d'un pointeur "p" convertie en base de "base"
+void	ft_ptochar(void *p, char *base, t_obj *item)
 {
 	int					baselen;
-	unsigned long int	intt = (unsigned long int)p;
+	unsigned long int	intt;
 
+	intt = (unsigned long int)p;
 	baselen = ft_strlen(base);
 	if (intt)
 	{
@@ -45,7 +46,7 @@ void	ft_ptochar(void *p, char *base, t_obj *item)//renvoie l'adresse d'un pointe
 	}
 }
 
-void	ft_reverse(char *res)//inverse une chaine de caracteres, pas besoin de return
+void	ft_reverse(char *res)
 {
 	int		i;
 	int		j;

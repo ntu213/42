@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-SRC =	ft_printf.c	tester.c
+SRC =	ft_printf.c		new_base.c		libft/*.c
 
 OBJ = ${SRC:.c=.o}
 
