@@ -1,6 +1,8 @@
 NAME = libftprintf.a
 
-SRC =	ft_printf.c		new_base.c		libft/*.c
+SRC =	ft_printf.c			new_base.c			ft_printf_functions.c	\
+		ft_putchar_fd.c		ft_itoa.c			ft_putstr_fd.c			\
+		ft_strlen.c			ft_strlcat.c		ft_strdup.c
 
 OBJ = ${SRC:.c=.o}
 

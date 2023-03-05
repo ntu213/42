@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgiraudo <vgiraudo@42.fr>                  +#+  +:+       +#+        */
+/*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 10:16:56 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/02/11 10:16:58 by vgiraudo         ###   ########.fr       */
+/*   Created: 2023/02/06 18:46:19 by vgiraudo          #+#    #+#             */
+/*   Updated: 2023/02/06 18:46:19 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_calloc(size_t n, size_t size)
+size_t	ft_strlen(const char *c)
 {
-	void	*i;
-	size_t	tmp;
+	size_t	i;
 
-	tmp = n * size;
-	if (n == 0 || size == 0)
-		return (malloc(0));
-	if ((tmp / size) != n)
-		return (NULL);
-	i = malloc(tmp);
-	if (!i)
-		return (NULL);
-	ft_bzero(i, tmp);
+	i = 0;
+	if (!c)
+		return (0);
+	while (c[i])
+		i++;
 	return (i);
 }

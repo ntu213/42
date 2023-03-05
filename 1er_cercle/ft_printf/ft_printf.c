@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:10:21 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/04 19:04:54 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/05 16:03:43 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ int	ft_tester_2(va_list *arg, const char *origin, int i, t_obj *item)
 	else if (origin[i] == 's')
 	{
 		str = va_arg(*arg, char *);
-		ft_putstr_fd(str, 1);
+		ft_putstr_fd(str, 1, item);
 		item->total += ft_strlen(str);
 	}
 	else if (origin[i] == 'p')
-		ft_ptochar(va_arg(*arg, void *), "0123456789abcdef", item);
+		ft_ptochar(va_arg(*arg, void *), "0123456789abcdef", item, 0);
 	else if (origin[i] == 'x')
-		int_base(va_arg(*arg, int), "0123456789abcdef", item);
+		int_base(va_arg(*arg, int), "0123456789abcdef", item, 0);
 	else if (origin[i] == 'X')
-		int_base(va_arg(*arg, int), "0123456789ABCDEF", item);
+		int_base(va_arg(*arg, int), "0123456789ABCDEF", item, 0);
 	else if (origin[i] == 'd' || origin[i] == 'i')
 		ft_int_writer(va_arg(*arg, int), item);
 	else if (origin[i] == '%')
 		ft_error(i, item);
 	else
-		ft_unsint_writer(va_arg(*arg, int), item);
+		ft_unsint_writer(va_arg(*arg, int), item, 0);
 	return (i + 1);
 }
 
@@ -98,5 +98,7 @@ int	ft_printf(const char *origin, ...)
 			item->total++;
 		}
 	}
-	return (item->total);
+	i = item->total;
+	free(item);
+	return (i);
 }

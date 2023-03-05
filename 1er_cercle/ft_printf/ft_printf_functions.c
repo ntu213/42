@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:43:59 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/04 18:44:55 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/05 16:03:55 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ void	ft_int_writer(int nbr, t_obj *item)
 {
 	char	*str;
 
+	if (nbr == INT_MIN)
+	{
+		write(1, "-2147483648", 11);
+		item->total += 11;
+		return ;
+	}
 	if (item->space && !item->plus && nbr >= 0)
 	{
 		write(1, " ", 1);
@@ -77,19 +83,24 @@ void	ft_int_writer(int nbr, t_obj *item)
 		item->total++;
 	}
 	str = ft_itoa(nbr);
-	ft_putstr_fd(str, 1);
+	ft_putstr_fd(str, 1, item);
 	item->total += ft_strlen(str);
 }
 
-void	ft_unsint_writer(unsigned int nbr, t_obj *item)
+void	ft_unsint_writer(unsigned int nbr, t_obj *item, int kebab)
 {
 	char	c;
 
 	if (nbr)
 	{
-		ft_unsint_writer(nbr / 10, item);
+		ft_unsint_writer(nbr / 10, item, 1);
 		c = (nbr % 10) + '0';
 		write(1, &c, 1);
+		item->total++;
+	}
+	else if (!kebab)
+	{
+		write(1, "0", 1);
 		item->total++;
 	}
 }
