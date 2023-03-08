@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:10:21 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/05 16:03:43 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 09:35:56 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ int	ft_tester_2(va_list *arg, const char *origin, int i, t_obj *item)
 	return (i + 1);
 }
 
-int	ft_tester(va_list *arg, const char *origin, int i, t_obj *item)
+int	ft_tester(va_list *arg, const char *origin, int n, t_obj *item)
 {
-	i++;
+	int	i;
+
+	i = n + 1;
 	while (origin[i] && !ft_comp(origin[i], "cspdiuxX%"))
 	{
 		if (!ft_midverif(item, origin[i]))
@@ -83,6 +85,8 @@ int	ft_printf(const char *origin, ...)
 
 	i = 0;
 	item = malloc(sizeof(t_obj));
+	item->total = 0;
+	ft_item_reset(item);
 	va_start(arg, origin);
 	while (origin[i])
 	{
@@ -100,6 +104,6 @@ int	ft_printf(const char *origin, ...)
 	}
 	i = item->total;
 	free(item);
-	va_end(arg); 
+	va_end(arg);
 	return (i);
 }

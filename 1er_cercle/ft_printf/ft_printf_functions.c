@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:43:59 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/05 16:03:55 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 08:39:59 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	ft_int_writer(int nbr, t_obj *item)
 	str = ft_itoa(nbr);
 	ft_putstr_fd(str, 1, item);
 	item->total += ft_strlen(str);
+	free(str);
 }
 
 void	ft_unsint_writer(unsigned int nbr, t_obj *item, int kebab)
