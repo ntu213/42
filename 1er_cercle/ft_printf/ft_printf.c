@@ -100,5 +100,6 @@ int	ft_printf(const char *origin, ...)
 	}
 	i = item->total;
 	free(item);
+	va_end(arg); 
 	return (i);
 }
