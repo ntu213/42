@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:05:38 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/05 16:29:04 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 09:44:41 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ char	*ft_itoa(int n);
 size_t	ft_strlen(const char *c);
 size_t	ft_strlcat(char *dest, const char *src, size_t n);
 char	*ft_strdup(const char *s);
+void	ft_write_it(const char *origin, int i, t_obj *item);
 
 #endif

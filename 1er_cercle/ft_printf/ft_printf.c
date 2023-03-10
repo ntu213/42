@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:10:21 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/08 09:35:56 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 09:44:50 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,7 @@ int	ft_printf(const char *origin, ...)
 			ft_item_reset(item);
 		}
 		else
-		{
-			write(1, &origin[i], 1);
-			i++;
-			item->total++;
-		}
+			ft_write_it(origin, i++, item);
 	}
 	i = item->total;
 	free(item);

@@ -72,3 +72,9 @@ void	ft_reverse(char *res)
 		i++;
 	}
 }
+
+void	ft_write_it(const char *origin, int i, t_obj *item)
+{
+	write(1, &origin[i], 1);
+	item->total++;
+}
