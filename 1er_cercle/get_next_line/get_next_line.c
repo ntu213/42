@@ -1,13 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/14 10:10:31 by vgiraudo          #+#    #+#             */
+/*   Updated: 2023/03/14 10:10:31 by vgiraudo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-void	ft_init_buffer(t_list **buffer, int fd)	//initialise le buffer
+void	ft_init_buffer(char **buffer)	//initialise le buffer
 {
-	char	*file;
-
-	*buffer = malloc(sizeof(t_list));
-	(*buffer)->done = 0;
-	(*buffer)->str = malloc(sizeof(char));
-	(*buffer)->str[0] = 0;
+	*buffer = malloc(2);
+	*buffer[0] = 'Z';
+	*buffer[1] = 0;
 }
 
 char	*get_line(char *str)	//retourne "str" jusqu'a \n compris ou \0
@@ -21,50 +30,63 @@ char	*get_line(char *str)	//retourne "str" jusqu'a \n compris ou \0
 	if (str[i] == '\n')
 		i++;
 	line = malloc(i + 1);
-	line[i] = 0;
+
 	i = 0;
-	while (str[i] && str[i - 1] != '\n')
+	while (str[i] && str[i] != '\n')
 	{
 		line[i] = str[i];
 		i++;
 	}
+	if (str[i] == '\n')
+	{
+		line[i] = '\n';
+		i++;
+	}
+	line[i] = 0;
 	return (line);
 }
 
-void	clear_line(char *str)	//supprime tout de "str" jusqu'a \n compris
+char	*clear_line(char *str)	//supprime tout de "str" jusqu'a \n compris
 {
 	char	*cache;
 	int		i;
 	int		j;
 
-	cache = ft_strdup(str);
 	i = 0;
-	while (cache[i] && cache[i] != '\n')
+	while (str[i] && str[i] != '\n')
 		i++;
-	free(str);
-	str = malloc(ft_strlen(cache) - i + 1);
-	j = 0;
 	i++;
-	while(cache[i + j])
-		str[j++] = cache[i + j];
+	cache = malloc(ft_strlen(str) - i + 1);
+	j = 0;
+	while(str[i + j])
+	{
+		cache[j] = str[i + j];
+		j++;
+	}
 	str[j] = 0;
-	free(cache);
+	free(str);
+	return(cache);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_list	*buffer;
-	char			*line;
+	static char	*buffer;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 		return (NULL);
 	if (!buffer)
-		ft_init_buffer(&buffer, fd);
-	get_str(buffer->str, fd, &(buffer->done));
-	line = get_line(buffer->str);
-
-printf("line: %c%s%c\n", '"', get_line(buffer->str), '"');
-
-	clear_line(buffer->str);
+	{
+		buffer = malloc(1);
+		buffer[0] = 0;
+	}
+	buffer = get_str(buffer, fd);
+	if (!ft_strlen(buffer))
+	{
+		free(buffer);
+		return (NULL);
+	}
+	line = get_line(buffer);
+	buffer = clear_line(buffer);
 	return (line);
 }

@@ -16,7 +16,7 @@ int	main()
 		line = get_next_line(fd);
 		if (!line)
 			break;
-		printf("line: %c%s%c\n", '"', line, '"');
+printf("line: %c%s%c\n", '"', line, '"');
 		free(line);
 		i--;
 		//write(1, "OK", 2);

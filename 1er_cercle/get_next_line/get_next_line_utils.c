@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/14 10:10:27 by vgiraudo          #+#    #+#             */
+/*   Updated: 2023/03/14 10:10:27 by vgiraudo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	ft_strlen(const char *c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (c[i])
@@ -28,26 +40,29 @@ char	*ft_strdup(const char *s)
 	return (str);
 }
 
-int	ft_strcat(char *dest, char *src)
+char	*ft_strjoin(char *s1, char *s2)
 {
+	char	*str;
 	size_t	i;
 	size_t	j;
-	char	*cache;
 
-	i =  0;
+	i = 0;
 	j = 0;
-	cache = ft_strdup(dest);
-	free(dest);
-	dest = malloc(ft_strlen(dest) + ft_strlen(src) + 1);
-	if (!dest)
-		return (0);
-	while (cache[i])
-		dest[i++] = cache[i];
-	while (src[j])
-		dest[i + j++] = src[j];
-	dest[i + j] = '\0';
-	free(cache);
-	return (ft_strlen(src) + i);
+	if (!s1 || !s2)
+		return (NULL);
+	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!str)
+		return (NULL);
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j++])
+		str[i + j - 1] = s2[j - 1];
+	str[i + j - 1] = 0;
+	free(s1);
+	return (str);
 }
 
 int	is_line(char *str)	//renvoie 1 si "str" contient '\n', 0 sinon
@@ -64,25 +79,24 @@ int	is_line(char *str)	//renvoie 1 si "str" contient '\n', 0 sinon
 	return (0);
 }
 
-void	get_str(char *str, int fd, int *done)	//retourne "str" concatenee avec "size" caracteres de "fd"
+char	*get_str(char *str, int fd)	//retourne "str" concatenee avec "size" caracteres de "fd"
 {
 	char	*cache;
 	int		index;
 
 	cache = malloc(BUFFER_SIZE + 1);
 	if (!cache)
-		return ;
+		return (NULL);
+	cache[0] = 0;
 	while (!is_line(cache) && !is_line(str))
 	{
-		ft_strcat(str, cache);
+		str = ft_strjoin(str, cache);
 		index = read(fd, cache, BUFFER_SIZE);
 		if (!index)
-		{
-			*done = 1;
-			return ;
-		}
+			return (str);
 		cache[index] = 0;
 	}
-	ft_strcat(str, cache);
-printf("%s\n", str);
+	str = ft_strjoin(str, cache);
+	free(cache);
+	return (str);
 }
