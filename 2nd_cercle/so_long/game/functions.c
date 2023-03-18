@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/17 18:11:48 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/18 20:05:47 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_strnstr(const char *src, const char *obj, size_t n)
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2, int freee)
 {
 	char	*str;
 	size_t	i;
@@ -58,6 +58,71 @@ char	*ft_strjoin(char *s1, char const *s2)
 	while (s2[j++])
 		str[i + j - 1] = s2[j - 1];
 	str[i + j - 1] = 0;
-	free(s1);
+	if (freee == 1)
+		free(s1);
+	else if(freee == 2)
+		free(s2);
 	return (str);
+}
+
+char	*get_file(int fd)
+{
+	int		size;
+	int		index;
+	char	*res;
+	char	*temp;
+
+	size = 50;
+	res = malloc(1);
+	res = "";
+	temp = malloc(size + 1);
+	while (1)
+	{
+		index = read(fd, temp, size);
+		if (!index)
+			break;
+		temp[index] = 0;
+	ft_printf("OK\n");
+		res = ft_strjoin(res, temp, 1);
+		free(temp);
+	ft_printf("OK\n");
+	}
+	return (res);
+}
+
+int	ft_lines(char *file, int *x, int *y)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (file[i] && file[i] != '\n')
+		i++;
+	*x = i;
+	j = 0;
+	while(file[i])
+	{
+		if (file[i] == '\n')
+		{
+			*y++;
+			j = 0;
+		}
+		if (j > *x)
+			return (0);
+		i++;
+	}
+	return (i);
+}
+
+int	ft_ok_file(int *width, int *height, int fd, char *filename)
+{
+	int		x;
+	int		y;
+	char	*file;
+
+	y = 0;
+	file = get_file(fd);
+	ft_printf("OK\n");
+	if (!ft_lines(file, &x, &y))
+		return (0);
 }
