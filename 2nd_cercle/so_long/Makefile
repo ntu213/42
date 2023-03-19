@@ -6,14 +6,17 @@ LIB = ft_printf.h
 
 FLAGS = -Wall -Wextra -Werror
 
+LIBFLAGS = -lm -lX11 -lXext
+
 CC = gcc
 
 all: mlx $(NAME)
+
 mlx:
 	make -C ./mlx/
 
 $(NAME):
-	$(CC) $(SRC) -o $(NAME) mlx/libmlx.a -lm -lX11 -lXext
+	$(CC) $(SRC) -o $(NAME) mlx/libmlx.a $(LIBFLAGS)
 
 clean:
 	rm -f $(NAME)

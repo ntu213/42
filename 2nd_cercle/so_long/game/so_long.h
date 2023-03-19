@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:52 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/18 19:50:27 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/19 18:20:42 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,24 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdio.h>
+
+typedef struct s_player
+{
+	int	x;
+	int	y;
+	int	score;
+}			t_player;
+
+typedef struct s_mob
+{
+	int	x;
+	int	y;
+}			t_mob;
+
+typedef struct s_main
+{
+	struct s_main	*next;
+}			t_main;
 
 int		ft_strnstr(const char *src, const char *obj, size_t n);
 char	*ft_strjoin(char *s1, char *s2, int freee);

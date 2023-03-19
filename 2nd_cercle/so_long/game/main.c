@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/18 19:43:48 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/19 18:28:12 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,43 @@ int	is_file(char *str)
 	return (fd);
 }
 
+void	ft_init(t_main **obj, int j)
+{
+	while (j)
+	{
+		*obj = (*obj)->next;
+		j--;
+	}
+	*obj = (t_main *)malloc(sizeof(t_main));
+	(*obj)->next = NULL;
+}
+
+void	ft_fullfree(t_main **obj)
+{
+	t_main	*temp;
+
+	temp = malloc(sizeof(t_main));
+	while ((*obj)->next)
+	{
+		temp = (*obj)->next;
+		free(*obj);
+	ft_printf("ok\n");
+		*obj = temp;
+	}
+	ft_printf("ok\n");
+	free(*obj);
+	free(temp);
+}
+
 int	main(int argc, char **argv)
 {
+	t_main	*obj;
 	int		fd;
 	int		i;
 	int		j;
-	
+
 	i = 1;
-	j = 1;
+	j = 0;
 	ft_printf("%d\n", argc);
 	while(i < argc)
 	{
@@ -59,10 +88,14 @@ int	main(int argc, char **argv)
 		if (fd >= 0)
 		{
 			ft_printf("%s\n", argv[i]);
-			ft_first(fd, argv[i]);
+			ft_init(&obj, j);
 			j++;
 		}
 		i++;
 	}
+	if (j)
+//		ft_first(fd, argv[i]);
+		ft_printf("run %d\n", j);
+	ft_fullfree(&obj);
 	return (1);
 }
