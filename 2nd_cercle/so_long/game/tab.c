@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:53:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/18 19:49:08 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:04:35 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,21 @@
 	(void)win2;
 */
 
-void	ft_first(int fd, char *filename)
+void	ft_first(char **str)
 {
 	int	width;
 	int	height;
+	int	i;
 
-	if (!ft_ok_file(&width, &height, fd, filename))
+	i = 0;
+	while (str[i])
 	{
-		ft_printf("[Error] %s: Invalid file format", filename);
-		return ;
+		if (!ft_ok_file(&width, &height, ft_atoi(str[i]), str[i + 1]))
+			ft_printf("[Error] %s: Invalid file format\n", str[i + 1]);
+		else
+		{
+			ft_printf("%s: (temp) File OK\n", str[i + 1]);
+		}
+		i += 2;
 	}
-	ft_printf("%s: (temp) File OK\n", filename);
 }

@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:52 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/19 18:20:42 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:10:21 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,19 @@ typedef struct s_mob
 	int	y;
 }			t_mob;
 
-typedef struct s_main
+typedef struct s_map
 {
-	struct s_main	*next;
-}			t_main;
+	int		width;
+	int		height;
+	int		fd;
+	char	*name;
+	char	**map;
+}			t_map;
 
 int		ft_strnstr(const char *src, const char *obj, size_t n);
 char	*ft_strjoin(char *s1, char *s2, int freee);
-void	ft_first(int fd, char *filename);
+void	ft_first(char **str);
 int		ft_ok_file(int *width, int *height, int fd, char *filename);
+int		ft_atoi(const char *str);
 
 #endif

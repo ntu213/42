@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/18 20:05:47 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:06:04 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,39 @@ char	*ft_strjoin(char *s1, char *s2, int freee)
 	while (s2[j++])
 		str[i + j - 1] = s2[j - 1];
 	str[i + j - 1] = 0;
-	if (freee == 1)
+	if (freee == 1 || freee == 3)
 		free(s1);
-	else if(freee == 2)
+	if (freee == 2 || freee == 3)
 		free(s2);
 	return (str);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+	int	res;
+
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (str[i] == '\t' || str[i] == ' ' || str[i] == '\n'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-')
+	{
+		sign *= -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] <= '9' && str[i] >= '0')
+	{
+		res *= 10;
+		res += str[i] - 48;
+		i++;
+	}
+	return (res * sign);
 }
 
 char	*get_file(int fd)
@@ -70,23 +98,11 @@ char	*get_file(int fd)
 	int		size;
 	int		index;
 	char	*res;
-	char	*temp;
 
-	size = 50;
-	res = malloc(1);
-	res = "";
-	temp = malloc(size + 1);
-	while (1)
-	{
-		index = read(fd, temp, size);
-		if (!index)
-			break;
-		temp[index] = 0;
-	ft_printf("OK\n");
-		res = ft_strjoin(res, temp, 1);
-		free(temp);
-	ft_printf("OK\n");
-	}
+	size = 100000;
+	res = malloc(size + 1);
+	read(fd, res, size);
+	free(res);
 	return (res);
 }
 
@@ -98,18 +114,23 @@ int	ft_lines(char *file, int *x, int *y)
 	i = 0;
 	while (file[i] && file[i] != '\n')
 		i++;
-	*x = i;
+	if (i < 5)
+		return (0);
+	*x = i++;
 	j = 0;
-	while(file[i])
+	while (file[i])
 	{
 		if (file[i] == '\n')
 		{
 			*y++;
+			if (j < *x)
+				return (0);
 			j = 0;
 		}
 		if (j > *x)
 			return (0);
 		i++;
+		j++;
 	}
 	return (i);
 }
@@ -122,7 +143,8 @@ int	ft_ok_file(int *width, int *height, int fd, char *filename)
 
 	y = 0;
 	file = get_file(fd);
-	ft_printf("OK\n");
 	if (!ft_lines(file, &x, &y))
 		return (0);
+//	if (!ft_count)
+	return (1);
 }
