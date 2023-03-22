@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/21 20:06:04 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:58:21 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,16 @@ char	*ft_strjoin(char *s1, char *s2, int freee)
 	return (str);
 }
 
+int	ft_strrlen(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 int	ft_atoi(const char *str)
 {
 	int	i;
@@ -102,49 +112,45 @@ char	*get_file(int fd)
 	size = 100000;
 	res = malloc(size + 1);
 	read(fd, res, size);
-	free(res);
 	return (res);
 }
 
-int	ft_lines(char *file, int *x, int *y)
+int	ft_lines(char **file, int x, int y)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (file[i] && file[i] != '\n')
-		i++;
-	if (i < 5)
-		return (0);
-	*x = i++;
 	j = 0;
-	while (file[i])
+	while(j < y)
 	{
-		if (file[i] == '\n')
+		while (file[j][i])
 		{
-			*y++;
-			if (j < *x)
+			if (i > x)
 				return (0);
-			j = 0;
+	ft_printf("|i: %d|j: %d|\n", i, j);
+			i++;
 		}
-		if (j > *x)
+		if (i < x)
 			return (0);
-		i++;
 		j++;
+		i = 0;
 	}
-	return (i);
+	return (1);
 }
 
-int	ft_ok_file(int *width, int *height, int fd, char *filename)
+int	ft_ok_file(t_map *obj)
 {
-	int		x;
-	int		y;
 	char	*file;
 
-	y = 0;
-	file = get_file(fd);
-	if (!ft_lines(file, &x, &y))
+	file = get_file(obj->fd);
+	obj->map = ft_split(file, '\n');
+	ft_printf("|%s|\n", obj->map[0]);
+	obj->height = ft_strrlen(obj->map);
+	obj->width = ft_strlen(obj->map[0]);
+	if (!ft_lines(obj->map, obj->width, obj->height))
 		return (0);
+	ft_printf("\n|x: %d|y: %d|\n", obj->width, obj->height);
 //	if (!ft_count)
 	return (1);
 }

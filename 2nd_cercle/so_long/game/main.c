@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/21 20:12:57 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:05:47 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,31 @@ int	is_file(char *str)
 	return (fd);
 }
 
-char	**ft_init(t_map **str, int j, char *arg, int fd)
+t_map	**ft_init(t_map **str, int j, char *arg, int fd)
 {
 	t_map	**new;
 	int		i;
 
 	i = 0;
 	new = malloc(sizeof(t_map *) * j);
+	new[j] = malloc(sizeof(t_map));
 	if (j)
 	{
-		while (str[i])
+		while (i < j)
 		{
 			new[i] = str[i];
 			i++;
 		}
 		free(str);
 	}
-	new[j] = ft_itoa(fd);
-	new[j + 1] = arg;
-	new[j + 2] = NULL;
+	new[j]->fd = fd;
+	new[j]->width = 0;
+	new[j]->height = 0;
+	new[j]->name = arg;
 	return (new);
 }
 
-void	ft_temp(char **str)
+void	ft_temp(t_map **str)
 {
 	int	i;
 
@@ -79,20 +81,19 @@ void	ft_temp(char **str)
 	i = 0;
 	while (str[i])
 	{
-		ft_printf("fd: %s, file: %s\n", str[i], str[i + 1]);
-		i += 2;
+		ft_printf("fd: %d, file: %s\n", str[i]->fd, str[i]->name);
+		i ++;
 	}
 }
 
-void	ft_fullfree(char **str)
+void	ft_fullfree(t_map **str, int j)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (i < j)
 	{
-		if (i % 2 == 0)
-			free(str[i]);
+		free(str[i]);
 		i++;
 	}
 	free(str);
@@ -119,10 +120,10 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-//	ft_temp(obj);
+	ft_temp(obj);
 	if (j)
-		ft_first(obj);
+		ft_first(obj, j);
 	ft_printf("\nrun %d\n", j);
-	ft_fullfree(obj);
+	ft_fullfree(obj, j);
 	return (1);
 }
