@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/22 15:05:47 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:06:01 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-	ft_temp(obj);
+//	ft_temp(obj);
 	if (j)
 		ft_first(obj, j);
 	ft_printf("\nrun %d\n", j);

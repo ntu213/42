@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/22 15:58:21 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:28:27 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	*get_file(int fd)
 	int		index;
 	char	*res;
 
-	size = 100000;
+	size = 15000;
 	res = malloc(size + 1);
 	read(fd, res, size);
 	return (res);
@@ -122,17 +122,41 @@ int	ft_lines(char **file, int x, int y)
 
 	i = 0;
 	j = 0;
-	while(j < y)
+	while (j < y)
 	{
 		while (file[j][i])
 		{
+			i++;
 			if (i > x)
 				return (0);
-	ft_printf("|i: %d|j: %d|\n", i, j);
-			i++;
 		}
 		if (i < x)
 			return (0);
+		j++;
+		i = 0;
+	}
+	if (j < 3)
+		return (0);
+	return (1);
+}
+
+int	ft_ok_char(char **file)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (file[j])
+	{
+		while (file[j][i])
+		{
+			if (!(file[j][i] == '0' || file[j][i] == '1'
+					|| file[j][i] == 'P' || file[j][i] == 'C'
+					|| file[j][i] == 'E' || file[j][i] == 'M'))
+				return (0);
+			i++;
+		}
 		j++;
 		i = 0;
 	}
@@ -148,7 +172,7 @@ int	ft_ok_file(t_map *obj)
 	ft_printf("|%s|\n", obj->map[0]);
 	obj->height = ft_strrlen(obj->map);
 	obj->width = ft_strlen(obj->map[0]);
-	if (!ft_lines(obj->map, obj->width, obj->height))
+	if (!ft_lines(obj->map, obj->width, obj->height) || !(ft_ok_char(obj->map)))
 		return (0);
 	ft_printf("\n|x: %d|y: %d|\n", obj->width, obj->height);
 //	if (!ft_count)
