@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/24 15:06:01 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/25 18:36:21 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	is_file(char *str)
 	{
 		new = ft_strjoin("maps/", str, 0);
 		fd = open(new, O_RDONLY);
+		free(new);
 	}
 	if (fd < 0)
 		ft_printf("[Error] %s: Invalid map\n", str);
@@ -55,25 +56,24 @@ t_map	**ft_init(t_map **str, int j, char *arg, int fd)
 	int		i;
 
 	i = 0;
-	new = malloc(sizeof(t_map *) * j);
-	new[j] = malloc(sizeof(t_map));
-	if (j)
+	new = ft_calloc(sizeof(t_map *), j + 1);
+	new[j] = ft_calloc(sizeof(t_map), 1);
+	while (i < j)
 	{
-		while (i < j)
-		{
-			new[i] = str[i];
-			i++;
-		}
-		free(str);
+		new[i] = str[i];
+		i++;
 	}
+	if (j)
+		free(str);
 	new[j]->fd = fd;
 	new[j]->width = 0;
 	new[j]->height = 0;
 	new[j]->name = arg;
+	new[j]->map = NULL;
 	return (new);
 }
 
-void	ft_temp(t_map **str)
+void	ft_temp(t_map **str) //DELETE IT
 {
 	int	i;
 
@@ -89,12 +89,22 @@ void	ft_temp(t_map **str)
 void	ft_fullfree(t_map **str, int j)
 {
 	int	i;
+	int	a;
 
 	i = 0;
+	a = 0;
 	while (i < j)
 	{
+		while (str[i]->map[a])
+		{
+			free(str[i]->map[a]);
+			a++;
+		}
+		close(str[i]->fd);
+		free(str[i]->map);
 		free(str[i]);
 		i++;
+		a = 0;
 	}
 	free(str);
 }
@@ -108,19 +118,18 @@ int	main(int argc, char **argv)
 
 	i = 1;
 	j = 0;
-	ft_printf("argc: %d\n\n", argc);
+	obj = NULL;
 	while (i < argc)
 	{
 		fd = is_file(argv[i]);
 		if (fd >= 0)
 		{
-			ft_printf("Valid map: %s\n", argv[i]);
 			obj = ft_init(obj, j, argv[i], fd);
 			j++;
 		}
 		i++;
 	}
-//	ft_temp(obj);
+//	ft_temp(&obj);
 	if (j)
 		ft_first(obj, j);
 	ft_printf("\nrun %d\n", j);

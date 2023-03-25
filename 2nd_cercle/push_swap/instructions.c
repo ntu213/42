@@ -12,7 +12,7 @@ void	ft_rotate(int *tab)
 		tab[i - 1] = tab[i];
 		i++;
 	}
-	tab[i] = c;
+	tab[i - 1] = c;
 }
 
 void	ft_rr(int *taba, int *tabb)
@@ -30,12 +30,12 @@ void	ft_revrot(int *tab)
 	i = 0;
 	while (tab[i])
 		i++;
+	i--;
 	c = tab[i];
-	i = 1;
-	while (tab[i])
+	while (i)
 	{
 		tab[i] = tab[i - 1];
-		i++;
+		i--;
 	}
 	tab[0] = c;
 }

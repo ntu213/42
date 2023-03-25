@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/24 16:28:27 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/25 18:39:38 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,15 @@ char	*get_file(int fd)
 	int		size;
 	int		index;
 	char	*res;
+	char	*true_res;
 
 	size = 15000;
 	res = malloc(size + 1);
-	read(fd, res, size);
-	return (res);
+	index = read(fd, res, size);
+	res[index] = 0;
+	true_res = ft_strdup(res);
+	free(res);
+	return (true_res);
 }
 
 int	ft_lines(char **file, int x, int y)
@@ -135,7 +139,7 @@ int	ft_lines(char **file, int x, int y)
 		j++;
 		i = 0;
 	}
-	if (j < 3)
+	if (j < 3 || x < 5)
 		return (0);
 	return (1);
 }
@@ -168,13 +172,15 @@ int	ft_ok_file(t_map *obj)
 	char	*file;
 
 	file = get_file(obj->fd);
+	ft_printf("OK\n");
 	obj->map = ft_split(file, '\n');
+	free(file);
+	ft_printf("OK\n");
 	ft_printf("|%s|\n", obj->map[0]);
 	obj->height = ft_strrlen(obj->map);
 	obj->width = ft_strlen(obj->map[0]);
-	if (!ft_lines(obj->map, obj->width, obj->height) || !(ft_ok_char(obj->map)))
+	if (!ft_lines(obj->map, obj->width, obj->height) || !ft_ok_char(obj->map) || !ft_ok_border(obj->map))
 		return (0);
 	ft_printf("\n|x: %d|y: %d|\n", obj->width, obj->height);
-//	if (!ft_count)
 	return (1);
 }

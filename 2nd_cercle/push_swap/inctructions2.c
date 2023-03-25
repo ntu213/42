@@ -42,7 +42,6 @@ void	ft_up(int *tab)
 		i++;
 	}
 	tab[i] = NULL;
-
 }
 
 void	ft_push(int *tab1, int *tab2)

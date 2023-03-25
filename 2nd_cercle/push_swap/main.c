@@ -52,6 +52,8 @@ int	main(int argc, char **argv)
 	int	tab[argc - 1];
 
 	i = 1;
+	ft_init_tab(tab, argc - 1);
+	printf("%d\n\n", tab[0]);
 	if (argc == 1 || !ft_ok(argv, argc, tab))
 		return (ft_error(0));
 	ft_run(tab, argc - 1);

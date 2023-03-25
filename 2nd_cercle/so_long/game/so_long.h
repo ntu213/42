@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:52 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/22 15:27:39 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/25 13:19:13 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ typedef struct s_map
 }			t_map;
 
 int		ft_strnstr(const char *src, const char *obj, size_t n);
-char	*ft_strjoin(char *s1, char *s2, int freee);
-void	ft_first(t_map **str, int j);
-int		ft_ok_file(t_map *obj);
 int		ft_atoi(const char *str);
+int		ft_ok_file(t_map *obj);
+void	ft_first(t_map **str, int j);
+void	*ft_calloc(size_t n, size_t size);
+char	*ft_strjoin(char *s1, char *s2, int freee);
 char	**ft_split(char const *s, char c);
 
 #endif

@@ -17,11 +17,13 @@ void	ft_run(int *taba, int n)
 	int	tabb[n];
 
 	ft_init_tab(tabb, n);
-	ft_swap(taba);
+	ft_push(tabb, taba);
+
 	int i = 0;
+	printf(" A | B\n");
 	while (i < n)
 	{
-		printf("%d | %d\n", tabb[i], taba[i]);
+		printf("%d | %d\n", taba[i], tabb[i]);
 		i++;
 	}
 }

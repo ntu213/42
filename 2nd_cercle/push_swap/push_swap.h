@@ -15,3 +15,4 @@ void	ft_rotate(int *tab);
 void	ft_rr(int *taba, int *tabb);
 void	ft_revrot(int *tab);
 void	ft_rrr(int *taba, int *tabb);
+void	ft_init_tab(int *tab, int n);
