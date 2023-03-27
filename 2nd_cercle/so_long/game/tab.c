@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:53:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/27 11:05:57 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:19:08 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ void	*ft_third(t_player *player, t_map *map, t_data *data)
 	
 }
 
-void	*ft_second(t_map **str, t_data *data, t_check *check, int j)
+void	*ft_second(t_map **str, t_check *check, int j)
 {
 	t_player	*player;
+	t_data		*data;
 	int	i;
 
 	i = 0;
+	data = ft_init_data(str, j);
 	while (i < j)
 	{
 		if (str[i]->width > 96 || str[i]->height >= 54)
@@ -52,11 +54,10 @@ ft_printf("%s: (temp) File OK\n", str[i]->name);
 void	ft_first(t_map **str, int j)
 {
 	t_check		*check;
-	t_data		*data;
 	int			i;
 
 	i = 0;
-	data = ft_init_data(str, j);
+	ft_printf("%d\n", j);
 	while (i < j)
 	{
 		check = ft_check_init();
@@ -67,5 +68,5 @@ void	ft_first(t_map **str, int j)
 		i++;
 		free(check);
 	}
-	ft_second(str, data, check, j);
+	ft_second(str, check, j);
 }

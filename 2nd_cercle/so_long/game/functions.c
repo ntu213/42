@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/27 11:07:24 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:25:28 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,15 +351,14 @@ t_data	*ft_init_data(t_map **map, int j)
 	data->max_height = 0;
 	while (i < j)
 	{
+	ft_printf("|%d|%d|%d|%d|%d|\n", data->max_width, data->max_height, map[i]->height, map[i]->width, j);
 		if (map[i]->height > data->max_height && map[i]->ok)
 			data->max_height = map[i]->height;
 		if (map[i]->width > data->max_width && map[i]->ok)
 			data->max_width = map[i]->width;
 		i++;
 	}
-	data = malloc(sizeof(t_data));
 	data->mlx = mlx_init();
-	ft_printf("ok\n");
 	data->win = mlx_new_window(data->mlx, data->max_width * 40,
 			data->max_height * 40, "Spaghetti");
 	mlx_loop(data->mlx);
