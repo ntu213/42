@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:53:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/22 15:00:53 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/27 11:05:57 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,46 @@
 	(void)win2;
 */
 
-void	ft_first(t_map **str, int j)
+void	*ft_third(t_player *player, t_map *map, t_data *data)
 {
-	int	width;
-	int	height;
+	
+}
+
+void	*ft_second(t_map **str, t_data *data, t_check *check, int j)
+{
+	t_player	*player;
 	int	i;
 
 	i = 0;
 	while (i < j)
 	{
-		if (!ft_ok_file(str[i]))
+		if (str[i]->width > 96 || str[i]->height >= 54)
+			ft_printf("[Warning] %s: Big map\n", str[i]->name);
+		player = ft_init_player(check->pposx, check->pposy, 0);
+		ft_third(player, str[i], data);
+		free(player);
+		i++;
+ft_printf("%s: (temp) File OK\n", str[i]->name);
+	}
+}
+
+void	ft_first(t_map **str, int j)
+{
+	t_check		*check;
+	t_data		*data;
+	int			i;
+
+	i = 0;
+	data = ft_init_data(str, j);
+	while (i < j)
+	{
+		check = ft_check_init();
+		if (!ft_ok_file(str[i], check))
 			ft_printf("[Error] %s: Invalid file format\n", str[i]->name);
 		else
-		{
-			ft_printf("%s: (temp) File OK\n", str[i]->name);
-		}
-		i ++;
+			str[i]->ok = 1;
+		i++;
+		free(check);
 	}
+	ft_second(str, data, check, j);
 }

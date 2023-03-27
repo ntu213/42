@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/25 18:36:21 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/27 09:43:05 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_map	**ft_init(t_map **str, int j, char *arg, int fd)
 	new[j]->height = 0;
 	new[j]->name = arg;
 	new[j]->map = NULL;
+	new[j]->ok = 0;
 	return (new);
 }
 
