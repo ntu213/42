@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/27 13:25:28 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:33:03 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,7 +351,7 @@ t_data	*ft_init_data(t_map **map, int j)
 	data->max_height = 0;
 	while (i < j)
 	{
-	ft_printf("|%d|%d|%d|%d|%d|\n", data->max_width, data->max_height, map[i]->height, map[i]->width, j);
+	ft_printf("|%d|%d|%d|%d|%d|\n", data->max_width, data->max_height, map[i]->height, map[i]->width, i);
 		if (map[i]->height > data->max_height && map[i]->ok)
 			data->max_height = map[i]->height;
 		if (map[i]->width > data->max_width && map[i]->ok)
@@ -363,4 +363,17 @@ t_data	*ft_init_data(t_map **map, int j)
 			data->max_height * 40, "Spaghetti");
 	mlx_loop(data->mlx);
 	return (data);
+}
+
+int	ft_random(void)
+{
+	void	*a;
+	int		res;
+
+	a = malloc(1);
+	res = (int)a % 17;
+	if (res < 0)
+		res *= -1;
+	printf("%d | %d\n", res, res % 4);
+	free(a);
 }
