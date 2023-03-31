@@ -1,130 +1,43 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   run.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/31 10:55:03 by vgiraudo          #+#    #+#             */
+/*   Updated: 2023/03/31 11:01:38 by vgiraudo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_init_tab(int *tab, int n)
+int	ft_end(t_tab *a. t_tab *b)
 {
 	int	i;
+	int	cache;
 
-	i = 0;
-	while (i < n)
+	i = b->size - 1;
+	cache = b->tab[i]->val;
+	while (i > -1)
 	{
-		tab[i] = 0;
-		i++;
-	}
-}
-
-int	ft_istop(int *taba, int size_a)
-{
-	int	i;
-	int	pos;
-	int	mem;
-
-	i = 0;
-	mem = taba[0];
-	pos = i;
-	while (i < size_a)
-	{
-		if (mem > taba[i])
-		{
-			mem = taba[i];
-			pos = i;
-		}
-		i++;
-	}
-	if (pos <= size_a / 2)
-		return (1);
-	return (0);
-}
-
-int	ft_getmin(int *taba, int *tabb, int size_a, int size_b)
-{
-	int	pos;
-	int	i;
-
-	i = 0;
-	pos = taba[0];
-	while (i < size_a)
-	{
-		if (taba[i] < pos)
-			pos = taba[i];
-		i++;
-	}
-	i = 0;
-	while (i < size_b)
-	{
-		if (tabb[i] < pos)
-			pos = tabb[i];
-		i++;
-	}
-	return (pos);
-}
-
-int	ft_end(int *taba, int *tabb, int size_a, int size_b)
-{
-	int	pos;
-	int	i;
-
-	pos = ft_getmin(taba, tabb, size_a, size_b);
-	i = 1;
-	if (pos > taba[0])
-		return (0);
-	while (i < size_a)
-	{
-		if (taba[i] < taba[i - 1])
+		if (b->tab[i]->val > cache)
 			return (0);
-		i++;
+		cache = b->tab[i]->val;
+		i--;
+	}
+	i = 0;
+	while (i < a->size)
+	{
+		if (a->tab[i]->val > cache)
+			return (0);
+		cache = a->tab[i]->val;
+		i--;
 	}
 	return (1);
 }
 
-void	ft_pb(int *taba, int *tabb, int *size_a, int *size_b)
+void	ft_run(t_tab *a)
 {
-	ft_push(tabb, taba, size_b, size_a);
-	*size_b += 1;
-	*size_a -= 1;
-	write(1, "pb\n", 3);
-}
+	t_tab	*b;
 
-void	ft_pa(int *taba, int *tabb, int *size_a, int *size_b)
-{
-	ft_push(taba, tabb, size_a, size_b);
-	*size_a += 1;
-	*size_b -= 1;
-	write(1, "pa\n", 3);
-}
-
-/*
-void	ft_debug(int *taba, int *tabb, int size_a, int size_b)
-{
-	int	i = 0;
-
-	while (i < 6)
-	{
-		printf("%d | %d | %d | %d\n", taba[i], tabb[i], size_a, size_b);
-		i++;
-	}
-}
-*/
-
-void	ft_run(int *taba, int size_a)
-{
-	int	tabb[size_a];
-	int	size_b;
-	int	hasrun;
-
-	size_b = 0;
-	hasrun = 0;
-	ft_init_tab(tabb, size_a);
-	while (!ft_end(taba, tabb, size_a, size_b))
-	{
-		while (hasrun-- && taba[0] == ft_getmin(taba, taba, size_a, size_a))
-			ft_pb(taba, tabb, &size_a, &size_b);
-		
-		if (ft_istop(taba, size_a))
-			ft_top(taba, tabb, &size_a, &size_b);
-		else
-			ft_bot(taba, tabb, &size_a, &size_b);
-		hasrun = 1;
-	}
-	while (size_b)
-		ft_pa(taba, tabb, &size_a, &size_b);
+	b = ft_init_tab(NULL, 0);
 }

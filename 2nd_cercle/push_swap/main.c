@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/31 10:11:17 by vgiraudo          #+#    #+#             */
+/*   Updated: 2023/03/31 10:52:28 by vgiraudo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_error(int n)
@@ -6,7 +18,27 @@ int	ft_error(int n)
 	return (n);
 }
 
-int	ft_ok_2(int n, int *tab, int size)
+void	ft_fullfree(char **str, t_tab *tab)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	i = 0;
+	while (i < tab->size)
+	{
+		free(tab->tab[i]);
+		i++;
+	}
+	free(str);
+	free(tab);
+}
+
+int	ft_in_tab(int n, int *tab, int size)
 {
 	int	i;
 
@@ -21,29 +53,6 @@ int	ft_ok_2(int n, int *tab, int size)
 	return (1);
 }
 
-int	ft_ok(char **strr, int n, int *tab)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 1;
-	while (j < n)
-	{
-		if (!ft_ok_2(ft_atoi(strr[j]), tab, j - 1))
-			return (0);
-		while (strr[j][i])
-		{
-			if (!((strr[j][i] >= '0' && strr[j][i] <= '9') || strr[j][0] == '-'))
-				return(0);
-			i++;
-		}
-		j++;
-		i = 0;
-	}
-	return (1);
-}
-
 int	ft_verif(char **str, int *tab)
 {
 	int	i;
@@ -53,12 +62,12 @@ int	ft_verif(char **str, int *tab)
 	j = 0;
 	while (str[j])
 	{
-		if (!ft_ok_2(ft_atoi(str[j]), tab, j))
+		if (!ft_in_tab(ft_atoi(str[j]), tab, j))
 			return (0);
 		while (str[j][i])
 		{
 			if (!((str[j][i] >= '0' && str[j][i] <= '9') || str[j][0] == '-'))
-				return(0);
+				return (0);
 			i++;
 		}
 		j++;
@@ -67,40 +76,30 @@ int	ft_verif(char **str, int *tab)
 	return (j);
 }
 
-void	ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
-
 int	main(int argc, char **argv)
 {
 	int		i;
-	int		verif;
 	int		arg;
-	int		tab[argc - 1];
+	int		*tab;
 	char	**str;
+	t_tab	a;
 
 	i = 1;
 	str = ft_split(argv[1], ' ');
-	verif = 0;
 	arg = argc - 1;
 	if (argc == 2)
 	{
 		arg = ft_verif(str, tab);
 		if (!arg)
-			return (0);
+			return (ft_error(0));
 	}
-	else if (argc == 1 || !ft_ok(argv, argc, tab))
+	else if (argc == 1 || !ft_verif(argv + 1, tab))
 		return (ft_error(0));
-	ft_free(str);
-	ft_run(tab, arg);
+	a = ft_init_tab(tab, arg);
+	if (arg < 3)
+		ft_run(a);
+	else
+		ft_radix(a);
+	ft_free(str, a);
 	return (1);
 }

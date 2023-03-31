@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 10:15:55 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/31 10:15:55 by vgiraudo         ###   ########.fr       */
+/*   Created: 2023/02/06 18:36:47 by vgiraudo          #+#    #+#             */
+/*   Updated: 2023/02/06 18:36:47 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stddef.h>
-# include <limits.h>
-# include <stdlib.h>
-//#include <stdlib.h>	//--> NULL
-
-typedef struct s_val
+void	ft_bzero(void *s, size_t n)
 {
-	int	val;
-	int	index;
-	int	i_bin;
-}			t_val;
+	char	*str;
 
-typedef struct s_tab
-{
-	t_val	**tab;
-	int		size;
-}			t_tab;
-
-t_tab	*ft_init_tab(int *tab, int size);
-
-#endif
+	str = (char *) s;
+	while (n)
+	{
+		*str = '\0';
+		str++;
+		n--;
+	}
+}
