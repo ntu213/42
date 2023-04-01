@@ -18,7 +18,6 @@
 # include <stddef.h>
 # include <limits.h>
 # include <stdlib.h>
-//#include <stdlib.h>	//--> NULL
 
 typedef struct s_val
 {
@@ -33,6 +32,17 @@ typedef struct s_tab
 	int		size;
 }			t_tab;
 
+int		ft_atoi(const char *str);
+int		ft_getmin(t_tab *tab1, t_tab *tab2);
+char	**ft_split(char const *s, char c);
+void	ft_run(t_tab *a, int *tab);
+void	ft_ra(t_tab *tab);
+void	ft_rra(t_tab *tab);
+void	ft_top(t_tab *a, t_tab *b);
+void	ft_bot(t_tab *a, t_tab *b);
+void	ft_push(t_tab *tab1, t_tab *tab2, char *s);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t n, size_t size);
 t_tab	*ft_init_tab(int *tab, int size);
 
 #endif
