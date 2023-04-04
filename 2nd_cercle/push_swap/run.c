@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 10:55:03 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/01 16:45:08 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/02 19:21:48 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_end(t_tab *a, t_tab *b)
 		if (b->tab[i]->val > cache)
 			return (0);
 		cache = b->tab[i]->val;
-		i--;
+		i++;
 	}
 	return (1);
 }
@@ -63,7 +63,7 @@ t_tab	*ft_ztab(t_tab *tab)
 	return (tab);
 }
 
-void	ft_run(t_tab *a, int *tab)
+t_tab	*ft_run(t_tab *a, int *tab)
 {
 	t_tab	*b;
 
@@ -72,7 +72,7 @@ void	ft_run(t_tab *a, int *tab)
 	while (!ft_end(a, b))
 	{
 		while (a->tab[0]->val == ft_getmin(a, a))
-			ft_push(a, b, "pb\n");
+			ft_push(b, a, "pb\n");
 		if (ft_istop(a))
 			ft_top(a, b);
 		else
@@ -80,4 +80,5 @@ void	ft_run(t_tab *a, int *tab)
 	}
 	while (b->size)
 		ft_push(a, b, "pa\n");
+	return (b);
 }

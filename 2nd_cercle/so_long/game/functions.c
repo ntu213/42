@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/27 16:33:03 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/03 09:27:12 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -371,9 +371,10 @@ int	ft_random(void)
 	int		res;
 
 	a = malloc(1);
-	res = (int)a % 17;
+	res = (long)a % 17;
 	if (res < 0)
 		res *= -1;
-	printf("%d | %d\n", res, res % 4);
+//	printf("%d | %d\n", res, res % 4);
 	free(a);
+	return (res);
 }

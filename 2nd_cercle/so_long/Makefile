@@ -11,14 +11,19 @@ CC = gcc
 all: mlx $(NAME)
 
 mlx:
-	make -C ./mlx/
+	@make -C ./mlx/
+	@echo ✅ Compiled mlx
 
 $(NAME):
-	$(CC) $(SRC) -o $(NAME) mlx/libmlx.a $(LIBFLAGS)
+	@$(CC) $(SRC) -o $(NAME) mlx/libmlx.a $(LIBFLAGS)
+	@echo ✅ File created: $(NAME)
 
 clean:
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo ✅ Deleted file: $(NAME)
 
-re: clean all
+fclean: clean
+
+re: fclean all
 
 .PHONY:	mlx

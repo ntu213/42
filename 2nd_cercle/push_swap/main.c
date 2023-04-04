@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 10:11:17 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/01 15:30:15 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/02 19:14:06 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ int	ft_error(int n)
 	return (n);
 }
 
-void	ft_free(char **str, t_tab *tab)
+void	ft_free(char **str, t_tab *tab1, t_tab *tab2)
 {
 	int	i;
-
 	i = 0;
 	while (str[i])
 	{
@@ -29,14 +28,18 @@ void	ft_free(char **str, t_tab *tab)
 		i++;
 	}
 	i = 0;
-	while (i < tab->size)
+	while (i < tab1->size - 1)
 	{
-		free(tab->tab[i]);
+		free(tab1->tab[i]);
 		i++;
 	}
+	free(tab2->tab[i]);
+	free(tab2->tab[i + 1]);
+	free(tab1->tab);
+	free(tab2->tab);
+	free(tab1);
+	free(tab2);
 	free(str);
-	free(tab->tab);
-	free(tab);
 }
 
 int	ft_in_tab(int n, int *tab, int size)
@@ -84,6 +87,7 @@ int	main(int argc, char **argv)
 	int		tab[100000];
 	char	**str;
 	t_tab	*a;
+	t_tab	*b;
 
 	i = 1;
 	str = ft_split(argv[1], ' ');
@@ -98,9 +102,10 @@ int	main(int argc, char **argv)
 		return (ft_error(0));
 	a = ft_init_tab(tab, arg);
 //	if (arg < 5)
-		ft_run(a, tab);
+		b = ft_run(a, tab);
 //	else
-//		ft_radix(a);
-	ft_free(str, a);
+//		ft_radix(a, tab);
+//printf("%d|%d|%d|%d|%d\n", ft_bin(0), ft_bin(1), ft_bin(2), ft_bin(3), ft_bin(4));
+	ft_free(str, a, b);
 	return (1);
 }
