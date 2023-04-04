@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:02:06 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/04 13:47:43 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:11:28 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@
 # endif
 
 # ifndef CDENSITY
-#  define CDENSITY 10
+#  define CDENSITY 5
 # endif
 
 # ifndef MOBS
 #  define MOBS 0
 # endif
 
+int		new_count(int count);
 int		ft_atoi(const char *str);
 int		ft_argerror(int n, char *str);
 int		ft_random(int n, unsigned long int next);

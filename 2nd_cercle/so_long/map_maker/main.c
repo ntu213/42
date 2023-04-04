@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 08:59:56 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/04 14:54:06 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:43:26 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int	ft_ok_const(void)
 {
 	if (SEED <= 0)
 		return (ft_argerror(0, "Invalid Seed"));
-	if (WDENSITY < 0)
+	if (WDENSITY < 0 || WDENSITY > 1000)
 		return (ft_argerror(0, "Invalid Wall Density"));
-	if (CDENSITY <= 0)
+	if (CDENSITY <= 0 || CDENSITY > 100)
 		return (ft_argerror(0, "Invalid Collectible Density"));
 	return (1);
 }

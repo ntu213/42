@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:14:26 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/04 14:36:27 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:46:55 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ int	ft_build_path(char **strr, int y, int x, int rdm)
 			x++;
 		else if (goal == 3 && strr[y][x - 1] != '1' && strr[y][x - 1] != 'P')
 			x--;
-		if (strr[y][x] != 'P')
-			strr[y][x] = '2';
 		count--;
 	}
 	if (strr[y][x] == 'P')
@@ -103,14 +101,12 @@ int	ft_build_path(char **strr, int y, int x, int rdm)
 	return (1);
 }
 
-int	ft_crandom(int wid, int hei)
+int	new_count(int count)
 {
-	int	left;
-
-	left = ft_random(((wid * hei) * CDENSITY) / 100 + 1, wid * hei * SEED);
-	if (!left)
-		left = 1;
-	return (left);
+	count++;
+	if (count > CDENSITY / 10)
+		count = CDENSITY / 10;
+	return (count);
 }
 
 void	ft_put_c(char **strr, int wid, int hei)
@@ -122,22 +118,20 @@ void	ft_put_c(char **strr, int wid, int hei)
 
 	i = 1;
 	count = 0;
-	left = ft_crandom(wid, hei);
-	while (left)
+	left = 1;
+	while (i < hei - 2 || left)
 	{
-		if (i >= hei - 2)
-			i = 1;
 		j = 1;
-		while (j < wid - 2 && left)
+		while (j < wid - 2 || left)
 		{
 			if (strr[i][j] != 'P' && strr[i][j] != 'E'
-				&& ft_random(1000 - count, i * j * SEED) < CDENSITY)
+				&& ft_random(100 - count, i * j * SEED) < CDENSITY)
 			{
 				strr[i][j] = 'C';
-				left--;
+				left = 0;
 			}
 			else
-				count++;
+				count = new_count(count);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:02:55 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/04 09:10:47 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:26:18 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_random(int n, unsigned long int next)
 {
 	int	res;
 
+	if (!n)
+		n = 10;
 	if (!next)
 		next = 1103515245;
 	next = next * 1103515245 + (n + (next / 5) / (50 * 50 - (SEED * SEED) - 7))

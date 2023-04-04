@@ -5,7 +5,7 @@ SRC =	*.c\
 
 CONST =	-D SEED=1\
 		-D WDENSITY=100\
-		-D CDENSITY=10\
+		-D CDENSITY=5\
 		-D MOBS=0
 
 FLAGS = -Wall -Werror -Wextra
