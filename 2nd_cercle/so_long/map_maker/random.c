@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:02:55 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/04 15:26:18 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:06:21 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ int	ft_random(int n, unsigned long int next)
 	if (next <= 0)
 		next = (SEED % 957473) + 1;
 	res = (next / 65536) % n;
+	return (res);
+}
+
+int ft_randomadr(int n)
+{
+	void	*a;
+	int		res;
+
+	a = malloc(1);
+	res = n * ((long)a / SEED) + (long)a % SEED;
+	free(a);
 	return (res);
 }
 

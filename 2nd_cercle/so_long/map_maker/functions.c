@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:01:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/03 11:37:48 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/08 13:14:00 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,24 @@ char	*ft_strjoin(char *s1, char *s2, int freee)
 	if (freee == 2 || freee == 3)
 		free(s2);
 	return (str);
+}
+
+int	ft_haschar(char **strr, int wid, int hei, char c)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < hei - 2)
+	{
+		j = 1;
+		while (j < wid - 2)
+		{
+			if (strr[i][j] == c)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

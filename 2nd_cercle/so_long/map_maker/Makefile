@@ -4,7 +4,7 @@ SRC =	*.c\
 		../ft_printf/*.c
 
 CONST =	-D SEED=1\
-		-D WDENSITY=100\
+		-D WDENSITY=3\
 		-D CDENSITY=5\
 		-D MOBS=0
 
@@ -13,7 +13,7 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
-	@gcc $(FLAGS) $(SRC) -o $(NAME) $(CONST)
+	@gcc $(FLAGS) $(SRC) -o $(NAME) $(CONST) -g
 	@echo ✅ Compiled file: $(NAME)
 
 clean:

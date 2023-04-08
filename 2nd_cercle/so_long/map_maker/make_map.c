@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:14:26 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/04 17:46:55 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/08 17:48:17 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ int	ft_get_player(char **strr, int wid, int hei)
 
 	i = 0;
 	count = ft_random((wid - 1) * (hei - 1), SEED * SEED - 5);
-	while (i < hei - 2 && count)
+	while (i < hei - 1 && count)
 	{
 		j = 1;
 		i++;
-		while (j < wid - 2 && count)
+		while (j < wid - 1 && count)
 		{
 			j++;
 			count--;
@@ -119,10 +119,10 @@ void	ft_put_c(char **strr, int wid, int hei)
 	i = 1;
 	count = 0;
 	left = 1;
-	while (i < hei - 2 || left)
+	while (i < hei - 1 || left)
 	{
 		j = 1;
-		while (j < wid - 2 || left)
+		while (j < wid - 1 || left)
 		{
 			if (strr[i][j] != 'P' && strr[i][j] != 'E'
 				&& ft_random(100 - count, i * j * SEED) < CDENSITY)
@@ -138,13 +138,67 @@ void	ft_put_c(char **strr, int wid, int hei)
 	}
 }
 
-void	ft_get_path(char **strr, int wid, int hei)
+char	**ft_place_mob(char **strr, int wid, int hei, int n)
+{
+	int	i;
+	int	j;
+	int	len;
+
+	i = 1;
+	len = ft_random(wid * hei, wid * hei * n + 5);
+	while (i < hei - 1 && len)
+	{
+		j = 1;
+		while (j < wid - 1 && len)
+		{
+			if (strr[i][j] == '0')
+				len--;
+			j++;
+		}
+		i++;
+	}
+	if (i > 1)
+		i--;
+	if (j > 1)
+		j--;
+	strr[i][j] = 'M';
+	return (strr);
+}
+
+void	ft_put_solo_c(char **strr, int wid, int hei)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 1;
+	while (strr[i][j] != '0' && i < hei - 1)
+	{
+		j = 1;
+		while (strr[i][j] != '0' && j < wid - 1)
+			j++;
+		i++;
+	}
+	if (i != 1)
+		i--;
+	strr[i][j] = 'C';
+}
+
+char	**ft_get_path(char **strr, int wid, int hei)
 {
 	int	p_pos;
 
 	p_pos = ft_get_player(strr, wid, hei);
 	ft_build_path(strr, p_pos / wid, p_pos % wid, wid * hei / 3);
 	ft_put_c(strr, wid, hei);
+	if (!ft_haschar(strr, wid, hei, 'C'))
+		ft_put_solo_c(strr, wid, hei);
+	if (ft_haschar(strr, wid, hei, '0'))
+		strr = ft_make_walls(strr, wid, hei);
+	p_pos = 0;
+	while (p_pos < MOBS && ft_haschar(strr, wid, hei, '0'))
+		strr = ft_place_mob(strr, wid, hei, p_pos++);
+	return (strr);
 }
 
 char	**make_map(int wid, int hei)
@@ -161,6 +215,6 @@ char	**make_map(int wid, int hei)
 		res[i] = ft_line(wid, '0');
 		i++;
 	}
-	ft_get_path(res, wid, hei);
+	res = ft_get_path(res, wid, hei);
 	return (res);
 }
