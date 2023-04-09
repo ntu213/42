@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:02:06 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/08 17:00:53 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:52:31 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,25 @@
 # endif
 
 int		ft_randomadr(int n);
+int		ft_max(int a, int b);
 int		new_count(int count);
 int		ft_atoi(const char *str);
 int		ft_argerror(int n, char *str);
+int		is_side_wall(char **strr, int y, int x);
+int		ft_place_wall(char **strr, int y, int x);
 int		ft_random(int n, unsigned long int next);
+int		total_items(char **strr, int wid, int hei);
+int		ft_get_player(char **strr, int wid, int hei);
+int		ft_build_path(char **strr, int y, int x, int rdm);
 int		ft_haschar(char **strr, int wid, int hei, char c);
 int		ft_strnstr(const char *src, const char *obj, size_t n);
 void	ft_strrfree(char **strr, int size);
+void	ft_new_loc_e(char **strr, int y, int x);
+void	ft_recursive(char **strr, int x, int y, int *res);
+char	*ft_line(int size, char c);
 char	*ft_strjoin(char *s1, char *s2, int freee);
 char	**make_map(int wid, int hei);
+char	**ft_strrdup(char **strr, int size);
 char	**ft_make_walls(char **strr, int wid, int hei);
 
 #endif

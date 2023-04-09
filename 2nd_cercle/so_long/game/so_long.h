@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:52 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/27 09:59:02 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:24:55 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdio.h>
+
+# ifndef HP
+#  define HP 1
+# endif
 
 typedef struct s_check
 {

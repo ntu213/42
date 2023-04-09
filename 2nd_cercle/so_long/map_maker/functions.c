@@ -6,11 +6,18 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:01:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/08 13:14:00 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:50:21 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mapmaker.h"
+
+int	ft_max(int a, int b)
+{
+	if (a < b)
+		return (b);
+	return (a);
+}
 
 int	ft_atoi(const char *str)
 {
