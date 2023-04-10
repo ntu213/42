@@ -3,7 +3,7 @@ NAME =	map_maker
 SRC =	*.c\
 		../ft_printf/*.c
 
-CONST =	-D SEED=1\
+CONST =	-D SEED=2\
 		-D WDENSITY=3\
 		-D CDENSITY=5\
 		-D MOBS=0

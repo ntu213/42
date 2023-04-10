@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/03 09:27:12 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:51:11 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -329,15 +329,47 @@ int	ft_ok_file(t_map *obj, t_check *check)
 	return (1);
 }
 
-t_player	*ft_init_player(int x, int y, int score)
+t_player	*ft_init_player(void)
 {
 	t_player	*player;
 
 	player = malloc(sizeof(t_player));
+	player->x = 0;
+	player->y = 0;
+	player->hp = HP;
+	player->sword = 0;
+	player->score = 0;
+	return (player);
+}
+
+void	ft_reset_player(t_player *player, int x, int y, int score)
+{
 	player->x = x;
 	player->y = y;
+	player->sword = 0;
 	player->score = score;
-	return (player);
+}
+
+t_imgg	*ft_img_init(t_data *data)
+{
+	t_imgg	*new;
+	int		useless1;
+	int		useless2;
+
+	new = malloc(sizeof(t_imgg));
+	new->wall = mlx_xpm_file_to_image(data->mlx, "textures/wall.xpm",
+		&useless1, &useless2);
+	new->floor = mlx_xpm_file_to_image(data->mlx, "textures/floor.xpm",
+		&useless1, &useless2);
+	new->player = mlx_xpm_file_to_image(data->mlx, "textures/player.xpm",
+		&useless1, &useless2);
+	new->coll = mlx_xpm_file_to_image(data->mlx, "textures/collectible.xpm",
+		&useless1, &useless2);
+	new->exit = mlx_xpm_file_to_image(data->mlx, "textures/exit.xpm",
+		&useless1, &useless2);
+	new->mob = mlx_xpm_file_to_image(data->mlx, "textures/mob.xpm",
+		&useless1, &useless2);
+	return (new);
 }
 
 t_data	*ft_init_data(t_map **map, int j)
@@ -351,7 +383,7 @@ t_data	*ft_init_data(t_map **map, int j)
 	data->max_height = 0;
 	while (i < j)
 	{
-	ft_printf("|%d|%d|%d|%d|%d|\n", data->max_width, data->max_height, map[i]->height, map[i]->width, i);
+ft_printf("|%d|%d|%d|%d|%d|\n", data->max_width, data->max_height, map[i]->height, map[i]->width, i);
 		if (map[i]->height > data->max_height && map[i]->ok)
 			data->max_height = map[i]->height;
 		if (map[i]->width > data->max_width && map[i]->ok)
@@ -361,7 +393,7 @@ t_data	*ft_init_data(t_map **map, int j)
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, data->max_width * 40,
 			data->max_height * 40, "Spaghetti");
-	mlx_loop(data->mlx);
+	data->img = ft_img_init(data);
 	return (data);
 }
 
@@ -374,7 +406,98 @@ int	ft_random(void)
 	res = (long)a % 17;
 	if (res < 0)
 		res *= -1;
-//	printf("%d | %d\n", res, res % 4);
+	//	printf("%d | %d\n", res, res % 4);
 	free(a);
 	return (res);
 }
+
+void	ft_reset_map(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->max_height)
+	{
+		j = 0;
+		while (j < data->max_width)
+		{
+			mlx_put_image_to_window(data->mlx, data->win, data->img->wall,
+				j * 40, i * 40);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	ft_put_img(t_data *data, char c, int i, int j)
+{
+	if (c == '1')
+	mlx_put_image_to_window(data->mlx, data->win, data->img->wall,
+		j * 40, i * 40);
+	else if (c == '0')
+	mlx_put_image_to_window(data->mlx, data->win, data->img->floor,
+		j * 40, i * 40);
+	else if (c == 'P')
+	mlx_put_image_to_window(data->mlx, data->win, data->img->player,
+		j * 40, i * 40);
+	else if (c == 'C')
+	mlx_put_image_to_window(data->mlx, data->win, data->img->coll,
+		j * 40, i * 40);
+	else if (c == 'E')
+	mlx_put_image_to_window(data->mlx, data->win, data->img->exit,
+		j * 40, i * 40);
+	else if (c == 'M')
+	mlx_put_image_to_window(data->mlx, data->win, data->img->mob,
+		j * 40, i * 40);
+}
+
+void	ft_place_map(t_data *data, t_map *map, int wx, int wy)
+{
+	int	i;
+	int	j;
+
+	i = wy / 2;
+	while (i - (wy / 2) < map->height)
+	{
+		j = wx / 2;
+		while (j - (wx / 2) < map->width)
+		{
+			ft_printf("%d|%d\n", i, j);
+			ft_put_img(data, map->map[i - (wy / 2)][j - (wx / 2)], i, j);
+			j++;
+		}
+		i++;
+	}
+}
+
+int	ft_destroy(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img->wall);
+	mlx_destroy_image(data->mlx, data->img->floor);
+	mlx_destroy_image(data->mlx, data->img->player);
+	mlx_destroy_image(data->mlx, data->img->coll);
+	mlx_destroy_image(data->mlx, data->img->exit);
+	mlx_destroy_image(data->mlx, data->img->mob);
+	mlx_destroy_display(data->mlx);
+	free(data->img);
+	free(data->mlx);
+	free(data);
+	exit (0);
+}
+/*
+void	ft_controls(int key, t_fstrct *fstrct)
+{
+	if (key == 65307)
+		ft_destroy(fstrct->data);
+	else if (key == 119)
+		ft_up(fstrct);
+	else if (key == 97)
+		ft_left(fstrct);
+	else if (key == 115)
+		ft_down(fstrct);
+	else if (key == 100)
+		ft_right(fstrct);
+}
+*/

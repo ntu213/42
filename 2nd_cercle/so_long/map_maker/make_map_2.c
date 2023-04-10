@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:49:49 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/08 19:51:33 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:45:14 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	ft_get_player(char **strr, int wid, int hei)
 
 	i = 0;
 	count = ft_random((wid - 1) * (hei - 1), SEED * SEED - 5);
-	while (i < hei - 1 && count)
+	while (i < hei - 2 && count)
 	{
 		j = 1;
 		i++;
-		while (j < wid - 1 && count)
+		while (j < wid - 2 && count)
 		{
 			j++;
 			count--;

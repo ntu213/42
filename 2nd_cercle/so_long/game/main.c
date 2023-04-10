@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/27 09:43:05 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:07:17 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,26 @@ void	ft_fullfree(t_map **str, int j)
 	free(str);
 }
 
+int	ft_hp(void)
+{
+	if (HP < 0)
+	{
+		ft_printf("[Error] Invalid amount of HP: %d is too low!", HP);
+		return (0);
+	}
+	if (HP > 10)
+	{
+		ft_printf("[Error] Invalid amount of HP: %d is too high!", HP);
+		return (0);
+	}
+	if (HP == 0)
+	{
+		ft_printf("[Error] Bro, your character is stillborn...");
+		return (0);
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	**obj;
@@ -120,6 +140,8 @@ int	main(int argc, char **argv)
 	i = 1;
 	j = 0;
 	obj = NULL;
+	if (!ft_hp())
+		return (0);
 	while (i < argc)
 	{
 		fd = is_file(argv[i]);
@@ -133,7 +155,6 @@ int	main(int argc, char **argv)
 //	ft_temp(&obj);
 	if (j)
 		ft_first(obj, j);
-	ft_printf("\nrun %d\n", j);
 	ft_fullfree(obj, j);
 	return (1);
 }

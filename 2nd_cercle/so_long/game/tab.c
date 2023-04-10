@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:53:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/27 13:19:08 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:50:18 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,20 @@
 
 void	*ft_third(t_player *player, t_map *map, t_data *data)
 {
-	
+	t_fstrct	fstrct;
+
+	fstrct.wx = data->max_width - map->width;
+	fstrct.wy = data->max_height - map->height;
+	fstrct.data = data;
+	fstrct.player = player;
+	fstrct.map = map;
+	ft_reset_map(data);
+	mlx_hook(data->win, 17, 1L << 0, ft_destroy, data);
+//	mlx_hook(img->mlx_win, 3, 1L << 0, ft_controls, &fstrct);
+//	ft_controls(data, map, player);
+	ft_place_map(data, map, fstrct.wx, fstrct.wy);
+
+	mlx_loop(data->mlx);
 }
 
 void	*ft_second(t_map **str, t_check *check, int j)
@@ -39,16 +52,17 @@ void	*ft_second(t_map **str, t_check *check, int j)
 
 	i = 0;
 	data = ft_init_data(str, j);
+	player = ft_init_player();
 	while (i < j)
 	{
 		if (str[i]->width > 96 || str[i]->height >= 54)
 			ft_printf("[Warning] %s: Big map\n", str[i]->name);
-		player = ft_init_player(check->pposx, check->pposy, 0);
+		ft_reset_player(player, check->pposx, check->pposy, 0);
 		ft_third(player, str[i], data);
-		free(player);
 		i++;
 ft_printf("%s: (temp) File OK\n", str[i]->name);
 	}
+	free(player);
 }
 
 void	ft_first(t_map **str, int j)
