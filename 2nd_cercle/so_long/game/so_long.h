@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:52 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/10 18:50:48 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:54:03 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_data
 	t_imgg	*img;
 	int		max_width;
 	int		max_height;
+	int		hasexit;
 }			t_data;
 
 typedef struct s_player
@@ -62,6 +63,7 @@ typedef struct s_player
 	int	hp;
 	int	sword;
 	int	score;
+	int	onexit;
 }			t_player;
 
 typedef struct s_mob
@@ -92,11 +94,12 @@ typedef struct s_fstrct
 int			ft_atoi(const char *str);
 int			ft_destroy(t_data *data);
 int			ft_ok_file(t_map *obj, t_check *check);
+int			ft_controls(int key, t_fstrct *fstrct);
 int			ft_strnstr(const char *src, const char *obj, size_t n);
 void		ft_first(t_map **str, int j);
 void		ft_reset_map(t_data *data);
 void		ft_place_map(t_data *data, t_map *map, int wx, int wy);
-void		ft_reset_player(t_player *player, int x, int y, int score);
+void		ft_reset_player(t_player *player, int x, int y);
 void		*ft_calloc(size_t n, size_t size);
 char		*ft_strjoin(char *s1, char *s2, int freee);
 char		**ft_split(char const *s, char c);

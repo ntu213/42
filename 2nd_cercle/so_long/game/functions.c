@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/10 18:51:11 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:06:22 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,8 @@ int	ft_ok_char(char **file)
 		{
 			if (!(file[j][i] == '0' || file[j][i] == '1'
 					|| file[j][i] == 'P' || file[j][i] == 'C'
-					|| file[j][i] == 'E' || file[j][i] == 'M'))
+					|| file[j][i] == 'E' || file[j][i] == 'M'
+					|| file[j][i] == 'I'))
 				return (0);
 			i++;
 		}
@@ -321,7 +322,6 @@ int	ft_ok_file(t_map *obj, t_check *check)
 	obj->width = ft_strlen(obj->map[0]);
 	if (!ft_lines(obj->map, obj->width, obj->height) || !ft_ok_char(obj->map))
 		return (0);
-	ft_printf("\n|x: %d|y: %d|\n", obj->width, obj->height);
 	if (!ft_ok_border(obj->map, obj->width, obj->height))
 		return (0);
 	if (!ft_is_possible(obj->map, obj->height, check))
@@ -339,15 +339,16 @@ t_player	*ft_init_player(void)
 	player->hp = HP;
 	player->sword = 0;
 	player->score = 0;
+	player->onexit = 0;
 	return (player);
 }
 
-void	ft_reset_player(t_player *player, int x, int y, int score)
+void	ft_reset_player(t_player *player, int x, int y)
 {
 	player->x = x;
 	player->y = y;
 	player->sword = 0;
-	player->score = score;
+	player->onexit = 0;
 }
 
 t_imgg	*ft_img_init(t_data *data)
@@ -367,7 +368,7 @@ t_imgg	*ft_img_init(t_data *data)
 		&useless1, &useless2);
 	new->exit = mlx_xpm_file_to_image(data->mlx, "textures/exit.xpm",
 		&useless1, &useless2);
-	new->mob = mlx_xpm_file_to_image(data->mlx, "textures/mob.xpm",
+	new->mob = mlx_xpm_file_to_image(data->mlx, "textures/monster.xpm",
 		&useless1, &useless2);
 	return (new);
 }
@@ -383,7 +384,6 @@ t_data	*ft_init_data(t_map **map, int j)
 	data->max_height = 0;
 	while (i < j)
 	{
-ft_printf("|%d|%d|%d|%d|%d|\n", data->max_width, data->max_height, map[i]->height, map[i]->width, i);
 		if (map[i]->height > data->max_height && map[i]->ok)
 			data->max_height = map[i]->height;
 		if (map[i]->width > data->max_width && map[i]->ok)
@@ -395,20 +395,6 @@ ft_printf("|%d|%d|%d|%d|%d|\n", data->max_width, data->max_height, map[i]->heigh
 			data->max_height * 40, "Spaghetti");
 	data->img = ft_img_init(data);
 	return (data);
-}
-
-int	ft_random(void)
-{
-	void	*a;
-	int		res;
-
-	a = malloc(1);
-	res = (long)a % 17;
-	if (res < 0)
-		res *= -1;
-	//	printf("%d | %d\n", res, res % 4);
-	free(a);
-	return (res);
 }
 
 void	ft_reset_map(t_data *data)
@@ -432,7 +418,7 @@ void	ft_reset_map(t_data *data)
 
 void	ft_put_img(t_data *data, char c, int i, int j)
 {
-	if (c == '1')
+	if (c == '1' || c == 'S')
 	mlx_put_image_to_window(data->mlx, data->win, data->img->wall,
 		j * 40, i * 40);
 	else if (c == '0')
@@ -463,7 +449,6 @@ void	ft_place_map(t_data *data, t_map *map, int wx, int wy)
 		j = wx / 2;
 		while (j - (wx / 2) < map->width)
 		{
-			ft_printf("%d|%d\n", i, j);
 			ft_put_img(data, map->map[i - (wy / 2)][j - (wx / 2)], i, j);
 			j++;
 		}
@@ -480,24 +465,162 @@ int	ft_destroy(t_data *data)
 	mlx_destroy_image(data->mlx, data->img->coll);
 	mlx_destroy_image(data->mlx, data->img->exit);
 	mlx_destroy_image(data->mlx, data->img->mob);
-	mlx_destroy_display(data->mlx);
+	mlx_loop_end(data->mlx);
 	free(data->img);
-	free(data->mlx);
-	free(data);
-	exit (0);
+	data->hasexit = 1;
 }
-/*
-void	ft_controls(int key, t_fstrct *fstrct)
+
+int	ft_left_c(char **strr, int wid, int hei)
 {
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < hei)
+	{
+		x = 0;
+		while (x < wid)
+		{
+			if (strr[y][x] == 'C')
+				return (1);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+void	ft_exitmove(t_map *map, t_player *player, t_data *data)
+{
+	if (!ft_left_c(map->map, map->width, map->height))
+	{
+		mlx_loop_end(data->mlx);
+		return ;
+	}
+	player->onexit = 1;
+}
+
+void	ft_move_up(t_data *data, t_player *player, int wx, int wy)
+{
+//	ft_printf("%d|%d\n", player->x, player->y);
+	if (!player->onexit)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->floor, (player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+	else
+		mlx_put_image_to_window(data->mlx, data->win, data->img->exit, (player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+	mlx_put_image_to_window(data->mlx, data->win, data->img->player, (player->x + (wx / 2)) * 40, (--player->y + (wy / 2)) * 40);
+}
+
+void	ft_move_left(t_data *data, t_player *player, int wx, int wy)
+{
+//	ft_printf("%d|%d\n", player->x, player->y);
+	if (!player->onexit)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->floor, (player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+	else
+		mlx_put_image_to_window(data->mlx, data->win, data->img->exit, (player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+	mlx_put_image_to_window(data->mlx, data->win, data->img->player, (--player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+}
+
+void	ft_move_down(t_data *data, t_player *player, int wx, int wy)
+{
+//	ft_printf("%d|%d\n", player->x, player->y);
+	if (!player->onexit)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->floor, (player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+	else
+		mlx_put_image_to_window(data->mlx, data->win, data->img->exit, (player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+	mlx_put_image_to_window(data->mlx, data->win, data->img->player, (player->x + (wx / 2)) * 40, (++player->y + (wy / 2)) * 40);
+}
+
+void	ft_move_right(t_data *data, t_player *player, int wx, int wy)
+{
+//	ft_printf("%d|%d\n", player->x, player->y);
+	if (!player->onexit)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->floor, (player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+	else
+		mlx_put_image_to_window(data->mlx, data->win, data->img->exit, (player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+	mlx_put_image_to_window(data->mlx, data->win, data->img->player, (++player->x + (wx / 2)) * 40, (player->y + (wy / 2)) * 40);
+}
+
+void	ft_up(t_player *player, t_map *map, t_data *data, t_fstrct *fstrct)
+{
+	if (map->map[player->y][player->x] == '1'
+		|| map->map[player->y][player->x] == 'C'
+		|| map->map[player->y][player->x] == '0')
+		player->onexit = 0;
+	if (map->map[player->y - 1][player->x] == '1')
+		return ;
+	if (map->map[player->y - 1][player->x] == 'C')
+		map->map[player->y - 1][player->x] = '0';
+	ft_move_up(data, player, fstrct->wx, fstrct->wy);
+	if (map->map[player->y][player->x] == 'E')
+		ft_exitmove(map, player, data);
+	player->score++;
+}
+
+void	ft_left(t_player *player, t_map *map, t_data *data, t_fstrct *fstrct)
+{
+	if (map->map[player->y][player->x] == '1'
+		|| map->map[player->y][player->x] == 'C'
+		|| map->map[player->y][player->x] == '0')
+		player->onexit = 0;
+	if (map->map[player->y][player->x - 1] == '1')
+		return ;
+	if (map->map[player->y][player->x - 1] == 'C')
+		map->map[player->y][player->x - 1] = '0';
+	ft_move_left(data, player, fstrct->wx, fstrct->wy);
+	if (map->map[player->y][player->x] == 'E')
+		ft_exitmove(map, player, data);
+	player->score++;
+}
+
+void	ft_down(t_player *player, t_map *map, t_data *data, t_fstrct *fstrct)
+{
+	if (map->map[player->y][player->x] == '1'
+		|| map->map[player->y][player->x] == 'C'
+		|| map->map[player->y][player->x] == '0')
+		player->onexit = 0;
+	if (map->map[player->y + 1][player->x] == '1')
+		return ;
+	if (map->map[player->y + 1][player->x] == 'C')
+		map->map[player->y + 1][player->x] = '0';
+	ft_move_down(data, player, fstrct->wx, fstrct->wy);
+	if (map->map[player->y][player->x] == 'E')
+		ft_exitmove(map, player, data);
+	player->score++;
+}
+
+void	ft_right(t_player *player, t_map *map, t_data *data, t_fstrct *fstrct)
+{
+	if (map->map[player->y][player->x] == '1'
+		|| map->map[player->y][player->x] == 'C'
+		|| map->map[player->y][player->x] == '0')
+		player->onexit = 0;
+	if (map->map[player->y][player->x + 1] == '1')
+		return ;
+	if (map->map[player->y][player->x + 1] == 'C')
+		map->map[player->y][player->x + 1] = '0';
+	ft_move_right(data, player, fstrct->wx, fstrct->wy);
+	if (map->map[player->y][player->x] == 'E')
+		ft_exitmove(map, player, data);
+	player->score++;
+}
+
+int	ft_controls(int key, t_fstrct *fstrct)
+{
+	t_data		*data;
+	t_map		*map;
+	t_player	*player;
+
+	data = fstrct->data;
+	map = fstrct->map;
+	player = fstrct->player;
 	if (key == 65307)
 		ft_destroy(fstrct->data);
 	else if (key == 119)
-		ft_up(fstrct);
+		ft_up(player, map, data, fstrct);
 	else if (key == 97)
-		ft_left(fstrct);
+		ft_left(player, map, data, fstrct);
 	else if (key == 115)
-		ft_down(fstrct);
+		ft_down(player, map, data, fstrct);
 	else if (key == 100)
-		ft_right(fstrct);
+		ft_right(player, map, data, fstrct);
 }
-*/

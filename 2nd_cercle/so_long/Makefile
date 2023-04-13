@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRC =	ft_printf/*.c	game/*.c	GNL/get_next_line.c	GNL/get_next_line_utils.c
+SRC =	ft_printf/*.c	game/*.c
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -11,8 +11,9 @@ CC = gcc
 all: mlx $(NAME)
 
 mlx:
-	@make -C ./mlx/
+	@make -C ./mlx/ > temp.txt
 	@echo ✅ Compiled mlx
+	@rm -f temp.txt
 
 $(NAME):
 	@$(CC) $(SRC) -o $(NAME) mlx/libmlx.a $(LIBFLAGS)

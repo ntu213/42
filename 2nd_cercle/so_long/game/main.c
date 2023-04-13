@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/09 15:07:17 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:48:05 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	is_file(char *str)
 		free(new);
 	}
 	if (fd < 0)
-		ft_printf("[Error] %s: Invalid map\n", str);
+		ft_printf("[\e[0;31mError\e[0;37m] %s: Invalid file\n", str);
 	return (fd);
 }
 
@@ -114,17 +114,17 @@ int	ft_hp(void)
 {
 	if (HP < 0)
 	{
-		ft_printf("[Error] Invalid amount of HP: %d is too low!", HP);
+		ft_printf("[\e[0;31mError\e[0;37m] Invalid amount of HP: %d is too low!", HP);
 		return (0);
 	}
 	if (HP > 10)
 	{
-		ft_printf("[Error] Invalid amount of HP: %d is too high!", HP);
+		ft_printf("[\e[0;31mError\e[0;37m] Invalid amount of HP: %d is too high!", HP);
 		return (0);
 	}
 	if (HP == 0)
 	{
-		ft_printf("[Error] Bro, your character is stillborn...");
+		ft_printf("[\e[0;31mError\e[0;37m] Bro, your character is stillborn...");
 		return (0);
 	}
 	return (1);
