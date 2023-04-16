@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/16 19:12:56 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/16 19:22:20 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -790,6 +790,8 @@ void	ft_direction(t_mob *mob, t_fstrct *fstrct, int n)
 		ft_replace_mobs(fstrct->data, mob, fstrct, mob->x + 1, mob->y);
 	else if (n == 3 && ft_can_mob_move(mob->x - 1, mob->y, fstrct->map))
 		ft_replace_mobs(fstrct->data, mob, fstrct, mob->x - 1, mob->y);
+	else
+		ft_replace_mobs(fstrct->data, mob, fstrct, mob->x, mob->y);
 }
 
 void	ft_mobs_move(t_fstrct *fstrct, t_mob **mobtab, int py)
@@ -807,6 +809,7 @@ void	ft_mobs_move(t_fstrct *fstrct, t_mob **mobtab, int py)
 		}
 		i++;
 	}
+	ft_is_on_mob(fstrct->player, fstrct->data, fstrct->mobs, fstrct->mcount);
 }
 
 int	ft_controls(int key, t_fstrct *fstrct)
@@ -833,6 +836,7 @@ int	ft_controls(int key, t_fstrct *fstrct)
 		ft_right(player, map, data, fstrct);
 	ft_is_on_mob(player, data, fstrct->mobs, fstrct->mcount);
 	ft_print_hp_score(data, player, player->score);
+	ft_printf("%d\n", fstrct->mobs[0]->alive);
 	return (0);
 }
 
