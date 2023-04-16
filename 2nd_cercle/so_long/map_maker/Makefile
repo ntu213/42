@@ -4,6 +4,7 @@ SRC =	*.c\
 		../ft_printf/*.c
 
 CONST =	-D SEED=2\
+		-D WSIDE=40\
 		-D WDENSITY=3\
 		-D CDENSITY=5\
 		-D MOBS=0

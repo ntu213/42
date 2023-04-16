@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:02:06 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/08 19:52:31 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:37:03 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 
 # ifndef SEED
 #  define SEED 1
+# endif
+
+# ifndef WSIDE
+#  define WSIDE 40
 # endif
 
 # ifndef WDENSITY

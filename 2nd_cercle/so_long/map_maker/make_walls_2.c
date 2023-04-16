@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:43:25 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/08 19:49:07 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:36:04 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_place_wall(char **strr, int y, int x)
 		|| strr[y][x] == 'C')
 		return (0);
 	if (is_side_wall(strr, y, x))
-		res = ft_random(50, ft_randomadr(x * y + SEED + wplacer));
+		res = ft_random(WSIDE, ft_randomadr(x * y + SEED + wplacer));
 	else
 		res = ft_random(100, ft_randomadr(x * y + SEED + wplacer));
 	if (res < WDENSITY)

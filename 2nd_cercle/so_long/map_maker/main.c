@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 08:59:56 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/08 17:50:03 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:42:48 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	ft_ok_const(void)
 {
 	if (SEED <= 0 || SEED > 2000000000)
 		return (ft_argerror(0, "Invalid Seed"));
+	if (WSIDE < 0 || WSIDE > 100)
+		return (ft_argerror(0, "Invalid Wall Side"));
 	if (WDENSITY < 0 || WDENSITY > 100)
 		return (ft_argerror(0, "Invalid Wall Density"));
 	if (CDENSITY <= 0 || CDENSITY > 100)

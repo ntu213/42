@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:53:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/13 19:17:59 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/16 17:55:45 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 void	*ft_third(t_player *player, t_map *map, t_data *data)
 {
 	t_fstrct	fstrct;
+	t_mob		**mobtab;
+	int			mcount;
 
 	fstrct.wx = data->max_width - map->width;
 	fstrct.wy = data->max_height - map->height;
@@ -36,17 +38,20 @@ void	*ft_third(t_player *player, t_map *map, t_data *data)
 	fstrct.player = player;
 	fstrct.map = map;
 	ft_reset_map(data);
-	mlx_hook(data->win, 17, 1L << 0, ft_destroy, data);
+	mlx_hook(data->win, 17, 1L << 0, ft_exit, data);
 	mlx_hook(data->win, 2, 1L << 0, ft_controls, &fstrct);
 	ft_place_map(data, map, fstrct.wx, fstrct.wy);
+	ft_print_hp_score(data, player, player->score);
+	mobtab = ft_place_mobs(map, &mcount);
+	fstrct.mobs = mobtab;
+	fstrct.mcount = mcount;
 
 	mlx_loop(data->mlx);
+	ft_free_mobs(mobtab, mcount);
 }
 
 void	ft_end_sec(t_data *data, t_player *player)
 {
-	if (!data->hasexit)
-		ft_printf("\e[4;1;34mGame ended, GG!\e[0;37m\n");
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free(data);
@@ -62,6 +67,9 @@ int	ft_hasexit(int n, int score, char *name, int i)
 	else if (n == 2)
 		ft_printf("[\e[0;32mWin\e[0;37m] Level %d: %s %s of %d\n", i + 1,
 			name, "finished with a total score", score);
+	else if (n == 3)
+		ft_printf("[\e[0;31mDeath\e[0;37m] Level %d Total Score: %d\n",
+			i + 1, score);
 	return (1);
 }
 
@@ -97,23 +105,24 @@ void	*ft_second(t_map **str, t_check **check, int j)
 	i = 0;
 	data = ft_init_data(str, j);
 	data->hasexit = 0;
-	player = ft_init_player();
-	while (i < j)
+	player = ft_init_player(data->max_width);
+	while (i < j && data->max_height && data->max_width && player->hp > 0)
 	{
 		if (str[i]->width > 96 || str[i]->height >= 54)
 			ft_printf("[\e[0;33mWarning\e[0;37m] %s: Big map\n", str[i]->name);
-		ft_reset_player(player, check[i]->pposx, check[i]->pposy);
+		ft_reset_player(data, player, check[i]->pposx, check[i]->pposy);
 		if (str[i]->ok)
 			ft_third(player, str[i], data);
 		if (ft_hasexit(data->hasexit, player->score, "", ft_get_level_count(str, i)))
 			break ;
-		else if (str[i]->ok)
+		else if (str[i]->ok && player->hp > 0)
 			ft_hasexit(2, player->score, str[i]->name, ft_get_level_count(str, i));
+		else if (str[i]->ok)
+			ft_hasexit(3, player->score, str[i]->name, ft_get_level_count(str, i));
 		i++;
 	}
 	ft_clear_check(check, j);
-	if (!data->hasexit)
-		ft_destroy(data);
+	ft_destroy(data);
 	ft_end_sec(data, player);
 }
 
