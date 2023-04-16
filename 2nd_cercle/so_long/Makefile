@@ -16,7 +16,7 @@ mlx:
 	@rm -f temp.txt
 
 $(NAME):
-	@$(CC) $(SRC) -o $(NAME) mlx/libmlx.a $(LIBFLAGS)
+	@$(CC) $(FLAGS) $(SRC) -o $(NAME) mlx/libmlx.a $(LIBFLAGS)
 	@echo ✅ File created: $(NAME)
 
 clean:

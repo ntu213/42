@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:52 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/16 17:59:49 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/16 19:10:06 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdio.h>
 
 # ifndef HP
-#  define HP 1
+#  define HP 10
 # endif
 
 typedef struct s_check
@@ -101,12 +101,12 @@ typedef struct s_fstrct
 
 int			ft_exit(t_data *data);
 int			ft_atoi(const char *str);
-int			ft_destroy(t_data *data);
 int			ft_ok_file(t_map *obj, t_check *check);
 int			ft_controls(int key, t_fstrct *fstrct);
 int			ft_strnstr(const char *src, const char *obj, size_t n);
-void		ft_first(t_map **str, int j);
+void		ft_destroy(t_data *data);
 void		ft_reset_map(t_data *data);
+void		ft_first(t_map **str, int j);
 void		ft_free_mobs(t_mob **tab, int n);
 void		ft_place_map(t_data *data, t_map *map, int wx, int wy);
 void		ft_print_hp_score(t_data *data, t_player *player, int score);

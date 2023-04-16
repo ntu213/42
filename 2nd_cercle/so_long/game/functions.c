@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:05:09 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/16 17:46:26 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/16 19:12:56 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -496,7 +496,7 @@ void	ft_place_map(t_data *data, t_map *map, int wx, int wy)
 	}
 }
 
-int	ft_destroy(t_data *data)
+void	ft_destroy(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img->wall);
@@ -723,7 +723,7 @@ void	ft_print_hp_score(t_data *data, t_player *player, int score)
 	free(str);
 }
 
-int	ft_is_on_mob(t_player *player, t_data *data, t_mob **mobtab, int mcount)
+void	ft_is_on_mob(t_player *player, t_data *data, t_mob **mobtab, int mcount)
 {
 	int	i;
 
@@ -742,30 +742,15 @@ int	ft_is_on_mob(t_player *player, t_data *data, t_mob **mobtab, int mcount)
 		mlx_loop_end(data->mlx);
 }
 
-int	ft_controls(int key, t_fstrct *fstrct)
+int	ft_can_mob_move(int x, int y, t_map *map)
 {
-	t_data		*data;
-	t_map		*map;
-	t_player	*player;
-
-	data = fstrct->data;
-	map = fstrct->map;
-	player = fstrct->player;
-	if (key == 65307)
-		ft_exit(fstrct->data);
-	else if (key == 119 || key == 65362)
-		ft_up(player, map, data, fstrct);
-	else if (key == 97 || key == 65361)
-		ft_left(player, map, data, fstrct);
-	else if (key == 115 || key == 65364)
-		ft_down(player, map, data, fstrct);
-	else if (key == 100 || key == 65363)
-		ft_right(player, map, data, fstrct);
-//	if (key == 119 || key == 65362 || key == 97 || key == 65361
-//		|| key == 115 || key == 65364 || key == 100 || key == 65363)
-//		ft_mobs_move(data, fstrct->mobs, fstrct->mcount);
-	ft_is_on_mob(player, data, fstrct->mobs, fstrct->mcount);
-	ft_print_hp_score(data, player, player->score);
+	if (map->map[y][x] == '1'
+		|| map->map[y][x] == 'I'
+		|| map->map[y][x] == 'C'
+		|| map->map[y][x] == 'E'
+		|| map->map[y][x] == 'S')
+		return (0);
+	return (1);
 }
 
 int	ft_random(int n, unsigned long int next)
@@ -782,6 +767,73 @@ int	ft_random(int n, unsigned long int next)
 		next = (next % 957473) + 1;
 	res = (next / 65536) % n;
 	return (res);
+}
+
+void	ft_replace_mobs(t_data *data, t_mob *mob, t_fstrct *fstrct, int x,
+	int y)
+{
+	mlx_put_image_to_window(data->mlx, data->win, data->img->floor,
+		((fstrct->wx / 2) + mob->x) * 40, ((fstrct->wy / 2) + mob->y) * 40);
+	mob->x = x;
+	mob->y = y;
+	mlx_put_image_to_window(data->mlx, data->win, data->img->mob,
+		((fstrct->wx / 2) + mob->x) * 40, ((fstrct->wy / 2) + mob->y) * 40);
+}
+
+void	ft_direction(t_mob *mob, t_fstrct *fstrct, int n)
+{
+	if (n == 0 && ft_can_mob_move(mob->x, mob->y + 1, fstrct->map))
+		ft_replace_mobs(fstrct->data, mob, fstrct, mob->x, mob->y + 1);
+	else if (n == 1 && ft_can_mob_move(mob->x, mob->y - 1, fstrct->map))
+		ft_replace_mobs(fstrct->data, mob, fstrct, mob->x, mob->y - 1);
+	else if (n == 2 && ft_can_mob_move(mob->x + 1, mob->y, fstrct->map))
+		ft_replace_mobs(fstrct->data, mob, fstrct, mob->x + 1, mob->y);
+	else if (n == 3 && ft_can_mob_move(mob->x - 1, mob->y, fstrct->map))
+		ft_replace_mobs(fstrct->data, mob, fstrct, mob->x - 1, mob->y);
+}
+
+void	ft_mobs_move(t_fstrct *fstrct, t_mob **mobtab, int py)
+{
+	int	i;
+	int	n;
+
+	i = 0;
+	while (i < fstrct->mcount)
+	{
+		if (mobtab[i]->alive)
+		{
+			n = ft_random(4, mobtab[i]->x + mobtab[i]->y * fstrct->mcount * py);
+			ft_direction(mobtab[i], fstrct, n);
+		}
+		i++;
+	}
+}
+
+int	ft_controls(int key, t_fstrct *fstrct)
+{
+	t_data		*data;
+	t_map		*map;
+	t_player	*player;
+
+	data = fstrct->data;
+	map = fstrct->map;
+	player = fstrct->player;
+	if (key == 119 || key == 65362 || key == 97 || key == 65361
+		|| key == 115 || key == 65364 || key == 100 || key == 65363)
+		ft_mobs_move(fstrct, fstrct->mobs, player->y);
+	if (key == 65307)
+		ft_exit(fstrct->data);
+	else if (key == 119 || key == 65362)
+		ft_up(player, map, data, fstrct);
+	else if (key == 97 || key == 65361)
+		ft_left(player, map, data, fstrct);
+	else if (key == 115 || key == 65364)
+		ft_down(player, map, data, fstrct);
+	else if (key == 100 || key == 65363)
+		ft_right(player, map, data, fstrct);
+	ft_is_on_mob(player, data, fstrct->mobs, fstrct->mcount);
+	ft_print_hp_score(data, player, player->score);
+	return (0);
 }
 
 int	ft_mobs_count(t_map *map)

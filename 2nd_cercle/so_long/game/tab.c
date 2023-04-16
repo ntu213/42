@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:53:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/16 17:55:45 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:10:17 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 	(void)win2;
 */
 
-void	*ft_third(t_player *player, t_map *map, t_data *data)
+void	ft_third(t_player *player, t_map *map, t_data *data)
 {
 	t_fstrct	fstrct;
 	t_mob		**mobtab;
@@ -96,7 +96,7 @@ int	ft_get_level_count(t_map **map, int n)
 	return (i);
 }
 
-void	*ft_second(t_map **str, t_check **check, int j)
+void	ft_second(t_map **str, t_check **check, int j)
 {
 	t_player	*player;
 	t_data		*data;
