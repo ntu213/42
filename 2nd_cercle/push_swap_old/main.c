@@ -113,7 +113,7 @@ int	main(int argc, char **argv)
 	else if (argc == 1 || !ft_ok(argv, argc, tab))
 		return (ft_error(0));
 	ft_free(str);
-	if (arg < 3)
+	if (arg < 5)
 		ft_run(tab, arg);
 	else
 		ft_radix(tab, arg);

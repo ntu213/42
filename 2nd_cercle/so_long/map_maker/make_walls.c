@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:41:15 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/14 10:35:05 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:40:29 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,3 @@ char	**ft_make_walls(char **strr, int wid, int hei)
 	ft_strrfree(new, hei);
 	return (strr);
 }
-//1431679776

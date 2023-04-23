@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 10:55:03 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/22 21:58:13 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/22 18:37:01 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_end(t_tab *a, t_tab *b)
 		i--;
 	}
 	i = 0;
-	while (i < b->size - 1)
+	while (i < a->size)
 	{
 		if (b->tab[i]->val > cache)
 			return (0);
@@ -56,9 +56,7 @@ t_tab	*ft_ztab(t_tab *tab)
 	i = 0;
 	while (i < tab->size)
 	{
-		free(tab->tab[i]);
-//		tab->tab[i]->val = 0;
-		tab->tab[i] = NULL;
+		tab->tab[i]->val = 0;
 		i++;
 	}
 	tab->size = 0;
@@ -73,7 +71,7 @@ t_tab	*ft_run(t_tab *a, int *tab)
 	b = ft_ztab(b);
 	while (!ft_end(a, b))
 	{
-		while (a->tab[0]->val == ft_getmin(a, a) && !ft_end(a, b))
+		while (a->tab[0]->val == ft_getmin(a, a))
 			ft_push(b, a, "pb\n");
 		if (ft_istop(a))
 			ft_top(a, b);

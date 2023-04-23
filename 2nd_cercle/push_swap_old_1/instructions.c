@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:24:12 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/22 21:59:24 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/22 18:15:46 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,11 @@ void	ft_up(t_tab *tab)
 		tab->tab[i]= tab->tab[i + 1];
 		i++;
 	}
+//	tab->tab[i]->val = 0;
 }
 
 void	ft_push(t_tab *tab1, t_tab *tab2, char *s)
 {
-//write(1, "ok\n", 3);
-//printf("%d\n", tab2->tab[0]->val);
 	ft_down(tab1);
 	tab1->tab[0] = tab2->tab[0];
 	ft_up(tab2);

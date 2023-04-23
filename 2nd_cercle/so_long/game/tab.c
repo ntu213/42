@@ -6,25 +6,11 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:53:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/16 18:10:17 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:02:17 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*
-
-	void	*mlx;
-	void	*win;
-	void	*win2;
-
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	win2 = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-	(void)win;
-	(void)win2;
-*/
 
 void	ft_third(t_player *player, t_map *map, t_data *data)
 {
@@ -45,42 +31,8 @@ void	ft_third(t_player *player, t_map *map, t_data *data)
 	mobtab = ft_place_mobs(map, &mcount);
 	fstrct.mobs = mobtab;
 	fstrct.mcount = mcount;
-
 	mlx_loop(data->mlx);
 	ft_free_mobs(mobtab, mcount);
-}
-
-void	ft_end_sec(t_data *data, t_player *player)
-{
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
-	free(data);
-	free(player);
-}
-
-int	ft_hasexit(int n, int score, char *name, int i)
-{
-	if (!n)
-		return (0);
-	else if (n == 1)
-		ft_printf("[\e[0;31mGame Exit\e[0;37m] Total Score: %d\n", score);
-	else if (n == 2)
-		ft_printf("[\e[0;32mWin\e[0;37m] Level %d: %s %s of %d\n", i + 1,
-			name, "finished with a total score", score);
-	else if (n == 3)
-		ft_printf("[\e[0;31mDeath\e[0;37m] Level %d Total Score: %d\n",
-			i + 1, score);
-	return (1);
-}
-
-void	ft_clear_check(t_check **check, int j)
-{
-	int	i;
-
-	i = 0;
-	while (i < j)
-		free(check[i++]);
-	free(check);
 }
 
 int	ft_get_level_count(t_map **map, int n)
@@ -96,11 +48,23 @@ int	ft_get_level_count(t_map **map, int n)
 	return (i);
 }
 
+int	ft_true_hasexit(t_data *data, t_map **str, t_player *player, int i)
+{
+	if (ft_hasexit(data->hasexit, player->score, "",
+			ft_get_level_count(str, i)))
+		return (1);
+	else if (str[i]->ok && player->hp > 0)
+		ft_hasexit(2, player->score, str[i]->name, ft_get_level_count(str, i));
+	else if (str[i]->ok)
+		ft_hasexit(3, player->score, str[i]->name, ft_get_level_count(str, i));
+	return (0);
+}
+
 void	ft_second(t_map **str, t_check **check, int j)
 {
 	t_player	*player;
 	t_data		*data;
-	int	i;
+	int			i;
 
 	i = 0;
 	data = ft_init_data(str, j);
@@ -113,12 +77,8 @@ void	ft_second(t_map **str, t_check **check, int j)
 		ft_reset_player(data, player, check[i]->pposx, check[i]->pposy);
 		if (str[i]->ok)
 			ft_third(player, str[i], data);
-		if (ft_hasexit(data->hasexit, player->score, "", ft_get_level_count(str, i)))
+		if (ft_true_hasexit(data, str, player, i))
 			break ;
-		else if (str[i]->ok && player->hp > 0)
-			ft_hasexit(2, player->score, str[i]->name, ft_get_level_count(str, i));
-		else if (str[i]->ok)
-			ft_hasexit(3, player->score, str[i]->name, ft_get_level_count(str, i));
 		i++;
 	}
 	ft_clear_check(check, j);

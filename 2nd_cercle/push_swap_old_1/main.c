@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 10:11:17 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/22 22:08:21 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/22 18:33:38 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,22 @@ void	ft_free(char **str, t_tab *tab1, t_tab *tab2)
 		i++;
 	}
 	i = 0;
-	while (i < tab1->size - 1)
+	while (i < tab1->size)
 	{
-//		printf("|%d|%d|\n", tab1->tab[i]->val, tab1->size);
-		if (tab1->tab[i] && tab1->tab[i]->val)
-			free(tab1->tab[i]);
-		if (tab2->tab[i] && tab2->tab[i]->val)
-			free(tab2->tab[i]);
-		tab1->tab[i] = NULL;
-		tab2->tab[i] = NULL;
+		printf("|%d|%d|\n", tab1->tab[i]->val, tab1->size);
+		free(tab1->tab[i]);
+printf("%d\n", i);
 		i++;
-		printf("ok %d\n", i);
 	}
 	i = 0;
-//	printf("%d\n", tab1->tab[i + 1]->val);
-	free(tab1->tab[i + 1]);
+	while (i < tab2->size)
+	{
+		printf("|%d|%d|\n", tab2->tab[i]->val, tab1->size);
+		free(tab2->tab[i]);
+printf("%d\n", i);
+		i++;
+	}
+//	free(tab2->tab[0]);
 	free(tab1->tab);
 	free(tab2->tab);
 	free(tab1);

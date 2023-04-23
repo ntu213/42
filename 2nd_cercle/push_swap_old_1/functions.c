@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 10:15:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/22 20:24:37 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/22 18:14:25 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_val *ft_init_val(int n)
 	new = malloc(sizeof(t_val));
 	new->val = n;
 	new->index = -1;
-//	new->i_bin = 0;
+	new->i_bin = 0;
 	return (new);
 }
 

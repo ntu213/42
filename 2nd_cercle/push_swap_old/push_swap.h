@@ -28,8 +28,6 @@ typedef struct s_pos
 
 typedef struct s_tab
 {
-	int	**btabb;
-	int	**btaba;
 	int	*taba;
 	int	*tabb;
 	int	*indexa;
@@ -40,6 +38,7 @@ typedef struct s_tab
 
 int		ft_atoi(const char *str);
 int		ft_end(int *taba, int *tabb, int size_a, int size_b);
+int		ft_getmin(int *taba, int *tabb, int size_a, int size_b);
 char	**ft_split(char const *s, char c);
 void	*ft_calloc(size_t n, size_t size);
 void	ft_bzero(void *s, size_t n);

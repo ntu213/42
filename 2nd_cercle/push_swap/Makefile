@@ -11,7 +11,7 @@ CC = gcc
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(SRC) -o $(NAME)
+	$(CC) $(SRC) -o $(NAME) -g
 
 clean:
 	rm -f $(NAME)

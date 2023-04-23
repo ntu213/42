@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 08:26:57 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/03/31 10:07:32 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/23 18:42:33 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,63 +41,40 @@ t_tab	*ft_init_struct(int *taba, int *tabb, int size_a, int size_b)
 	new->tabb = tabb;
 	new->size_a = size_a;
 	new->size_b = size_b;
-	new->btaba = NULL;
-	new->btabb = NULL;
 	new->indexa = NULL;
 	new->indexb = NULL;
 	return (new);
 }
 
-int	*ft_get_bin(int n)
+void	ft_printbinary(int n)
 {
-	int	*bin;
-	int	pow;
-	int	i;
+	int i = 0;
 
-	pow = 1073741824;
-	i = 1;
-	if (n < 0)
-		n *= -1;
-	if (n < 0)
-		bin[0] = 1;
-	else
-		bin[0] = 0;
-	while (pow)
+	printf("%d | ", n);
+	while (i < 32)
 	{
-		if (n <= pow)
-			n -= pow;
-		if (n <= pow)
-			bin[i] = 1;
-		else
-			bin[i] = 0;
-		pow /= 2;
+		printf("%d", n >> i & 1);
 		i++;
 	}
-	return (bin);
-}
-
-void	ft_to_bin(t_tab *tab, int pow)
-{
-	int	i;
-
-	i = 0;
-	while (i < tab->size_a)
-	{
-		tab->btaba[i] = ft_get_bin(tab->taba[i]);
-		i++;
-	}
+	printf("\n");
 }
 
 void	ft_pb_pow(t_tab *tab, int pow)
 {
 	int	i;
+	int	tmp;
 
 	i = 0;
-	while (i < tab->size_b)
+//printf("%d | %d\n", tab->size_a,  tab->size_b);
+	while (i < tab->size_a)
 	{
-		printf("%d", tab->btaba[i][pow]);
-		if (tab->btaba[i][pow])
-			ft_pa(tab->taba, tab->tabb, &tab->size_a, &tab->size_b);
+		tmp = tab->taba[i];
+//		ft_printbinary(tmp);
+//		printf(" | %d | ", tmp>>pow);
+//		printf("%d", tmp >> pow & 1);
+//		printf("yoyo\n");
+		if (tmp >> pow & 1)
+			ft_pa(tab->taba, tab->tabb, &(tab->size_a), &(tab->size_b));
 		i++;
 	}
 }
@@ -108,7 +85,7 @@ int	ft_get_new_min(int *tab, int size, int old)
 	int i;
 
 	i = 0;
-	while (tab[i] <= old && size)
+	while (tab[i] <= old && i < size)
 		i++;
 	new = tab[i];
 	i = 0;
@@ -121,20 +98,76 @@ int	ft_get_new_min(int *tab, int size, int old)
 	return (new);
 }
 
-void	ft_get_index(int *tab, int size, int *index)
+int	*ft_get_index(int *tab, int size)
 {
 	int	i;
 	int	new;
 	int	*temp;
 
 	i = 0;
-	new = ft_getmin(tab, size);
+	temp = malloc(sizeof(int) * size);
+	new = ft_getmin(tab, tab, size, size);
 	while (i < size)
 	{
-		index[i] = new;
-		new = ft_get_new_min(tab, size, new);
+		temp[i] = new;
+printf("%d|%d|%d\n", i, tab[i], new);
+		if (i < size - 1)
+			new = ft_get_new_min(tab, size, new);
 		i++;
 	}
+	return (temp);
+}
+
+void	ft_r_down(int *tab, int size)
+{
+	int	i;
+
+	i = size + 1;
+	while (i)
+	{
+		tab[i] = tab[i - 1];
+		i--;
+	}
+}
+
+void	ft_r_up(int *tab, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i + 1 < size)
+	{
+		tab[i] = tab[i + 1];
+		i++;
+	}
+	tab[i] = 0;
+}
+
+void	ft_r_push(int *tab1, int *tab2, int *size1, int *size2)
+{
+	int	i;
+
+	i = 0;
+	ft_down(tab1, *size1);
+	printf("ok\n");
+	tab1[0] = tab2[0];
+	ft_up(tab2, *size2);
+}
+
+void	ft_pb(int *taba, int *tabb, int *size_a, int *size_b)
+{
+	ft_push(tabb, taba, size_b, size_a);
+	*size_b += 1;
+	*size_a -= 1;
+	write(1, "pb\n", 3);
+}
+
+void	ft_pa(int *taba, int *tabb, int *size_a, int *size_b)
+{
+	ft_push(taba, tabb, size_a, size_b);
+	*size_a += 1;
+	*size_b -= 1;
+	write(1, "pa\n", 3);
 }
 
 void	ft_radix(int *taba, int size_a)
@@ -146,7 +179,8 @@ void	ft_radix(int *taba, int size_a)
 
 	tab = ft_init_struct(taba, tabb, size_a, 0);
 	pow = 0;
-	ft_get_index(tab->taba, tab->size_a, tab->indexa);
+	tab->indexa = ft_get_index(tab->taba, tab->size_a);
+	tab->indexb = malloc(sizeof(int) * size_a);
 	while (!ft_end(tab->taba, tab->tabb, tab->size_a, tab->size_b) && pow < 32)
 	{
 		printf("%d: ", pow);
@@ -155,5 +189,7 @@ void	ft_radix(int *taba, int size_a)
 		pow++;
 		printf("\n");
 	}
+	free(tab->indexa);
+	free(tab->indexb);
 	free(tab);
 }

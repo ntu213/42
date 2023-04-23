@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:15:48 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/16 19:09:48 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:43:17 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,6 @@ t_map	**ft_init(t_map **str, int j, char *arg, int fd)
 	return (new);
 }
 
-void	ft_temp(t_map **str) //DELETE IT
-{
-	int	i;
-
-	ft_printf("OKOK\n");
-	i = 0;
-	while (str[i])
-	{
-		ft_printf("fd: %d, file: %s\n", str[i]->fd, str[i]->name);
-		i ++;
-	}
-}
-
 void	ft_fullfree(t_map **str, int j)
 {
 	int	i;
@@ -110,16 +97,18 @@ void	ft_fullfree(t_map **str, int j)
 	free(str);
 }
 
-int	ft_hp(void)
+int	ft_hp(int argc)
 {
 	if (HP < 0)
 	{
-		ft_printf("[\e[0;31mError\e[0;37m] Invalid amount of HP: %d is too low!\n", HP);
+		ft_printf("[\e[0;31mError\e[0;37m] Invalid amount of HP: %d %s\n",
+			HP, "is too low!");
 		return (0);
 	}
 	if (HP > 10)
 	{
-		ft_printf("[\e[0;31mError\e[0;37m] Invalid amount of HP: %d is too high!\n", HP);
+		ft_printf("[\e[0;31mError\e[0;37m] Invalid amount of HP: %d %s\n",
+			HP, "is too high!");
 		return (0);
 	}
 	if (HP == 0)
@@ -127,6 +116,8 @@ int	ft_hp(void)
 		ft_printf("[\e[0;31mError\e[0;37m] Bro, your character is stillborn...\n");
 		return (0);
 	}
+	if (argc == 1)
+		ft_printf("[\e[0;31mError\e[0;37m] I need an argument\n");
 	return (1);
 }
 
@@ -140,7 +131,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	j = 0;
 	obj = NULL;
-	if (!ft_hp())
+	if (!ft_hp(argc))
 		return (0);
 	while (i < argc)
 	{
@@ -152,7 +143,6 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-//	ft_temp(&obj);
 	if (j)
 		ft_first(obj, j);
 	ft_fullfree(obj, j);

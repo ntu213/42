@@ -11,12 +11,10 @@ CC = gcc
 all: $(NAME)
 
 $(NAME):
-	@$(CC) $(SRC) -o $(NAME)
-	@echo ✅ File created: $(NAME)
+	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	@rm -f $(NAME)
-	@echo ✅ Deleted file: $(NAME)
+	rm -f $(NAME)
 
 fclean: clean
 

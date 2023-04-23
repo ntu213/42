@@ -69,6 +69,7 @@ void	ft_top(int *taba, int *tabb, int *size_a, int *size_b)
 		write(1, "ra\n", 3);
 		item->pos--;
 	}
+	free(item);
 }
 
 void	ft_bot(int *taba, int *tabb, int *size_a, int *size_b)
@@ -87,4 +88,5 @@ void	ft_bot(int *taba, int *tabb, int *size_a, int *size_b)
 		else
 			item->pos = 0;
 	}
+	free(item);
 }
