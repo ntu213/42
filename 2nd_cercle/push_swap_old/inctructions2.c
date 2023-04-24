@@ -59,7 +59,7 @@ void	ft_push(int *tab1, int *tab2, int *size1, int *size2)
 
 	i = 0;
 	ft_down(tab1, *size1);
-	printf("ok\n");
+//	printf("ok\n");
 	tab1[0] = tab2[0];
 	ft_up(tab2, *size2);
 }

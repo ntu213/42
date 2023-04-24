@@ -97,8 +97,7 @@ int	main(int argc, char **argv)
 {
 	int		i;
 	int		arg;
-	int		tab
-	[argc - 1];
+	int		tab[argc - 1];
 	char	**str;
 
 	i = 1;

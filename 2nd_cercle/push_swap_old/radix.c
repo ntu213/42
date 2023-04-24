@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 08:26:57 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/04/23 18:42:33 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:12:38 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	ft_pow(int n, int exp)
 	return (i);
 }
 
-void	ft_pa_all(int *taba, int *tabb, int *size_a, int *size_b)
+void	ft_pa_all(t_tab *tab)
 {
-	while (*size_b)
-		ft_pa(taba, tabb, size_a, size_b);
+	while (tab->size_b)
+		ft_r_pa(tab);
 }
 
 t_tab	*ft_init_struct(int *taba, int *tabb, int size_a, int size_b)
@@ -62,20 +62,25 @@ void	ft_printbinary(int n)
 void	ft_pb_pow(t_tab *tab, int pow)
 {
 	int	i;
+	int	j;
 	int	tmp;
+	int	tmp2;
 
 	i = 0;
-//printf("%d | %d\n", tab->size_a,  tab->size_b);
-	while (i < tab->size_a)
+	j = 0;
+	tmp2 = tab->size_a;
+	while (j < tmp2)
 	{
-		tmp = tab->taba[i];
-//		ft_printbinary(tmp);
-//		printf(" | %d | ", tmp>>pow);
-//		printf("%d", tmp >> pow & 1);
-//		printf("yoyo\n");
+		tmp = tab->indexa[i];
+	printf("%d | %d | %d | %d\n", tmp, tab->taba[i], tmp >> pow & 1, i);
 		if (tmp >> pow & 1)
-			ft_pa(tab->taba, tab->tabb, &(tab->size_a), &(tab->size_b));
-		i++;
+			ft_r_pb(tab);
+		else
+		{
+			i++;
+			ft_r_rot(tab->taba, tab->indexa, tab->size_a, "ra\n");
+		}
+		j++;
 	}
 }
 
@@ -109,8 +114,7 @@ int	*ft_get_index(int *tab, int size)
 	new = ft_getmin(tab, tab, size, size);
 	while (i < size)
 	{
-		temp[i] = new;
-printf("%d|%d|%d\n", i, tab[i], new);
+		temp[i] = i + 1;
 		if (i < size - 1)
 			new = ft_get_new_min(tab, size, new);
 		i++;
@@ -118,56 +122,79 @@ printf("%d|%d|%d\n", i, tab[i], new);
 	return (temp);
 }
 
-void	ft_r_down(int *tab, int size)
+void	ft_r_down(int *tab1, int *tab2, int size)
 {
 	int	i;
 
 	i = size + 1;
+//	printf("a = %d | %d\n", tab1[size - 1], size);
 	while (i)
 	{
-		tab[i] = tab[i - 1];
+		tab1[i] = tab1[i - 1];
+		tab2[i] = tab2[i - 1];
 		i--;
 	}
 }
 
-void	ft_r_up(int *tab, int size)
+void	ft_r_up(int *tab1, int *tab2, int size)
 {
 	int	i;
 
 	i = 0;
 	while (i + 1 < size)
 	{
-		tab[i] = tab[i + 1];
+		tab1[i] = tab1[i + 1];
+		tab2[i] = tab2[i + 1];
 		i++;
 	}
-	tab[i] = 0;
+	tab1[i] = 0;
+	tab2[i] = 0;
 }
 
-void	ft_r_push(int *tab1, int *tab2, int *size1, int *size2)
+void	ft_r_rot(int *tab1, int *tab2, int size, char *str)
 {
-	int	i;
+	int	n1;
+	int	n2;
 
-	i = 0;
-	ft_down(tab1, *size1);
-	printf("ok\n");
-	tab1[0] = tab2[0];
-	ft_up(tab2, *size2);
+	n1 = tab1[0];
+	n2 = tab2[0];
+	ft_r_up(tab1, tab2, size);
+	tab1[size - 1] = n1;
+	tab2[size - 1] = n2;
+	write(1, str, 3);
 }
 
-void	ft_pb(int *taba, int *tabb, int *size_a, int *size_b)
+void	ft_r_pb(t_tab *tab)
 {
-	ft_push(tabb, taba, size_b, size_a);
-	*size_b += 1;
-	*size_a -= 1;
+	ft_r_down(tab->indexb, tab->tabb, tab->size_b);
+	tab->indexb[0] = tab->indexa[0];
+	tab->tabb[0] = tab->taba[0];
+	ft_r_up(tab->indexa, tab->taba, tab->size_a);
+	tab->size_b += 1;
+	tab->size_a -= 1;
 	write(1, "pb\n", 3);
 }
 
-void	ft_pa(int *taba, int *tabb, int *size_a, int *size_b)
+void	ft_r_pa(t_tab *tab)
 {
-	ft_push(taba, tabb, size_a, size_b);
-	*size_a += 1;
-	*size_b -= 1;
+	ft_r_down(tab->indexa, tab->taba, tab->size_a);
+	tab->indexa[0] = tab->indexb[0];
+	tab->taba[0] = tab->tabb[0];
+	ft_r_up(tab->indexb, tab->tabb, tab->size_b);
+	tab->size_a += 1;
+	tab->size_b -= 1;
 	write(1, "pa\n", 3);
+}
+
+
+void	ft_temp_printtab(int *tab, int size)
+{
+	int i = 0;
+	while (i < size)
+	{
+		printf("%d\n", tab[i]);
+		i++;
+	}
 }
 
 void	ft_radix(int *taba, int size_a)
@@ -177,19 +204,22 @@ void	ft_radix(int *taba, int size_a)
 	int		pow;
 	t_tab	*tab;
 
+	tabb = malloc(sizeof(int) * size_a);
 	tab = ft_init_struct(taba, tabb, size_a, 0);
 	pow = 0;
 	tab->indexa = ft_get_index(tab->taba, tab->size_a);
 	tab->indexb = malloc(sizeof(int) * size_a);
-	while (!ft_end(tab->taba, tab->tabb, tab->size_a, tab->size_b) && pow < 32)
+ft_temp_printtab(tab->indexa, tab->size_a);
+	while (!ft_end(tab->taba, tab->tabb, tab->size_a, tab->size_b) && pow < 10)
 	{
 		printf("%d: ", pow);
 		ft_pb_pow(tab, pow);
-		ft_pa_all(tab->taba, tab->tabb, &tab->size_a, &tab->size_b);
+		ft_pa_all(tab);
 		pow++;
-		printf("\n");
+//		printf("\n");
 	}
 	free(tab->indexa);
 	free(tab->indexb);
+	free(tabb);
 	free(tab);
 }
