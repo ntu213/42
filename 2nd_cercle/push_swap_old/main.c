@@ -80,41 +80,31 @@ int	ft_verif(char **str, int *tab)
 	return (j);
 }
 
-void	ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
-
 int	main(int argc, char **argv)
 {
 	int		i;
 	int		arg;
-	int		tab[argc - 1];
+	int		*tab;
 	char	**str;
 
 	i = 1;
+	tab = ft_calloc(argc - 1, sizeof(int));
 	str = ft_split(argv[1], ' ');
 	arg = argc - 1;
 	if (argc == 2)
 	{
+		free(tab);
+		tab = ft_calloc(ft_strrlen(str), sizeof(int));
 		arg = ft_verif(str, tab);
 		if (!arg)
 			return (ft_error(0));
 	}
 	else if (argc == 1 || !ft_ok(argv, argc, tab))
 		return (ft_error(0));
-	ft_free(str);
-	if (arg < 5)
+	if (arg < 55)
 		ft_run(tab, arg);
 	else
 		ft_radix(tab, arg);
+	ft_free(str, tab);
 	return (1);
 }
