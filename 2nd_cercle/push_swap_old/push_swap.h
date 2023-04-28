@@ -18,7 +18,6 @@
 # include <stddef.h>
 # include <limits.h>
 # include <stdlib.h>
-//#include <stdlib.h>	//--> NULL
 
 typedef struct s_pos
 {
