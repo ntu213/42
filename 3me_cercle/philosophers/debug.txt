@@ -1,0 +1,1136 @@
+[0000011] Philosopher 13 has taken left fork
+[0000019] Philosopher 13 has taken right fork
+[0000019] Philosopher 13 is eating
+[0000031] Philosopher 1 has taken left fork
+[0000032] Philosopher 1 has taken right fork
+[0000032] Philosopher 1 is eating
+[0000037] Philosopher 25 has taken left fork
+[0000037] Philosopher 25 has taken right fork
+[0000037] Philosopher 25 is eating
+[0000042] Philosopher 20 has taken left fork
+[0000042] Philosopher 20 has taken right fork
+[0000043] Philosopher 20 is eating
+[0000043] Philosopher 22 has taken left fork
+[0000043] Philosopher 22 has taken right fork
+[0000043] Philosopher 22 is eating
+[0000045] Philosopher 11 has taken left fork
+[0000045] Philosopher 11 has taken right fork
+[0000046] Philosopher 11 is eating
+[0000048] Philosopher 18 has taken left fork
+[0000048] Philosopher 18 has taken right fork
+[0000048] Philosopher 18 is eating
+[0000049] Philosopher 7 has taken left fork
+[0000049] Philosopher 7 has taken right fork
+[0000049] Philosopher 7 is eating
+[0000050] Philosopher 24 has taken left fork
+[0000052] Philosopher 4 has taken left fork
+[0000052] Philosopher 4 has taken right fork
+[0000053] Philosopher 4 is eating
+[0000055] Philosopher 28 has taken left fork
+[0000056] Philosopher 28 has taken right fork
+[0000056] Philosopher 28 is eating
+[0000057] Philosopher 16 has taken left fork
+[0000058] Philosopher 16 has taken right fork
+[0000058] Philosopher 16 is eating
+[0000063] Philosopher 6 has taken left fork
+[0000064] Philosopher 20 is sleeping
+[0000070] Philosopher 30 has taken left fork
+[0000075] Philosopher 13 is sleeping
+[0000076] Philosopher 10 has taken left fork
+[0000077] Philosopher 3 has taken left fork
+[0000077] Philosopher 3 has taken right fork
+[0000078] Philosopher 3 is eating
+[0000078] Philosopher 22 is sleeping
+[0000079] Philosopher 4 is sleeping
+[0000079] Philosopher 21 has taken left fork
+[0000080] Philosopher 21 has taken right fork
+[0000080] Philosopher 21 is eating
+[0000082] Philosopher 2 has taken left fork
+[0000084] Philosopher 16 is sleeping
+[0000086] Philosopher 20 is thinking
+[0000086] Philosopher 20 has taken left fork
+[0000087] Philosopher 27 has taken left fork
+[0000088] Philosopher 27 has taken right fork
+[0000088] Philosopher 27 is eating
+[0000089] Philosopher 15 has taken left fork
+[0000089] Philosopher 15 has taken right fork
+[0000089] Philosopher 15 is eating
+[0000090] Philosopher 24 has taken right fork
+[0000090] Philosopher 24 is eating
+[0000091] Philosopher 17 has taken left fork
+[0000091] Philosopher 17 has taken right fork
+[0000091] Philosopher 17 is eating
+[0000092] Philosopher 12 has taken left fork
+[0000092] Philosopher 12 has taken right fork
+[0000092] Philosopher 12 is eating
+[0000093] Philosopher 30 has taken right fork
+[0000093] Philosopher 30 is eating
+[0000094] Philosopher 1 is sleeping
+[0000094] Philosopher 18 is sleeping
+[0000095] Philosopher 11 is sleeping
+[0000095] Philosopher 28 is sleeping
+[0000096] Philosopher 13 is thinking
+[0000096] Philosopher 13 has taken left fork
+[0000097] Philosopher 25 is sleeping
+[0000099] Philosopher 22 is thinking
+[0000099] Philosopher 8 has taken left fork
+[0000100] Philosopher 8 has taken right fork
+[0000100] Philosopher 8 is eating
+[0000100] Philosopher 6 has taken right fork
+[0000101] Philosopher 6 is eating
+[0000101] Philosopher 2 has taken right fork
+[0000101] Philosopher 2 is eating
+[0000104] Philosopher 16 is thinking
+[0000110] Philosopher 4 is thinking
+[0000111] Philosopher 4 has taken left fork
+[0000111] Philosopher 4 has taken right fork
+[0000111] Philosopher 4 is eating
+[0000115] Philosopher 3 is sleeping
+[0000116] Philosopher 16 has taken left fork
+[0000117] Philosopher 10 has taken right fork
+[0000117] Philosopher 10 is eating
+[0000118] Philosopher 25 is thinking
+[0000119] Philosopher 25 has taken left fork
+[0000119] Philosopher 22 has taken left fork
+[0000119] Philosopher 22 has taken right fork
+[0000120] Philosopher 22 is eating
+[0000120] Philosopher 1 is thinking
+[0000121] Philosopher 11 is thinking
+[0000121] Philosopher 11 has taken left fork
+[0000122] Philosopher 15 is sleeping
+[0000123] Philosopher 18 is thinking
+[0000123] Philosopher 18 has taken left fork
+[0000123] Philosopher 18 has taken right fork
+[0000124] Philosopher 18 is eating
+[0000125] Philosopher 7 is sleeping
+[0000125] Philosopher 27 is sleeping
+[0000126] Philosopher 28 is thinking
+[0000126] Philosopher 28 has taken left fork
+[0000127] Philosopher 28 has taken right fork
+[0000127] Philosopher 28 is eating
+[0000127] Philosopher 23 has taken left fork
+[0000130] Philosopher 30 is sleeping
+[0000131] Philosopher 12 is sleeping
+[0000132] Philosopher 25 has taken right fork
+[0000132] Philosopher 25 is eating
+[0000133] Philosopher 29 has taken left fork
+[0000134] Philosopher 24 is sleeping
+[0000136] Philosopher 3 is thinking
+[0000136] Philosopher 8 is sleeping
+[0000137] Philosopher 17 is sleeping
+[0000137] Philosopher 1 has taken left fork
+[0000137] Philosopher 1 has taken right fork
+[0000138] Philosopher 1 is eating
+[0000138] Philosopher 5 has taken left fork
+[0000140] Philosopher 6 is sleeping
+[0000141] Philosopher 13 has taken right fork
+[0000141] Philosopher 13 is eating
+[0000142] Philosopher 2 is sleeping
+[0000143] Philosopher 21 is sleeping
+[0000147] Philosopher 16 has taken right fork
+[0000148] Philosopher 16 is eating
+[0000150] Philosopher 30 is thinking
+[0000154] Philosopher 24 is thinking
+[0000156] Philosopher 7 is thinking
+[0000156] Philosopher 7 has taken left fork
+[0000156] Philosopher 7 has taken right fork
+[0000157] Philosopher 7 is eating
+[0000159] Philosopher 3 has taken left fork
+[0000161] Philosopher 3 has taken right fork
+[0000161] Philosopher 3 is eating
+[0000163] Philosopher 21 is thinking
+[0000164] Philosopher 14 has taken left fork
+[0000165] Philosopher 14 has taken right fork
+[0000165] Philosopher 14 is eating
+[0000166] Philosopher 2 is thinking
+[0000166] Philosopher 2 has taken left fork
+[0000167] Philosopher 1 is sleeping
+[0000167] Philosopher 26 has taken left fork
+[0000168] Philosopher 26 has taken right fork
+[0000168] Philosopher 26 is eating
+[0000168] Philosopher 5 has taken right fork
+[0000169] Philosopher 5 is eating
+[0000169] Philosopher 27 is thinking
+[0000170] Philosopher 12 is thinking
+[0000170] Philosopher 18 is sleeping
+[0000172] Philosopher 15 is thinking
+[0000172] Philosopher 15 has taken left fork
+[0000173] Philosopher 4 is sleeping
+[0000174] Philosopher 13 is sleeping
+[0000174] Philosopher 17 is thinking
+[0000175] Philosopher 17 has taken left fork
+[0000175] Philosopher 8 is thinking
+[0000175] Philosopher 9 has taken left fork
+[0000176] Philosopher 9 has taken right fork
+[0000176] Philosopher 9 is eating
+[0000176] Philosopher 6 is thinking
+[0000187] Philosopher 20 has taken right fork
+[0000188] Philosopher 20 is eating
+[0000189] Philosopher 27 has taken left fork
+[0000194] Philosopher 18 is thinking
+[0000195] Philosopher 21 has taken left fork
+[0000195] Philosopher 11 has taken right fork
+[0000195] Philosopher 11 is eating
+[0000196] Philosopher 22 is sleeping
+[0000197] Philosopher 25 is sleeping
+[0000197] Philosopher 14 is sleeping
+[0000199] Philosopher 16 is sleeping
+[0000206] Philosopher 23 has taken right fork
+[0000206] Philosopher 23 is eating
+[0000207] Philosopher 1 is thinking
+[0000217] Philosopher 22 is thinking
+[0000217] Philosopher 25 is thinking
+[0000218] Philosopher 25 has taken left fork
+[0000218] Philosopher 25 has taken right fork
+[0000218] Philosopher 25 is eating
+[0000219] Philosopher 9 is sleeping
+[0000219] Philosopher 16 is thinking
+[0000219] Philosopher 13 is thinking
+[0000220] Philosopher 13 has taken left fork
+[0000220] Philosopher 13 has taken right fork
+[0000220] Philosopher 13 is eating
+[0000221] Philosopher 4 is thinking
+[0000222] Philosopher 4 has taken left fork
+[0000222] Philosopher 4 has taken right fork
+[0000222] Philosopher 4 is eating
+[0000223] Philosopher 2 has taken right fork
+[0000223] Philosopher 2 is eating
+[0000224] Philosopher 17 has taken right fork
+[0000224] Philosopher 17 is eating
+[0000224] Philosopher 8 has taken left fork
+[0000225] Philosopher 8 has taken right fork
+[0000225] Philosopher 8 is eating
+[0000226] Philosopher 3 is sleeping
+[0000226] Philosopher 14 is thinking
+[0000236] Philosopher 10 is sleeping
+[0000236] Philosopher 29 has taken right fork
+[0000237] Philosopher 29 is eating
+[0000239] Philosopher 25 is sleeping
+[0000241] Philosopher 9 is thinking
+[0000241] Philosopher 9 has taken left fork
+[0000244] Philosopher 1 has taken left fork
+[0000245] Philosopher 1 has taken right fork
+[0000245] Philosopher 1 is eating
+[0000246] Philosopher 13 is sleeping
+[0000246] Philosopher 4 is sleeping
+[0000247] Philosopher 3 is thinking
+[0000247] Philosopher 3 has taken left fork
+[0000248] Philosopher 3 has taken right fork
+[0000248] Philosopher 3 is eating
+[0000249] Philosopher 2 is sleeping
+[0000249] Philosopher 8 is sleeping
+[0000250] Philosopher 9 has taken right fork
+[0000251] Philosopher 9 is eating
+[0000252] Philosopher 18 has taken left fork
+[0000252] Philosopher 18 has taken right fork
+[0000252] Philosopher 18 is eating
+[0000256] Philosopher 17 is sleeping
+[0000257] Philosopher 10 is thinking
+[0000261] Philosopher 30 has taken left fork
+[0000265] Philosopher 29 is sleeping
+[0000266] Philosopher 13 is thinking
+[0000267] Philosopher 13 has taken left fork
+[0000267] Philosopher 13 has taken right fork
+[0000267] Philosopher 13 is eating
+[0000268] Philosopher 3 is sleeping
+[0000269] Philosopher 25 is thinking
+[0000269] Philosopher 25 has taken left fork
+[0000269] Philosopher 25 has taken right fork
+[0000270] Philosopher 25 is eating
+[0000270] Philosopher 4 is thinking
+[0000270] Philosopher 4 has taken left fork
+[0000271] Philosopher 4 has taken right fork
+[0000271] Philosopher 4 is eating
+[0000271] Philosopher 23 is sleeping
+[0000272] Philosopher 2 is thinking
+[0000272] Philosopher 2 has taken left fork
+[0000272] Philosopher 2 has taken right fork
+[0000272] Philosopher 2 is eating
+[0000275] Philosopher 8 is thinking
+[0000275] Philosopher 8 has taken left fork
+[0000275] Philosopher 1 is sleeping
+[0000276] Philosopher 10 has taken left fork
+[0000276] Philosopher 10 has taken right fork
+[0000277] Philosopher 10 is eating
+[0000277] Philosopher 18 is sleeping
+[0000278] Philosopher 30 has taken right fork
+[0000278] Philosopher 30 is eating
+[0000278] Philosopher 8 has taken right fork
+[0000279] Philosopher 8 is eating
+[0000279] Philosopher 17 is thinking
+[0000279] Philosopher 17 has taken left fork
+[0000280] Philosopher 17 has taken right fork
+[0000280] Philosopher 17 is eating
+[0000281] Philosopher 9 is sleeping
+[0000289] Philosopher 3 is thinking
+[0000290] Philosopher 29 is thinking
+[0000291] Philosopher 25 is sleeping
+[0000292] Philosopher 23 is thinking
+[0000293] Philosopher 2 is sleeping
+[0000294] Philosopher 13 is sleeping
+[0000296] Philosopher 1 is thinking
+[0000296] Philosopher 1 has taken left fork
+[0000297] Philosopher 4 is sleeping
+[0000298] Philosopher 18 is thinking
+[0000300] Philosopher 6 has taken left fork
+[0000301] Philosopher 6 has taken right fork
+[0000302] Philosopher 6 is eating
+[0000303] Philosopher 3 has taken left fork
+[0000303] Philosopher 3 has taken right fork
+[0000303] Philosopher 3 is eating
+[0000303] Philosopher 11 is sleeping
+[0000304] Philosopher 10 is sleeping
+[0000306] Philosopher 17 is sleeping
+[0000306] Philosopher 8 is sleeping
+[0000306] Philosopher 18 has taken left fork
+[0000307] Philosopher 18 has taken right fork
+[0000307] Philosopher 18 is eating
+[0000311] Philosopher 9 is thinking
+[0000311] Philosopher 9 has taken left fork
+[0000311] Philosopher 9 has taken right fork
+[0000311] Philosopher 9 is eating
+[0000314] Philosopher 2 is thinking
+[0000316] Philosopher 25 is thinking
+[0000317] Philosopher 25 has taken left fork
+[0000317] Philosopher 25 has taken right fork
+[0000317] Philosopher 25 is eating
+[0000318] Philosopher 13 is thinking
+[0000318] Philosopher 13 has taken left fork
+[0000318] Philosopher 13 has taken right fork
+[0000318] Philosopher 13 is eating
+[0000319] Philosopher 20 is sleeping
+[0000320] Philosopher 4 is thinking
+[0000321] Philosopher 29 has taken left fork
+[0000321] Philosopher 29 has taken right fork
+[0000321] Philosopher 29 is eating
+[0000322] Philosopher 26 is sleeping
+[0000323] Philosopher 12 has taken left fork
+[0000324] Philosopher 11 is thinking
+[0000325] Philosopher 4 has taken left fork
+[0000325] Philosopher 4 has taken right fork
+[0000326] Philosopher 4 is eating
+[0000329] Philosopher 8 is thinking
+[0000329] Philosopher 8 has taken left fork
+[0000338] Philosopher 3 is sleeping
+[0000338] Philosopher 7 is sleeping
+[0000339] Philosopher 17 is thinking
+[0000339] Philosopher 17 has taken left fork
+[0000339] Philosopher 17 has taken right fork
+[0000340] Philosopher 17 is eating
+[0000340] Philosopher 18 is sleeping
+[0000341] Philosopher 25 is sleeping
+[0000341] Philosopher 15 has taken right fork
+[0000341] Philosopher 15 is eating
+[0000342] Philosopher 13 is sleeping
+[0000342] Philosopher 12 has taken right fork
+[0000342] Philosopher 12 is eating
+[0000343] Philosopher 26 is thinking
+[0000343] Philosopher 26 has taken left fork
+[0000344] Philosopher 20 is thinking
+[0000345] Philosopher 27 has taken right fork
+[0000345] Philosopher 27 is eating
+[0000346] Philosopher 21 has taken right fork
+[0000347] Philosopher 4 is sleeping
+[0000348] Philosopher 29 is sleeping
+[0000348] Philosopher 24 has taken left fork
+[0000349] Philosopher 24 has taken right fork
+[0000349] Philosopher 24 is eating
+[0000352] Philosopher 5 is sleeping
+[0000352] Philosopher 14 has taken left fork
+[0000353] Philosopher 19 has taken left fork
+[0000354] Philosopher 28 is sleeping
+[0000354] Philosopher 19 has taken right fork
+[0000356] Philosopher 19 is eating
+[0000356] Philosopher 30 is sleeping
+[0000358] Philosopher 8 has taken right fork
+[0000359] Philosopher 3 is thinking
+[0000360] Philosopher 8 is eating
+[0000360] Philosopher 3 has taken left fork
+[0000362] Philosopher 18 is thinking
+[0000363] Philosopher 14 has taken right fork
+[0000363] Philosopher 11 has taken left fork
+[0000364] Philosopher 11 has taken right fork
+[0000364] Philosopher 11 is eating
+[0000364] Philosopher 14 is eating
+[0000365] Philosopher 12 is sleeping
+[0000365] Philosopher 6 is sleeping
+[0000366] Philosopher 9 is sleeping
+[0000366] Philosopher 27 is sleeping
+[0000367] Philosopher 26 has taken right fork
+[0000367] Philosopher 26 is eating
+[0000368] Philosopher 21 is eating
+[0000368] Philosopher 4 is thinking
+[0000369] Philosopher 29 is thinking
+[0000369] Philosopher 29 has taken left fork
+[0000370] Philosopher 29 has taken right fork
+[0000370] Philosopher 29 is eating
+[0000371] Philosopher 23 has taken left fork
+[0000371] Philosopher 23 has taken right fork
+[0000371] Philosopher 23 is eating
+[0000372] Philosopher 24 is sleeping
+[0000373] Philosopher 5 is thinking
+[0000373] Philosopher 5 has taken left fork
+[0000375] Philosopher 5 has taken right fork
+[0000375] Philosopher 5 is eating
+[0000376] Philosopher 28 is thinking
+[0000376] Philosopher 28 has taken left fork
+[0000377] Philosopher 19 is sleeping
+[0000378] Philosopher 30 is thinking
+[0000378] Philosopher 20 has taken left fork
+[0000385] Philosopher 7 is thinking
+[0000386] Philosopher 12 is thinking
+[0000386] Philosopher 12 has taken left fork
+[0000386] Philosopher 12 has taken right fork
+[0000387] Philosopher 12 is eating
+[0000387] Philosopher 11 is sleeping
+[0000388] Philosopher 26 is sleeping
+[0000388] Philosopher 27 is thinking
+[0000389] Philosopher 9 is thinking
+[0000389] Philosopher 9 has taken left fork
+[0000389] Philosopher 6 is thinking
+[0000392] Philosopher 23 is sleeping
+[0000393] Philosopher 14 is sleeping
+[0000396] Philosopher 24 is thinking
+[0000396] Philosopher 24 has taken left fork
+[0000396] Philosopher 24 has taken right fork
+[0000396] Philosopher 24 is eating
+[0000397] Philosopher 28 has taken right fork
+[0000397] Philosopher 28 is eating
+[0000398] Philosopher 30 has taken left fork
+[0000399] Philosopher 19 is thinking
+[0000400] Philosopher 6 has taken left fork
+[0000400] Philosopher 6 has taken right fork
+[0000400] Philosopher 6 is eating
+[0000402] Philosopher 29 is sleeping
+[0000403] Philosopher 5 is sleeping
+[0000407] Philosopher 12 is sleeping
+[0000414] Philosopher 26 is thinking
+[0000414] Philosopher 26 has taken left fork
+[0000416] Philosopher 26 has taken right fork
+[0000416] Philosopher 26 is eating
+[0000417] Philosopher 11 is thinking
+[0000418] Philosopher 23 is thinking
+[0000419] Philosopher 24 is sleeping
+[0000420] Philosopher 28 is sleeping
+[0000420] Philosopher 25 is thinking
+[0000421] Philosopher 16 has taken left fork
+[0000421] Philosopher 16 has taken right fork
+[0000422] Philosopher 16 is eating
+[0000423] Philosopher 6 is sleeping
+[0000423] Philosopher 15 is sleeping
+[0000423] Philosopher 29 is thinking
+[0000424] Philosopher 5 is thinking
+[0000424] Philosopher 5 has taken left fork
+[0000425] Philosopher 5 has taken right fork
+[0000425] Philosopher 5 is eating
+[0000426] Philosopher 13 is thinking
+[0000426] Philosopher 13 has taken left fork
+[0000426] Philosopher 13 has taken right fork
+[0000426] Philosopher 13 is eating
+[0000427] Philosopher 3 has taken right fork
+[0000428] Philosopher 3 is eating
+[0000430] Philosopher 12 is thinking
+[0000431] Philosopher 12 has taken left fork
+[0000431] Philosopher 18 has taken left fork
+[0000431] Philosopher 18 has taken right fork
+[0000431] Philosopher 18 is eating
+[0000433] Philosopher 1 has taken right fork
+[0000433] Philosopher 1 is eating
+[0000436] Philosopher 10 is thinking
+[0000439] Philosopher 26 is sleeping
+[0000441] Philosopher 24 is thinking
+[0000441] Philosopher 24 has taken left fork
+[0000441] Philosopher 24 has taken right fork
+[0000441] Philosopher 24 is eating
+[0000442] Philosopher 25 has taken left fork
+[0000442] Philosopher 28 is thinking
+[0000446] Philosopher 5 is sleeping
+[0000452] Philosopher 3 is sleeping
+[0000453] Philosopher 7 has taken left fork
+[0000453] Philosopher 7 has taken right fork
+[0000453] Philosopher 7 is eating
+[0000454] Philosopher 16 is sleeping
+[0000455] Philosopher 22 has taken left fork
+[0000455] Philosopher 22 has taken right fork
+[0000455] Philosopher 22 is eating
+[0000456] Philosopher 9 has taken right fork
+[0000457] Philosopher 9 is eating
+[0000457] Philosopher 12 has taken right fork
+[0000458] Philosopher 12 is eating
+[0000458] Philosopher 20 has taken right fork
+[0000458] Philosopher 20 is eating
+[0000459] Philosopher 8 is sleeping
+[0000460] Philosopher 13 is sleeping
+[0000461] Philosopher 2 has taken left fork
+[0000461] Philosopher 2 has taken right fork
+[0000461] Philosopher 2 is eating
+[0000462] Philosopher 21 is sleeping
+[0000463] Philosopher 17 is sleeping
+[0000464] Philosopher 18 is sleeping
+[0000465] Philosopher 4 has taken left fork
+[0000465] Philosopher 4 has taken right fork
+[0000465] Philosopher 4 is eating
+[0000466] Philosopher 1 is sleeping
+[0000466] Philosopher 6 is thinking
+[0000466] Philosopher 6 has taken left fork
+[0000467] Philosopher 25 has taken right fork
+[0000467] Philosopher 25 is eating
+[0000468] Philosopher 15 is thinking
+[0000468] Philosopher 15 has taken left fork
+[0000468] Philosopher 15 has taken right fork
+[0000469] Philosopher 15 is eating
+[0000469] Philosopher 30 has taken right fork
+[0000469] Philosopher 30 is eating
+[0000470] Philosopher 24 is sleeping
+[0000472] Philosopher 26 is thinking
+[0000472] Philosopher 3 is thinking
+[0000473] Philosopher 5 is thinking
+[0000474] Philosopher 16 is thinking
+[0000478] Philosopher 6 has taken right fork
+[0000479] Philosopher 6 is eating
+[0000479] Philosopher 22 is sleeping
+[0000480] Philosopher 8 is thinking
+[0000480] Philosopher 8 has taken left fork
+[0000480] Philosopher 13 is thinking
+[0000480] Philosopher 13 has taken left fork
+[0000482] Philosopher 13 has taken right fork
+[0000482] Philosopher 13 is eating
+[0000483] Philosopher 12 is sleeping
+[0000483] Philosopher 19 has taken left fork
+[0000483] Philosopher 19 has taken right fork
+[0000484] Philosopher 19 is eating
+[0000484] Philosopher 17 is thinking
+[0000484] Philosopher 17 has taken left fork
+[0000485] Philosopher 17 has taken right fork
+[0000485] Philosopher 17 is eating
+[0000486] Philosopher 20 is sleeping
+[0000489] Philosopher 18 is thinking
+[0000492] Philosopher 7 is sleeping
+[0000497] Philosopher 29 has taken left fork
+[0000497] Philosopher 29 has taken right fork
+[0000497] Philosopher 29 is eating
+[0000500] Philosopher 22 is thinking
+[0000500] Philosopher 22 has taken left fork
+[0000500] Philosopher 22 has taken right fork
+[0000500] Philosopher 22 is eating
+[0000501] Philosopher 3 has taken left fork
+[0000501] Philosopher 21 is thinking
+[0000502] Philosopher 25 is sleeping
+[0000502] Philosopher 24 is thinking
+[0000503] Philosopher 24 has taken left fork
+[0000503] Philosopher 24 has taken right fork
+[0000503] Philosopher 24 is eating
+[0000504] Philosopher 2 is sleeping
+[0000504] Philosopher 10 has taken left fork
+[0000504] Philosopher 10 has taken right fork
+[0000504] Philosopher 10 is eating
+[0000505] Philosopher 1 is thinking
+[0000505] Philosopher 1 has taken left fork
+[0000506] Philosopher 17 is sleeping
+[0000506] Philosopher 30 is sleeping
+[0000507] Philosopher 9 is sleeping
+[0000507] Philosopher 20 is thinking
+[0000508] Philosopher 18 has taken left fork
+[0000508] Philosopher 4 is sleeping
+[0000509] Philosopher 13 is sleeping
+[0000509] Philosopher 3 has taken right fork
+[0000509] Philosopher 3 is eating
+[0000510] Philosopher 12 is thinking
+[0000512] Philosopher 12 has taken left fork
+[0000512] Philosopher 12 has taken right fork
+[0000512] Philosopher 12 is eating
+[0000513] Philosopher 7 is thinking
+[0000513] Philosopher 15 is sleeping
+[0000514] Philosopher 16 has taken left fork
+[0000514] Philosopher 16 has taken right fork
+[0000514] Philosopher 16 is eating
+[0000515] Philosopher 8 has taken right fork
+[0000515] Philosopher 8 is eating
+[0000516] Philosopher 1 has taken right fork
+[0000516] Philosopher 1 is eating
+[0000516] Philosopher 5 has taken left fork
+[0000517] Philosopher 5 has taken right fork
+[0000517] Philosopher 5 is eating
+[0000518] Philosopher 19 is sleeping
+[0000519] Philosopher 18 has taken right fork
+[0000519] Philosopher 18 is eating
+[0000522] Philosopher 6 is sleeping
+[0000525] Philosopher 26 has taken left fork
+[0000525] Philosopher 26 has taken right fork
+[0000526] Philosopher 26 is eating
+[0000527] Philosopher 24 is sleeping
+[0000527] Philosopher 2 is thinking
+[0000531] Philosopher 25 is thinking
+[0000532] Philosopher 30 is thinking
+[0000532] Philosopher 30 has taken left fork
+[0000533] Philosopher 17 is thinking
+[0000533] Philosopher 23 has taken left fork
+[0000535] Philosopher 27 has taken left fork
+[0000539] Philosopher 14 is thinking
+[0000540] Philosopher 30 has taken right fork
+[0000540] Philosopher 7 has taken left fork
+[0000541] Philosopher 7 has taken right fork
+[0000541] Philosopher 7 is eating
+[0000542] Philosopher 30 is eating
+[0000542] Philosopher 14 has taken left fork
+[0000543] Philosopher 14 has taken right fork
+[0000543] Philosopher 14 is eating
+[0000544] Philosopher 18 is sleeping
+[0000545] Philosopher 6 is thinking
+[0000545] Philosopher 6 has taken left fork
+[0000547] Philosopher 24 is thinking
+[0000550] Philosopher 27 has taken right fork
+[0000550] Philosopher 27 is eating
+[0000550] Philosopher 25 has taken left fork
+[0000551] Philosopher 25 has taken right fork
+[0000551] Philosopher 25 is eating
+[0000553] Philosopher 26 is sleeping
+[0000564] Philosopher 14 is sleeping
+[0000564] Philosopher 18 is thinking
+[0000565] Philosopher 29 is sleeping
+[0000566] Philosopher 4 is thinking
+[0000566] Philosopher 4 has taken left fork
+[0000566] Philosopher 4 has taken right fork
+[0000566] Philosopher 4 is eating
+[0000567] Philosopher 2 has taken left fork
+[0000567] Philosopher 2 has taken right fork
+[0000567] Philosopher 2 is eating
+[0000568] Philosopher 30 is sleeping
+[0000570] Philosopher 6 has taken right fork
+[0000571] Philosopher 6 is eating
+[0000574] Philosopher 26 is thinking
+[0000574] Philosopher 26 has taken left fork
+[0000574] Philosopher 7 is sleeping
+[0000575] Philosopher 5 is sleeping
+[0000576] Philosopher 25 is sleeping
+[0000578] Philosopher 27 is sleeping
+[0000579] Philosopher 28 has taken left fork
+[0000579] Philosopher 28 has taken right fork
+[0000580] Philosopher 28 is eating
+[0000582] Philosopher 21 has taken left fork
+[0000588] Philosopher 4 is sleeping
+[0000589] Philosopher 30 is thinking
+[0000589] Philosopher 2 is sleeping
+[0000590] Philosopher 9 is thinking
+[0000591] Philosopher 9 has taken left fork
+[0000592] Philosopher 9 has taken right fork
+[0000592] Philosopher 9 is eating
+[0000593] Philosopher 6 is sleeping
+[0000594] Philosopher 23 has taken right fork
+[0000594] Philosopher 23 is eating
+[0000595] Philosopher 13 is thinking
+[0000595] Philosopher 13 has taken left fork
+[0000595] Philosopher 13 has taken right fork
+[0000595] Philosopher 13 is eating
+[0000596] Philosopher 5 is thinking
+[0000596] Philosopher 5 has taken left fork
+[0000596] Philosopher 5 has taken right fork
+[0000597] Philosopher 5 is eating
+[0000597] Philosopher 12 is sleeping
+[0000598] Philosopher 3 is sleeping
+[0000598] Philosopher 25 is thinking
+[0000598] Philosopher 7 is thinking
+[0000598] Philosopher 7 has taken left fork
+[0000599] Philosopher 7 has taken right fork
+[0000599] Philosopher 7 is eating
+[0000599] Philosopher 27 is thinking
+[0000600] Philosopher 8 is sleeping
+[0000601] Philosopher 20 has taken left fork
+[0000601] Philosopher 10 is sleeping
+[0000602] Philosopher 19 is thinking
+[0000602] Philosopher 17 has taken left fork
+[0000603] Philosopher 27 has taken left fork
+[0000604] Philosopher 11 has taken left fork
+[0000604] Philosopher 11 has taken right fork
+[0000607] Philosopher 11 is eating
+[0000607] Philosopher 16 is sleeping
+[0000608] Philosopher 29 is thinking
+[0000608] Philosopher 29 has taken left fork
+[0000609] Philosopher 29 has taken right fork
+[0000609] Philosopher 29 is eating
+[0000609] Philosopher 4 is thinking
+[0000609] Philosopher 4 has taken left fork
+[0000610] Philosopher 17 has taken right fork
+[0000610] Philosopher 17 is eating
+[0000611] Philosopher 2 is thinking
+[0000612] Philosopher 2 has taken left fork
+[0000612] Philosopher 2 has taken right fork
+[0000612] Philosopher 2 is eating
+[0000614] Philosopher 9 is sleeping
+[0000614] Philosopher 6 is thinking
+[0000615] Philosopher 26 has taken right fork
+[0000620] Philosopher 13 is sleeping
+[0000620] Philosopher 4 has taken right fork
+[0000620] Philosopher 4 is eating
+[0000621] Philosopher 8 is thinking
+[0000621] Philosopher 8 has taken left fork
+[0000622] Philosopher 8 has taken right fork
+[0000622] Philosopher 8 is eating
+[0000622] Philosopher 10 is thinking
+[0000622] Philosopher 10 has taken left fork
+[0000625] Philosopher 14 is thinking
+[0000625] Philosopher 14 has taken left fork
+[0000625] Philosopher 14 has taken right fork
+[0000625] Philosopher 14 is eating
+[0000627] Philosopher 21 has taken right fork
+[0000628] Philosopher 21 is eating
+[0000630] Philosopher 29 is sleeping
+[0000630] Philosopher 10 has taken right fork
+[0000631] Philosopher 10 is eating
+[0000632] Philosopher 11 is sleeping
+[0000633] Philosopher 2 is sleeping
+[0000634] Philosopher 16 is thinking
+[0000634] Philosopher 16 has taken left fork
+[0000636] Philosopher 9 is thinking
+[0000636] Philosopher 18 has taken left fork
+[0000636] Philosopher 18 has taken right fork
+[0000636] Philosopher 18 is eating
+[0000638] Philosopher 17 is sleeping
+[0000640] Philosopher 13 is thinking
+[0000641] Philosopher 16 has taken right fork
+[0000641] Philosopher 16 is eating
+[0000643] Philosopher 8 is sleeping
+[0000647] Philosopher 4 is sleeping
+[0000648] Philosopher 22 is sleeping
+[0000650] Philosopher 15 is thinking
+[0000650] Philosopher 29 is thinking
+[0000651] Philosopher 29 has taken left fork
+[0000651] Philosopher 29 has taken right fork
+[0000651] Philosopher 29 is eating
+[0000653] Philosopher 11 is thinking
+[0000654] Philosopher 11 has taken left fork
+[0000655] Philosopher 2 is thinking
+[0000655] Philosopher 2 has taken left fork
+[0000655] Philosopher 2 has taken right fork
+[0000655] Philosopher 2 is eating
+[0000656] Philosopher 1 is sleeping
+[0000657] Philosopher 28 is sleeping
+[0000661] Philosopher 21 is sleeping
+[0000661] Philosopher 20 has taken right fork
+[0000661] Philosopher 20 is eating
+[0000662] Philosopher 11 has taken right fork
+[0000662] Philosopher 11 is eating
+[0000663] Philosopher 9 has taken left fork
+[0000663] Philosopher 9 has taken right fork
+[0000663] Philosopher 9 is eating
+[0000664] Philosopher 18 is sleeping
+[0000664] Philosopher 17 is thinking
+[0000665] Philosopher 17 has taken left fork
+[0000665] Philosopher 10 is sleeping
+[0000667] Philosopher 8 is thinking
+[0000667] Philosopher 8 has taken left fork
+[0000669] Philosopher 22 is thinking
+[0000669] Philosopher 22 has taken left fork
+[0000669] Philosopher 22 has taken right fork
+[0000669] Philosopher 22 is eating
+[0000670] Philosopher 13 has taken left fork
+[0000670] Philosopher 13 has taken right fork
+[0000670] Philosopher 13 is eating
+[0000675] Philosopher 14 is sleeping
+[0000676] Philosopher 4 is thinking
+[0000677] Philosopher 4 has taken left fork
+[0000677] Philosopher 4 has taken right fork
+[0000677] Philosopher 4 is eating
+[0000677] Philosopher 1 is thinking
+[0000678] Philosopher 28 is thinking
+[0000678] Philosopher 16 is sleeping
+[0000679] Philosopher 17 has taken right fork
+[0000679] Philosopher 17 is eating
+[0000680] Philosopher 1 has taken left fork
+[0000680] Philosopher 1 has taken right fork
+[0000680] Philosopher 1 is eating
+[0000681] Philosopher 15 has taken left fork
+[0000681] Philosopher 15 has taken right fork
+[0000681] Philosopher 15 is eating
+[0000682] Philosopher 2 is sleeping
+[0000682] Philosopher 30 has taken left fork
+[0000684] Philosopher 21 is thinking
+[0000685] Philosopher 19 has taken left fork
+[0000685] Philosopher 19 has taken right fork
+[0000685] Philosopher 19 is eating
+[0000686] Philosopher 18 is thinking
+[0000687] Philosopher 20 is sleeping
+[0000690] Philosopher 22 is sleeping
+[0000690] Philosopher 21 has taken left fork
+[0000691] Philosopher 21 has taken right fork
+[0000691] Philosopher 21 is eating
+[0000691] Philosopher 10 is thinking
+[0000692] Philosopher 29 is sleeping
+[0000694] Philosopher 11 is sleeping
+[0000699] Philosopher 14 is thinking
+[0000709] Philosopher 13 is sleeping
+[0000710] Philosopher 3 is thinking
+[0000711] Philosopher 22 is thinking
+[0000711] Philosopher 19 is sleeping
+[0000712] Philosopher 16 is thinking
+[0000713] Philosopher 16 has taken left fork
+[0000713] Philosopher 16 has taken right fork
+[0000713] Philosopher 16 is eating
+[0000714] Philosopher 29 is thinking
+[0000714] Philosopher 20 is thinking
+[0000715] Philosopher 20 has taken left fork
+[0000715] Philosopher 10 has taken left fork
+[0000715] Philosopher 10 has taken right fork
+[0000717] Philosopher 10 is eating
+[0000718] Philosopher 2 is thinking
+[0000718] Philosopher 2 has taken left fork
+[0000718] Philosopher 2 has taken right fork
+[0000718] Philosopher 2 is eating
+[0000719] Philosopher 22 has taken left fork
+[0000719] Philosopher 22 has taken right fork
+[0000719] Philosopher 22 is eating
+[0000720] Philosopher 21 is sleeping
+[0000720] Philosopher 30 has taken right fork
+[0000720] Philosopher 30 is eating
+[0000721] Philosopher 4 is sleeping
+[0000722] Philosopher 20 has taken right fork
+[0000722] Philosopher 20 is eating
+[0000722] Philosopher 14 has taken left fork
+[0000723] Philosopher 17 is sleeping
+[0000724] Philosopher 11 is thinking
+[0000724] Philosopher 11 has taken left fork
+[0000734] Philosopher 19 is thinking
+[0000735] Philosopher 3 has taken left fork
+[0000742] Philosopher 4 is thinking
+[0000743] Philosopher 17 is thinking
+[0000744] Philosopher 17 has taken left fork
+[0000744] Philosopher 2 is sleeping
+[0000745] Philosopher 21 is thinking
+[0000746] Philosopher 19 has taken left fork
+[0000746] Philosopher 19 has taken right fork
+[0000746] Philosopher 19 is eating
+[0000747] Philosopher 8 has taken right fork
+[0000747] Philosopher 8 is eating
+[0000748] Philosopher 29 has taken left fork
+[0000748] Philosopher 29 has taken right fork
+[0000748] Philosopher 29 is eating
+[0000749] Philosopher 15 is sleeping
+[0000749] Philosopher 3 has taken right fork
+[0000749] Philosopher 3 is eating
+[0000751] Philosopher 13 is thinking
+[0000752] Philosopher 7 is sleeping
+[0000754] Philosopher 11 has taken right fork
+[0000754] Philosopher 11 is eating
+[0000754] Philosopher 14 has taken right fork
+[0000755] Philosopher 14 is eating
+[0000755] Philosopher 10 is sleeping
+[0000756] Philosopher 9 is sleeping
+[0000758] Philosopher 24 has taken left fork
+[0000763] Philosopher 24 has taken right fork
+[0000763] Philosopher 24 is eating
+[0000764] Philosopher 1 is sleeping
+[0000765] Philosopher 16 is sleeping
+[0000769] Philosopher 15 is thinking
+[0000770] Philosopher 15 has taken left fork
+[0000772] Philosopher 20 is sleeping
+[0000773] Philosopher 3 is sleeping
+[0000774] Philosopher 22 is sleeping
+[0000774] Philosopher 26 is eating
+[0000776] Philosopher 11 is sleeping
+[0000777] Philosopher 12 is thinking
+[0000777] Philosopher 12 has taken left fork
+[0000777] Philosopher 12 has taken right fork
+[0000778] Philosopher 12 is eating
+[0000778] Philosopher 23 is sleeping
+[0000778] Philosopher 6 has taken left fork
+[0000779] Philosopher 6 has taken right fork
+[0000779] Philosopher 6 is eating
+[0000785] Philosopher 24 is sleeping
+[0000787] Philosopher 1 is thinking
+[0000787] Philosopher 1 has taken left fork
+[0000787] Philosopher 1 has taken right fork
+[0000787] Philosopher 1 is eating
+[0000788] Philosopher 16 is thinking
+[0000790] Philosopher 2 is thinking
+[0000794] Philosopher 20 is thinking
+[0000794] Philosopher 20 has taken left fork
+[0000794] Philosopher 20 has taken right fork
+[0000795] Philosopher 20 is eating
+[0000796] Philosopher 3 is thinking
+[0000797] Philosopher 22 is thinking
+[0000797] Philosopher 11 is thinking
+[0000806] Philosopher 23 is thinking
+[0000806] Philosopher 23 has taken left fork
+[0000806] Philosopher 23 has taken right fork
+[0000807] Philosopher 23 is eating
+[0000807] Philosopher 6 is sleeping
+[0000808] Philosopher 24 is thinking
+[0000813] Philosopher 1 is sleeping
+[0000817] Philosopher 20 is sleeping
+[0000818] Philosopher 11 has taken left fork
+[0000818] Philosopher 11 has taken right fork
+[0000818] Philosopher 11 is eating
+[0000819] Philosopher 12 is sleeping
+[0000828] Philosopher 23 is sleeping
+[0000829] Philosopher 24 has taken left fork
+[0000829] Philosopher 24 has taken right fork
+[0000830] Philosopher 24 is eating
+[0000831] Philosopher 6 is thinking
+[0000831] Philosopher 6 has taken left fork
+[0000833] Philosopher 21 has taken left fork
+[0000833] Philosopher 30 is sleeping
+[0000834] Philosopher 1 is thinking
+[0000834] Philosopher 4 has taken left fork
+[0000835] Philosopher 19 is sleeping
+[0000837] Philosopher 17 has taken right fork
+[0000838] Philosopher 20 is thinking
+[0000838] Philosopher 20 has taken left fork
+[0000839] Philosopher 5 is sleeping
+[0000840] Philosopher 12 is thinking
+[0000840] Philosopher 12 has taken left fork
+[0000840] Philosopher 12 has taken right fork
+[0000840] Philosopher 12 is eating
+[0000841] Philosopher 13 has taken left fork
+[0000842] Philosopher 11 is sleeping
+[0000843] Philosopher 15 has taken right fork
+[0000843] Philosopher 15 is eating
+[0000844] Philosopher 10 is thinking
+[0000844] Philosopher 10 has taken left fork
+[0000844] Philosopher 10 has taken right fork
+[0000845] Philosopher 10 is eating
+[0000846] Philosopher 9 is thinking
+[0000850] Philosopher 23 is thinking
+[0000850] Philosopher 23 has taken left fork
+[0000851] Philosopher 23 has taken right fork
+[0000851] Philosopher 23 is eating
+[0000852] Philosopher 24 is sleeping
+[0000855] Philosopher 30 is thinking
+[0000855] Philosopher 30 has taken left fork
+[0000856] Philosopher 30 has taken right fork
+[0000856] Philosopher 30 is eating
+[0000857] Philosopher 19 is thinking
+[0000859] Philosopher 5 is thinking
+[0000862] Philosopher 25 has taken left fork
+[0000862] Philosopher 25 has taken right fork
+[0000862] Philosopher 25 is eating
+[0000863] Philosopher 27 has taken right fork
+[0000863] Philosopher 27 is eating
+[0000864] Philosopher 11 is thinking
+[0000865] Philosopher 26 is sleeping
+[0000866] Philosopher 16 has taken left fork
+[0000866] Philosopher 9 has taken left fork
+[0000866] Philosopher 9 has taken right fork
+[0000867] Philosopher 9 is eating
+[0000867] Philosopher 10 is sleeping
+[0000868] Philosopher 15 is sleeping
+[0000869] Philosopher 2 has taken left fork
+[0000870] Philosopher 11 has taken left fork
+[0000873] Philosopher 23 is sleeping
+[0000874] Philosopher 24 is thinking
+[0000875] Philosopher 24 has taken left fork
+[0000876] Philosopher 11 has taken right fork
+[0000876] Philosopher 11 is eating
+[0000879] Philosopher 30 is sleeping
+[0000881] Philosopher 7 is thinking
+[0000881] Philosopher 7 has taken left fork
+[0000882] Philosopher 6 has taken right fork
+[0000882] Philosopher 6 is eating
+[0000882] Philosopher 21 has taken right fork
+[0000885] Philosopher 29 is sleeping
+[0000886] Philosopher 26 is thinking
+[0000886] Philosopher 26 has taken left fork
+[0000887] Philosopher 4 has taken right fork
+[0000887] Philosopher 26 has taken right fork
+[0000888] Philosopher 10 is thinking
+[0000888] Philosopher 10 has taken left fork
+[0000888] Philosopher 15 is thinking
+[0000889] Philosopher 14 is sleeping
+[0000890] Philosopher 12 is sleeping
+[0000890] Philosopher 2 has taken right fork
+[0000891] Philosopher 2 is eating
+[0000892] Philosopher 13 has taken right fork
+[0000892] Philosopher 13 is eating
+[0000894] Philosopher 23 is thinking
+[0000900] Philosopher 11 is sleeping
+[0000904] Philosopher 30 is thinking
+[0000905] Philosopher 30 has taken left fork
+[0000905] Philosopher 30 has taken right fork
+[0000906] Philosopher 30 is eating
+[0000908] Philosopher 29 is thinking
+[0000909] Philosopher 5 has taken left fork
+[0000911] Philosopher 6 is sleeping
+[0000911] Philosopher 12 is thinking
+[0000911] Philosopher 12 has taken left fork
+[0000913] Philosopher 14 is thinking
+[0000913] Philosopher 7 has taken right fork
+[0000914] Philosopher 7 is eating
+[0000914] Philosopher 10 has taken right fork
+[0000914] Philosopher 10 is eating
+[0000917] Philosopher 1 has taken left fork
+[0000920] Philosopher 2 is sleeping
+[0000923] Philosopher 11 is thinking
+[0000937] Philosopher 29 has taken left fork
+[0000937] Philosopher 29 has taken right fork
+[0000938] Philosopher 29 is eating
+[0000939] Philosopher 30 is sleeping
+[0000939] Philosopher 1 has taken right fork
+[0000939] Philosopher 1 is eating
+[0000941] Philosopher 2 is thinking
+[0000941] Philosopher 7 is sleeping
+[0000944] Philosopher 10 is sleeping
+[0000948] Philosopher 14 has taken left fork
+[0000949] Philosopher 14 has taken right fork
+[0000949] Philosopher 14 is eating
+[0000959] Philosopher 25 is sleeping
+[0000960] Philosopher 6 is thinking
+[0000962] Philosopher 7 is thinking
+[0000962] Philosopher 7 has taken left fork
+[0000962] Philosopher 7 has taken right fork
+[0000963] Philosopher 7 is eating
+[0000969] Philosopher 10 is thinking
+[0000969] Philosopher 10 has taken left fork
+[0000970] Philosopher 10 has taken right fork
+[0000970] Philosopher 10 is eating
+[0000970] Philosopher 30 is thinking
+[0000971] Philosopher 1 is sleeping
+[0000972] Philosopher 24 has taken right fork
+[0000974] Philosopher 24 is eating
+[0000975] Philosopher 13 is sleeping
+[0000976] Philosopher 12 has taken right fork
+[0000976] Philosopher 12 is eating
+[0000977] Philosopher 2 has taken left fork
+[0000977] Philosopher 2 has taken right fork
+[0000977] Philosopher 2 is eating
+[0000979] Philosopher 14 is sleeping
+[0000995] Philosopher 29 is sleeping
+[0000996] Philosopher 13 is thinking
+[0000996] Philosopher 13 has taken left fork
+[0000997] Philosopher 10 is sleeping
+[0000997] Philosopher 25 is thinking
+[0000998] Philosopher 7 is sleeping
+[0000999] Philosopher 1 is thinking
+[0000999] Philosopher 14 is thinking
+[0001000] Philosopher 23 has taken left fork
+[0001000] Philosopher 23 has taken right fork
+[0001000] Philosopher 23 is eating
+[0001003] Philosopher 21 is eating
+[0001010] Philosopher 24 is sleeping
+[0001011] Philosopher 2 is sleeping
+[0001013] Philosopher 30 has taken left fork
+[0001014] Philosopher 30 has taken right fork
+[0001014] Philosopher 30 is eating
+[0001015] Philosopher 13 has taken right fork
+[0001015] Philosopher 13 is eating
+[0001016] Philosopher 29 is thinking
+[0001019] Philosopher 10 is thinking
+[0001020] Philosopher 10 has taken left fork
+[0001020] Philosopher 10 has taken right fork
+[0001020] Philosopher 10 is eating
+[0001021] Philosopher 12 is sleeping
+[0001023] Philosopher 23 is sleeping
+[0001029] Philosopher 21 is sleeping
+[0001030] Philosopher 1 has taken left fork
+[0001030] Philosopher 24 is thinking
+[0001031] Philosopher 24 has taken left fork
+[0001031] Philosopher 24 has taken right fork
+[0001031] Philosopher 24 is eating
+[0001032] Philosopher 20 has taken right fork
+[0001032] Philosopher 20 is eating
+[0001033] Philosopher 7 is thinking
+[0001033] Philosopher 7 has taken left fork
+[0001035] Philosopher 11 has taken left fork
+[0001039] Philosopher 22 has taken left fork
+[0001040] Philosopher 22 has taken right fork
+[0001040] Philosopher 22 is eating
+[0001040] Philosopher 8 is sleeping
+[0001040] Philosopher 4 is eating
+[0001041] Philosopher 27 is sleeping
+[0001042] Philosopher 17 is eating
+[0001042] Philosopher 26 is eating
+[0001044] Philosopher 28 has taken left fork
+[0001044] Philosopher 28 has taken right fork
+[0001045] Philosopher 28 is eating
+[0001046] Philosopher 23 is thinking
+[0001051] Philosopher 21 is thinking
+[0001054] Philosopher 24 is sleeping
+[0001056] Philosopher 23 has taken left fork
+[0001057] Philosopher 20 is sleeping
+[0001060] Philosopher 19 has taken left fork
+[0001060] Philosopher 19 has taken right fork
+[0001060] Philosopher 19 is eating
+[0001061] Philosopher 8 is thinking
+[0001062] Philosopher 27 is thinking
+[0001064] Philosopher 21 has taken left fork
+[0001064] Philosopher 21 has taken right fork
+[0001064] Philosopher 21 is eating
+[0001066] Philosopher 28 is sleeping
+[0001067] Philosopher 27 has taken left fork
+[0001068] Philosopher 22 is sleeping
+[0001071] Philosopher 23 has taken right fork
+[0001072] Philosopher 23 is eating
+[0001073] Philosopher 2 is thinking
+[0001075] Philosopher 25 has taken left fork
+[0001075] Philosopher 25 has taken right fork
+[0001075] Philosopher 25 is eating
+[0001076] Philosopher 24 is thinking
+[0001077] Philosopher 9 is sleeping
+[0001077] Philosopher 14 has taken left fork
+[0001078] Philosopher 14 has taken right fork
+[0001078] Philosopher 14 is eating
+[0001078] Philosopher 20 is thinking
+[0001079] Philosopher 26 is sleeping
+[0001079] Philosopher 27 has taken right fork
+[0001080] Philosopher 27 is eating
+[0001080] Philosopher 7 has taken right fork
+[0001080] Philosopher 7 is eating
+[0001083] Philosopher 1 has taken right fork
+[0001088] Philosopher 28 is thinking
+[0001089] Philosopher 22 is thinking
+[0001090] Philosopher 22 has taken left fork
+[0001091] Philosopher 13 is sleeping
+[0001094] Philosopher 29 has taken left fork
+[0001094] Philosopher 29 has taken right fork
+[0001094] Philosopher 29 is eating
+[0001095] Philosopher 24 has taken left fork
+[0001097] Philosopher 22 has taken right fork
+[0001097] Philosopher 22 is eating
+[0001097] Philosopher 9 is thinking
+[0001098] Philosopher 9 has taken left fork
+[0001098] Philosopher 9 has taken right fork
+[0001098] Philosopher 9 is eating
+[0001101] Philosopher 23 is sleeping
+[0001102] Philosopher 25 is sleeping
+[0001102] Philosopher 26 is thinking
+[0001103] Philosopher 26 has taken left fork
+[0001103] Philosopher 26 has taken right fork
+[0001103] Philosopher 26 is eating
+[0001105] Philosopher 28 has taken left fork
+[0001105] Philosopher 24 has taken right fork
+[0001105] Philosopher 24 is eating
+[0001107] Philosopher 11 has taken right fork
+[0001108] Philosopher 10 is sleeping
+[0001108] Philosopher 11 is eating
+[0001111] Philosopher 20 has taken left fork
+[0001111] Philosopher 20 has taken right fork
+[0001111] Philosopher 20 is eating
+[0001112] Philosopher 13 is thinking
+[0001112] Philosopher 13 has taken left fork
+[0001112] Philosopher 13 has taken right fork
+[0001113] Philosopher 13 is eating
+[0001117] Philosopher 28 has taken right fork
+[0001118] Philosopher 28 is eating
+[0001119] Philosopher 9 is sleeping
+[0001120] Philosopher 29 is sleeping
+[0001121] Philosopher 23 is thinking
+[0001126] Philosopher 22 is sleeping
+[0001128] Philosopher 23 has taken left fork
+[0001128] Philosopher 23 has taken right fork
+[0001128] Philosopher 23 is eating
+[0001129] Philosopher 3 has taken left fork
+[0001129] Philosopher 3 has taken right fork
+[0001129] Philosopher 3 is eating
+[0001130] Philosopher 26 is sleeping
+[0001130] Philosopher 10 is thinking
+[0001131] Philosopher 10 has taken left fork
+[0001131] Philosopher 30 is sleeping
+[0001132] Philosopher 24 is sleeping
+[0001133] Philosopher 25 is thinking
+[0001133] Philosopher 25 has taken left fork
+[0001133] Philosopher 25 has taken right fork
+[0001133] Philosopher 25 is eating
+[0001134] Philosopher 13 is sleeping
+[0001135] Philosopher 20 is sleeping
+[0001135] Philosopher 5 has taken right fork
+[0001135] Philosopher 5 is eating
+[0001139] Philosopher 9 is thinking
+[0001140] Philosopher 4 is sleeping

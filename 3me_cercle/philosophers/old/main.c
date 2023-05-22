@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:48:25 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/05/02 13:27:49 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:50:35 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,16 @@ void	ft_isdead(t_myphilo me, t_philo *philo)
 
 	gettimeofday(&philo->tv, NULL);
 	time = (philo->tv.tv_sec * 1000) + (philo->tv.tv_usec / 1000);
-	if (time - me.last_meat >= philo->time_to_die)
+	if (time - me.last_meat >= philo->time_to_die && !philo->death)
 	{
+		if (philo->start || philo->death || philo->end_eat >= philo->count)
+			return ;
+		philo->death = 1;
 		pthread_mutex_lock(philo->print);
 		gettimeofday(&philo->tv, NULL);
 		ft_printtime(philo);
 		printf("Philosopher %d is dead\n", me.id);
 		pthread_mutex_unlock(philo->print);
-		philo->death = 1;
 	}
 }
 
@@ -117,17 +119,21 @@ void	*ft_thread(t_philo *philo)
 	while (philo->start)
 		usleep(10);
 	if (me.id % 2 == 0)
-		usleep(1000);
+		sleep(1);
 //	printf("%d started!\n", me.id);
 	ft_add_eat(&me, philo);
 	while (!philo->start && !philo->death && philo->end_eat < philo->count)
 	{
 		ft_eat(&me, philo);
+		usleep (100000);
 		if (!philo->start && !philo->death && philo->end_eat < philo->count)
 			ft_sleep(me, philo);
 		if (!philo->start && !philo->death && philo->end_eat < philo->count)
 			ft_think(me, philo);
 	}
+	pthread_mutex_lock(philo->print);
+	printf("thread exit: %d\n", me.id);
+	pthread_mutex_unlock(philo->print);
 //	philo->death = 1;
 	return (philo);
 }
@@ -163,14 +169,12 @@ t_philo	*ft_init_philo(t_rules *rules)
 	new->count_of_eat = rules->count_of_eat;
 	new->end_eat = 0;
 	new->death = 0;
-//	new->fork = malloc(sizeof(int) * new->count);
 	new->thread = malloc(sizeof(pthread_t) * new->count);
-	new->print = malloc(sizeof(pthread_mutex_t));
+	new->print = ft_init_mutex();
 	new->mutex = malloc(sizeof(pthread_mutex_t *) * new->count);
 	while (++i <= new->count)
 	{
 		new->start = i;
-//		new->fork[i - 1] = 1;
 		new->thread[i - 1] = ft_init_thread(new);
 		new->mutex[i - 1] = ft_init_mutex();
 		usleep(100);
@@ -183,14 +187,17 @@ void	ft_free_philo(t_philo *philo)
 	int	i;
 
 	i = 0;
+	pthread_mutex_unlock(philo->print);
+	pthread_mutex_destroy(philo->print);
 	while (i < philo->count)
 	{
+		printf("FINI %d\n", i);
 		pthread_join(philo->thread[i], NULL);
-		pthread_mutex_destroy(philo->mutex[i]);
+//		pthread_mutex_unlock(philo->mutex[i]);
+//		pthread_mutex_destroy(philo->mutex[i]);
 		free(philo->mutex[i]);
 		i++;
 	}
-//	free(philo->fork);
 	free(philo->print);
 	free(philo->thread);
 	free(philo->mutex);
@@ -224,13 +231,13 @@ int	main(int argc, char **argv)
 	if (!ft_ok_values(rules, argc, argv))
 		return (ft_error_philo("Invalid Arguments", 0, rules, free));
 	philo = ft_init_philo(rules);
-	usleep(100000);
 	gettimeofday(&philo->tv, NULL);
 	philo->sec = philo->tv.tv_sec;
 	philo->msec = philo->tv.tv_usec / 1000;
 	free(rules);
 	philo->start = 0;
-	while (!philo->start && !philo->death && philo->end_eat < philo->count)
+	while (!philo->death && philo->end_eat < philo->count)
+		usleep(10);
 	ft_free_philo(philo);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:48:49 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/05/02 13:09:55 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/05/15 11:16:24 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,26 @@ typedef struct s_philo
 	int				end_eat;
 	int				death;
 	int				start;
+	int				go;
 	int				sec;
 	int				msec;
-//	int				*fork;
 	pthread_t		*thread;
 	struct timeval	tv;
-	pthread_mutex_t	*print;
-	pthread_mutex_t	**mutex;
+	pthread_mutex_t	time;
+	pthread_mutex_t	print;
+	pthread_mutex_t	verif;
+//	pthread_mutex_t	eat_mutex;
+	pthread_mutex_t	*mutex;
 }			t_philo;
 
 typedef struct s_myphilo
 {
-	int			id;
-	int			count_of_eat;
-	long long	last_meat;
-	int			fork_i;
-	int			fork_r;
+	int				id;
+	int				count_of_eat;
+	int				time_to_die;
+	long long		last_meat;
+	pthread_mutex_t	*fork_l;
+	pthread_mutex_t	*fork_r;
 }			t_myphilo;
 
 typedef struct s_rules
@@ -56,14 +60,27 @@ typedef struct s_rules
 	int	count_of_eat;
 }			t_rules;
 
+typedef struct s_tmp
+{
+	t_myphilo		*me;
+	t_philo			*philo;
+	pthread_mutex_t	*mtx;
+}			t_tmp;
+void ft_print(char *str, t_philo *philo);
+
 int		ft_atoi(const char *str);
+int		ft_take_fork(int id, t_myphilo* me, t_philo *philo);
+void	ft_drop_fork(t_myphilo *me);
 void	ft_printtime(t_philo *philo);
 void	ft_eat(t_myphilo *me, t_philo *philo);
 void	ft_think(t_myphilo me, t_philo *philo);
 void	ft_sleep(t_myphilo me, t_philo *philo);
 void	ft_isdead(t_myphilo me, t_philo *philo);
 void	ft_add_eat(t_myphilo *me, t_philo *philo);
-void	ft_drop_fork(t_myphilo *me, t_philo *philo);
-void	ft_take_fork(int id, t_myphilo* me, t_philo *philo);
+void	ft_reset_meat(t_myphilo *me, t_philo *philo);
+void	ft_unlock(pthread_mutex_t *m1, pthread_mutex_t *m2,
+	pthread_mutex_t *m3, pthread_mutex_t *m4);
+void	*ft_death_thread(t_tmp *tmp);
+t_tmp	ft_get_tmp(t_myphilo *me, t_philo *philo);
 
 #endif
