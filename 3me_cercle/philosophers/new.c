@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 08:29:10 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/05/15 12:57:10 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:21:54 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_myphilo	ft_init_myphilo(int id, t_philo *philo)
 	new.id = id;
 	new.count_of_eat = -1;
 	new.time_to_die = philo->time_to_die;
+	new.philo = philo;
 	usleep(10);
 //printf("%d|%d\n", id - 1, id % philo->count);
 	if (id % 2 == 0)
@@ -106,10 +107,10 @@ int	ft_exec(t_myphilo *me, t_philo *philo)
 void	*ft_thread(t_philo *philo)
 {
 	t_myphilo	me;
-	t_tmp		tmp;
+//	t_tmp		tmp;
 	pthread_t	thread;
 
-	tmp = ft_get_tmp(&me, philo);
+//	tmp = ft_get_tmp(&me, philo);
 	pthread_mutex_lock(&philo->verif);
 	me = ft_init_myphilo(philo->start, philo);
 	pthread_mutex_lock(&philo->print);
@@ -123,7 +124,7 @@ void	*ft_thread(t_philo *philo)
 	}
 	pthread_mutex_unlock(&philo->verif);
 	ft_add_eat(&me, philo);
-	pthread_create(&thread, NULL, (void *) ft_death_thread, &tmp);
+	pthread_create(&thread, NULL, (void *) ft_death_thread, &me);
 	while (1)
 	{
 		if (!ft_exec(&me, philo))

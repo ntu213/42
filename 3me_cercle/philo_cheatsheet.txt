@@ -1,0 +1,301 @@
+Projet philo cheatsheet
+
+Fonctions autorisees :
+
+memset, printf, malloc, free, write,
+usleep, gettimeofday, pthread_create,
+pthread_detach, pthread_join, pthread_mutex_init,
+pthread_mutex_destroy, pthread_mutex_lock,
+pthread_mutex_unlock
+
+memset: Une fonction de la bibliothèque <string.h> qui permet d'initialiser une zone mémoire avec une valeur donnée. Elle prend trois arguments: un pointeur vers la zone mémoire, la valeur à utiliser pour remplir la zone, et le nombre d'octets à remplir.
+
+Exemple d'utilisation: memset(buffer, 0, sizeof(buffer));
+
+printf: Une fonction de la bibliothèque <stdio.h> qui permet d'afficher du texte formaté sur la sortie standard (généralement l'écran). Elle prend en argument une chaîne de formatage, suivie de variables dont les valeurs doivent être insérées dans la chaîne de formatage.
+
+Exemple d'utilisation: printf("Le résultat est: %d\n", resultat);
+
+malloc: Une fonction de la bibliothèque <stdlib.h> qui permet d'allouer dynamiquement une zone mémoire. Elle prend en argument la taille en octets de la zone mémoire à allouer et retourne un pointeur vers cette zone.
+
+Exemple d'utilisation: int *tableau = (int *)malloc(sizeof(int) * taille_tableau);
+
+free: Une fonction de la bibliothèque <stdlib.h> qui permet de libérer la mémoire allouée précédemment avec malloc. Elle prend en argument un pointeur vers la zone mémoire à libérer.
+
+Exemple d'utilisation: free(tableau);
+
+write: Une fonction de la bibliothèque <unistd.h> qui permet d'écrire des données dans un fichier ou un descripteur de fichier. Elle prend trois arguments: le descripteur de fichier, un pointeur vers les données à écrire, et le nombre d'octets à écrire. Elle retourne le nombre d'octets effectivement écrits.
+
+Exemple d'utilisation: write(fd, buffer, sizeof(buffer));
+
+usleep: Une fonction de la bibliothèque <unistd.h> qui permet de suspendre l'exécution du programme pendant un certain temps, spécifié en microsecondes (1 millionième de seconde).
+
+Exemple d'utilisation: usleep(1000000); // Suspend l'exécution pendant 1 seconde
+
+gettimeofday: Une fonction de la bibliothèque <sys/time.h> qui permet d'obtenir l'heure actuelle avec une résolution en microsecondes. Elle prend deux arguments: un pointeur vers une structure timeval qui recevra le temps actuel, et un pointeur vers une structure timezone (généralement NULL).
+
+Exemple d'utilisation:
+
+struct timeval tv;
+gettimeofday(&tv, NULL);
+
+8-12. Les fonctions pthread_* font partie de la bibliothèque <pthread.h> et sont utilisées pour gérer les threads (processus légers) dans un programme en C. Voici une explication de chaque fonction:
+
+pthread_create: Crée un nouveau thread et exécute une fonction donnée dans ce thread.
+pthread_detach: Détache un thread, ce qui permet au système de récupérer ses ressources lorsque le thread se termine.
+pthread_join: Attend qu'un thread spécifié se termine et récupère sa valeur de retour.
+
+pthread_mutex_init: Initialise un verrou (mutex) pour être utilisé ultérieurement dans les opérations de verrouillage et déverrouillage. Cette fonction prend deux arguments: un pointeur vers un objet pthread_mutex_t et un pointeur vers un objet pthread_mutexattr_t (généralement NULL pour utiliser les attributs par défaut).
+
+Exemple d'utilisation:
+
+
+pthread_mutex_t mutex;
+pthread_mutex_init(&mutex, NULL);
+
+
+pthread_mutex_destroy: Détruit un verrou (mutex) et libère les ressources associées. Cette fonction prend un argument: un pointeur vers un objet pthread_mutex_t.
+
+Exemple d'utilisation: pthread_mutex_destroy(&mutex);
+
+pthread_mutex_lock: Verrouille un verrou (mutex). Si le verrou est déjà verrouillé, le thread appelant est bloqué jusqu'à ce que le verrou soit déverrouillé. Cette fonction prend un argument: un pointeur vers un objet pthread_mutex_t.
+
+Exemple d'utilisation: pthread_mutex_lock(&mutex);
+
+pthread_mutex_unlock: Déverrouille un verrou (mutex) précédemment verrouillé. Cette fonction prend un argument: un pointeur vers un objet pthread_mutex_t.
+
+Exemple d'utilisation: pthread_mutex_unlock(&mutex);
+
+Les verrous (mutex) sont utilisés pour assurer la synchronisation et l'exclusion mutuelle entre les threads. Ils permettent de protéger les sections critiques du code où plusieurs threads accèdent à des ressources partagées, garantissant ainsi qu'un seul thread à la fois puisse accéder à la ressource.
+
+En résumé, ces fonctions sont couramment utilisées pour gérer la mémoire, afficher des informations à l'écran, manipuler des fichiers et descripteurs, contrôler le temps d'exécution, et gérer les threads et la synchronisation entre eux dans les programmes en C.
+
+
+Fonctions pthread :
+
+Les fonctions pthread font partie de la bibliothèque POSIX Threads (Pthreads) qui fournit un ensemble d'outils pour créer et gérer des threads dans un programme en C. Les threads sont des unités d'exécution plus légères que les processus, partageant la même mémoire et les mêmes ressources que le processus principal. Les threads peuvent être utilisés pour paralléliser des tâches et améliorer les performances des programmes.
+
+Voici un aperçu des principales fonctions Pthreads et leur utilisation:
+
+Création d'un thread : pthread_create
+
+Pour créer un thread, on utilise la fonction pthread_create. Elle prend quatre arguments :
+
+Un pointeur vers un objet pthread_t qui stockera l'identifiant du thread créé.
+Un pointeur vers un objet pthread_attr_t qui détermine les attributs du thread (passer NULL pour les attributs par défaut).
+Un pointeur vers la fonction qui sera exécutée par le nouveau thread.
+Un pointeur vers les arguments de la fonction exécutée par le nouveau thread.
+
+Exemple d'utilisation:
+
+pthread_t mon_thread;
+int arg = 42;
+pthread_create(&mon_thread, NULL, ma_fonction, &arg);
+
+Attente de la fin d'un thread : pthread_join
+
+La fonction pthread_join permet d'attendre la fin d'un thread et de récupérer sa valeur de retour. Elle prend deux arguments:
+
+L'identifiant du thread à attendre (de type pthread_t).
+Un pointeur vers un pointeur void qui stockera la valeur de retour du thread (passer NULL si vous n'avez pas besoin de la valeur de retour).
+
+Exemple d'utilisation:
+
+void *retour;
+pthread_join(mon_thread, &retour);
+
+Détachement d'un thread : pthread_detach
+
+La fonction pthread_detach permet de détacher un thread, ce qui signifie que le système récupérera automatiquement les ressources du thread lorsque celui-ci se termine. Un thread détaché ne peut plus être joint avec pthread_join. Cette fonction prend un argument:
+
+L'identifiant du thread à détacher (de type pthread_t).
+Exemple d'utilisation: pthread_detach(mon_thread);
+
+Synchronisation avec les verrous (mutex) :
+
+Les verrous (mutex) sont utilisés pour assurer l'exclusion mutuelle et la synchronisation entre les threads. Ils protègent les sections critiques du code où plusieurs threads accèdent à des ressources partagées.
+
+Initialisation d'un verrou: pthread_mutex_init
+Destruction d'un verrou: pthread_mutex_destroy
+Verrouillage d'un verrou: pthread_mutex_lock
+Déverrouillage d'un verrou: pthread_mutex_unlock
+
+Exemple d'utilisation:
+
+pthread_mutex_t mutex;
+pthread_mutex_init(&mutex, NULL);
+
+// Section critique
+pthread_mutex_lock(&mutex);
+// Accès à la ressource partagée
+pthread_mutex_unlock(&mutex);
+
+pthread_mutex_destroy(&mutex);
+
+
+En résumé, les fonctions Pthreads permettent de créer et gérer des threads, de synchroniser leur exécution et de protéger les accès aux ressources partagées. L'utilisation de threads peut améliorer les performances des programmes en parallélisant des tâches et en tirant parti des architectures multi-cœurs.
+
+Les variables conditionnelles:
+
+Les variables conditionnelles permettent de synchroniser les threads en fonction de conditions spécifiques. Elles sont généralement utilisées en combinaison avec des mutex pour coordonner l'exécution de plusieurs threads.
+
+Initialisation d'une variable conditionnelle: pthread_cond_init
+Destruction d'une variable conditionnelle: pthread_cond_destroy
+Attente d'une condition: pthread_cond_wait
+Signalisation d'une condition: pthread_cond_signal
+Signalisation d'une condition à tous les threads en attente: pthread_cond_broadcast
+
+Exemple d'utilisation:
+
+pthread_mutex_t mutex;
+pthread_cond_t cond;
+
+pthread_mutex_init(&mutex, NULL);
+pthread_cond_init(&cond, NULL);
+
+// Thread 1
+pthread_mutex_lock(&mutex);
+while (condition == false) {
+    pthread_cond_wait(&cond, &mutex);
+}
+// Faire quelque chose
+pthread_mutex_unlock(&mutex);
+
+// Thread 2
+pthread_mutex_lock(&mutex);
+// Modifier la condition
+condition = true;
+pthread_cond_signal(&cond);
+pthread_mutex_unlock(&mutex);
+
+pthread_cond_destroy(&cond);
+pthread_mutex_destroy(&mutex);
+
+Dans cet exemple, le thread 1 attend que la condition devienne vraie, tandis que le thread 2 modifie la condition et signale le changement au thread 1. Les variables conditionnelles sont utiles pour coordonner l'exécution des threads en fonction de l'état des ressources partagées.
+
+En utilisant les fonctions Pthreads, vous pouvez créer des programmes en C qui tirent parti de la parallélisation et des architectures multi-cœurs. Il est important de bien comprendre les concepts de synchronisation et d'exclusion mutuelle pour éviter les problèmes courants tels que les interblocages (deadlocks) et les conditions de concurrence (race conditions).
+
+
+Fonction time :
+
+La fonction time est une fonction de la bibliothèque standard C <time.h> qui permet d'obtenir le temps actuel en secondes depuis l'époque Unix (1er janvier 1970 à 00:00:00 UTC). La valeur de temps retournée est de type time_t.
+
+Voici comment utiliser la fonction time :
+
+Incluez l'en-tête <time.h> en haut de votre fichier source C:
+
+#include <time.h>
+
+Utilisez la fonction time pour obtenir le temps actuel en secondes:
+
+time_t temps_actuel;
+temps_actuel = time(NULL);
+
+Dans cet exemple, nous avons appelé la fonction time avec l'argument NULL, ce qui signifie que nous ne voulons pas remplir une structure time_t existante avec le temps actuel. Au lieu de cela, la fonction time retourne directement la valeur du temps actuel en secondes.
+
+Il est courant d'utiliser la fonction time en conjonction avec d'autres fonctions de la bibliothèque <time.h> pour manipuler et afficher les informations de temps. Par exemple, vous pouvez utiliser la fonction localtime pour convertir le temps actuel en une structure tm représentant le temps local, puis utiliser la fonction strftime pour formater et afficher le temps local sous forme de chaîne de caractères.
+
+Voici un exemple complet qui affiche le temps local actuel:
+
+#include <stdio.h>
+#include <time.h>
+
+int main() {
+    time_t temps_actuel;
+    struct tm *temps_local;
+    char buffer[80];
+
+    temps_actuel = time(NULL);
+    temps_local = localtime(&temps_actuel);
+
+    strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", temps_local);
+    printf("Le temps local actuel est: %s\n", buffer);
+
+    return 0;
+}
+
+Dans cet exemple, nous avons utilisé la fonction time pour obtenir le temps actuel, puis localtime pour le convertir en temps local. Enfin, nous avons utilisé la fonction strftime pour formater le temps local en une chaîne de caractères lisible et l'afficher à l'écran.
+
+Difference thread et processus :
+
+Les threads et les processus sont tous deux des unités d'exécution dans un système d'exploitation, mais ils ont des différences fondamentales en termes de gestion des ressources, de mémoire et de communication. Voici les principales différences entre un thread et un processus:
+
+Mémoire et ressources: Un processus possède son propre espace d'adressage mémoire et ses propres ressources (fichiers ouverts, descripteurs, variables d'environnement, etc.). Les processus sont isolés les uns des autres, ce qui signifie qu'un processus ne peut pas accéder directement à la mémoire ou aux ressources d'un autre processus. En revanche, un thread est une unité d'exécution légère au sein d'un processus et partage l'espace d'adressage mémoire et les ressources du processus avec les autres threads de ce processus. Cela permet une communication et un partage de données plus rapides et plus simples entre les threads.
+
+Création et terminaison: La création et la terminaison d'un processus sont généralement plus coûteuses en termes de temps et de ressources système que celles d'un thread. Les processus sont créés en utilisant des appels système tels que fork et exec sous Unix, tandis que les threads sont créés en utilisant des fonctions de bibliothèque spécifiques, telles que pthread_create pour les threads POSIX. La création d'un thread est plus rapide et consomme moins de ressources, car il n'est pas nécessaire d'allouer un nouvel espace d'adressage mémoire et de dupliquer les ressources du processus.
+
+Communication inter-processus (IPC): Les processus doivent utiliser des mécanismes spécifiques pour communiquer entre eux, tels que les tuyaux (pipes), les files de messages (message queues), les segments de mémoire partagée (shared memory segments) ou les sockets. Les threads, quant à eux, partagent le même espace mémoire et peuvent donc communiquer directement en utilisant des variables globales ou partagées, des verrous (mutex) et des variables conditionnelles.
+
+Impact des erreurs: Les erreurs dans un thread, telles qu'une violation de segmentation ou une exception non gérée, peuvent potentiellement affecter l'ensemble du processus et tous les autres threads qui y sont associés. Dans le cas des processus, une erreur dans un processus n'affecte généralement pas les autres processus, car ils sont isolés les uns des autres.
+
+Synchronisation et concurrence: Les threads d'un même processus s'exécutent en parallèle et peuvent accéder aux mêmes ressources. Cela nécessite des mécanismes de synchronisation tels que les verrous (mutex), les variables conditionnelles et les sémaphores pour éviter les problèmes d'accès concurrent et les conditions de concurrence. Les processus, quant à eux, n'ont pas besoin de ces mécanismes lorsqu'ils accèdent à leurs propres ressources, car ils sont isolés les uns des autres.
+
+
+Semaphores :
+
+Les sémaphores sont des outils de synchronisation et de communication entre les processus dans les systèmes d'exploitation. Ils sont utilisés pour gérer l'accès à des ressources partagées et pour résoudre les problèmes de concurrence entre les processus. Voici un cours sur les sémaphores pour vous aider à comprendre leur fonctionnement et leur utilisation.
+
+Introduction aux sémaphores
+Un sémaphore est une valeur entière qui peut être modifiée à l'aide de deux opérations atomiques : wait (P) et signal (V). Les opérations atomiques sont des opérations qui ne peuvent pas être interrompues, garantissant ainsi qu'elles s'exécutent complètement ou pas du tout.
+
+Opérations sur les sémaphores
+Wait (P) : Cette opération décrémente la valeur du sémaphore. Si la valeur du sémaphore est négative, le processus qui a effectué l'opération attend jusqu'à ce que la valeur du sémaphore soit positive ou nulle.
+Signal (V) : Cette opération incrémente la valeur du sémaphore. Si la valeur du sémaphore était négative, cela signifie qu'un ou plusieurs processus attendent. Dans ce cas, un processus en attente est réveillé.
+Utilisation des sémaphores
+Les sémaphores sont principalement utilisés pour résoudre les problèmes de concurrence entre les processus et pour coordonner l'accès aux ressources partagées. Ils sont également utilisés pour résoudre les problèmes classiques de synchronisation, tels que les problèmes de producteur-consommateur et de lecteurs-rédacteurs.
+
+Exemple d'utilisation d'un sémaphore :
+
+Supposons que nous ayons une ressource partagée avec une capacité limitée. Un sémaphore peut être utilisé pour contrôler l'accès à cette ressource. Voici un exemple de code utilisant un sémaphore pour gérer l'accès à une ressource partagée :
+
+#include <semaphore.h>
+#include <pthread.h>
+
+sem_t semaphore;
+
+void *access_shared_resource(void *arg) {
+    sem_wait(&semaphore); // Wait (P) operation
+
+    // Access shared resource here
+
+    sem_post(&semaphore); // Signal (V) operation
+}
+
+int main() {
+    sem_init(&semaphore, 0, 3); // Initialize semaphore with value 3 (resource capacity)
+
+    pthread_t threads[10];
+
+    // Create 10 threads to access the shared resource
+    for (int i = 0; i < 10; i++) {
+        pthread_create(&threads[i], NULL, access_shared_resource, NULL);
+    }
+
+    // Wait for all threads to complete
+    for (int i = 0; i < 10; i++) {
+        pthread_join(threads[i], NULL);
+    }
+
+    sem_destroy(&semaphore); // Destroy the semaphore
+
+    return 0;
+}
+
+Dans cet exemple, un sémaphore est utilisé pour contrôler l'accès à une ressource partagée avec une capacité de 3. Les threads attendent leur tour pour accéder à la ressource en utilisant les opérations wait (P) et signal (V) du sémaphore.
+
+Voilà un aperçu des sémaphores et de leur utilisation. Les sémaphores sont des outils puissants pour résrire les problèmes de concurrence et de synchronisation entre les processus. Pour aller plus loin, voici quelques concepts supplémentaires liés aux sémaphores :
+
+Sémaphores binaires et sémaphores généraux
+Il existe deux types de sémaphores : les sémaphores binaires et les sémaphores généraux.
+
+Sémaphore binaire : Un sémaphore binaire ne peut prendre que deux valeurs : 0 et 1. Il est souvent utilisé pour implémenter des verrous (mutex) ou des signaux entre les processus. Un mutex est un type particulier de sémaphore binaire qui permet de garantir l'accès exclusif à une ressource partagée.
+Sémaphore général : Un sémaphore général peut prendre une plage de valeurs entières. Il est utilisé pour gérer l'accès à des ressources partagées avec des capacités limitées, comme dans l'exemple précédent.
+Sémaphores nommés et non nommés
+Les sémaphores peuvent également être classés en sémaphores nommés et non nommés :
+
+Sémaphore non nommé : Un sémaphore non nommé est généralement utilisé pour la synchronisation entre les threads d'un même processus. Dans l'exemple précédent, nous avons utilisé un sémaphore non nommé.
+Sémaphore nommé : Un sémaphore nommé est utilisé pour la synchronisation entre les processus. Les sémaphores nommés sont identifiés par un nom unique dans le système, ce qui permet aux processus de les partager.
+Sémaphores et moniteurs
+Les moniteurs sont un autre mécanisme de synchronisation qui permet de gérer l'accès à des ressources partagées et d'assurer l'exclusion mutuelle. Ils sont basés sur la notion de blocs synchronisés et de conditions d'attente. Les sémaphores et les moniteurs sont deux mécanismes distincts, mais ils peuvent être utilisés pour résoudre les mêmes problèmes de synchronisation.
+
+En résumé, les sémaphores sont des outils essentiels pour la synchronisation et la communication entre les processus. Ils permettent de gérer l'accès à des ressources partagées et de résoudre les problèmes de concurrence entre les processus. Les sémaphores peuvent être binaires ou généraux, nommés ou non nommés, et ils peuvent être utilisés en combinaison avec d'autres mécanismes de synchronisation, tels que les moniteurs, pour résoudre des problèmes complexes de synchronisation et de concurrence.
