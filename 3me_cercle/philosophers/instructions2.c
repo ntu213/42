@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 09:10:41 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/05/22 10:30:50 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/05 08:57:58 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	ft_printtime(t_philo *philo)
 
 void	ft_isdead(t_myphilo me, t_philo *philo)
 {
+		pthread_mutex_unlock(&philo->verif);
+
 	long long	time;
 
 	pthread_mutex_lock(&philo->time);
@@ -82,6 +84,7 @@ void	ft_isdead(t_myphilo me, t_philo *philo)
 //	pthread_mutex_unlock(&philo->time);
 		pthread_mutex_unlock(&philo->verif);
 	}
+
 }
 
 int	ft_fun(t_philo *philo)
@@ -106,8 +109,7 @@ void	*ft_death_thread(t_myphilo *me)
 		pthread_mutex_lock(&philo->verif);
 		if (philo->death || philo->end_eat >= philo->count)
 			break ;
-		pthread_mutex_unlock(&philo->verif);
-		ft_isdead(*me, philo);
+		ft_isdead(*me, me->philo);
 		usleep(1000);
 	}
 	pthread_mutex_unlock(&philo->verif);
