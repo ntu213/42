@@ -6,13 +6,13 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:53:16 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/05/15 11:16:38 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/05 09:16:52 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_take_fork(int id, t_myphilo* me, t_philo *philo)
+int	ft_take_fork(int id, t_myphilo *me, t_philo *philo)
 {
 	pthread_mutex_lock(me->fork_l);
 	pthread_mutex_lock(&philo->verif);
@@ -22,8 +22,6 @@ int	ft_take_fork(int id, t_myphilo* me, t_philo *philo)
 		pthread_mutex_lock(me->fork_r);
 		return (0);
 	}
-//		return (ft_unlock(&philo->print, &philo->verif, NULL, NULL));
-//		return (ft_unlock(&philo->print, me->fork_l, &philo->verif, NULL));
 	pthread_mutex_lock(&philo->print);
 	ft_printtime(philo);
 	pthread_mutex_unlock(&philo->verif);
@@ -32,13 +30,7 @@ int	ft_take_fork(int id, t_myphilo* me, t_philo *philo)
 	pthread_mutex_lock(me->fork_r);
 	pthread_mutex_lock(&philo->verif);
 	if (philo->death || philo->end_eat >= philo->count)
-	{
-		pthread_mutex_unlock(&philo->verif);
-		return (0);
-	}
-//		return (ft_unlock(&philo->print, &philo->verif, NULL, NULL));
-//		return (ft_unlock(&philo->print, me->fork_l,
-//			me->fork_r, &philo->verif));
+		return (pthread_mutex_unlock(&philo->verif), 0);
 	pthread_mutex_lock(&philo->print);
 	ft_printtime(philo);
 	pthread_mutex_unlock(&philo->verif);
@@ -59,15 +51,11 @@ void	ft_eat(t_myphilo *me, t_philo *philo)
 
 	if (!ft_take_fork(me->id, me, philo))
 		return (ft_unlock(NULL, me->fork_l, me->fork_r, NULL));
-//	pthread_mutex_lock(&philo->verif);
-//	if (philo->death || philo->end_eat >= philo->count)
-//		return (ft_unlock(&philo->verif, me->fork_l, me->fork_r, NULL));
-//	pthread_mutex_unlock(&philo->verif);
 	pthread_mutex_lock(&philo->verif);
 	eat = philo->time_to_eat;
 	if (philo->death || philo->end_eat >= philo->count)
 		return (ft_unlock(NULL, me->fork_l,
-			me->fork_r, &philo->verif));
+				me->fork_r, &philo->verif));
 	pthread_mutex_lock(&philo->print);
 	ft_printtime(philo);
 	pthread_mutex_unlock(&philo->verif);

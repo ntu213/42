@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:48:49 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/05/22 09:03:46 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/05 09:30:04 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_philo
 	pthread_mutex_t	time;
 	pthread_mutex_t	print;
 	pthread_mutex_t	verif;
-//	pthread_mutex_t	eat_mutex;
 	pthread_mutex_t	*mutex;
 }			t_philo;
 
@@ -60,18 +59,11 @@ typedef struct s_rules
 	int	time_to_sleep;
 	int	count_of_eat;
 }			t_rules;
-/*
-typedef struct s_tmp
-{
-	t_myphilo		*me;
-	t_philo			*philo;
-	pthread_mutex_t	*mtx;
-}			t_tmp;
-*/
-void ft_print(char *str, t_philo *philo);
 
 int		ft_atoi(const char *str);
-int		ft_take_fork(int id, t_myphilo* me, t_philo *philo);
+int		ft_take_fork(int id, t_myphilo *me, t_philo *philo);
+int		ft_ok_values(t_rules *rules, int argc, char **argv);
+int		ft_error_philo(char *str, int n, void *gofree, void (*ft)(void *));
 void	ft_drop_fork(t_myphilo *me);
 void	ft_printtime(t_philo *philo);
 void	ft_eat(t_myphilo *me, t_philo *philo);
@@ -81,8 +73,8 @@ void	ft_isdead(t_myphilo me, t_philo *philo);
 void	ft_add_eat(t_myphilo *me, t_philo *philo);
 void	ft_reset_meat(t_myphilo *me, t_philo *philo);
 void	ft_unlock(pthread_mutex_t *m1, pthread_mutex_t *m2,
-	pthread_mutex_t *m3, pthread_mutex_t *m4);
+			pthread_mutex_t *m3, pthread_mutex_t *m4);
+void	*ft_thread(t_philo *philo);
 void	*ft_death_thread(t_myphilo *me);
-//t_tmp	ft_get_tmp(t_myphilo *me, t_philo *philo);
 
 #endif

@@ -2,7 +2,7 @@ NAME = minitalk
 
 NAME = philo
 
-SRC = instructions.c	instructions2.c	new.c	libft.c
+SRC = instructions.c	instructions2.c	new.c	libft.c	new2.c
 
 FLAGS = -Wall -Werror -Wextra -pthread
 

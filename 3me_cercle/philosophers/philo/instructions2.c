@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 09:10:41 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/06/05 08:57:58 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/05 09:14:03 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_add_eat(t_myphilo *me, t_philo *philo)
 {
-//ft_print("test eat", philo);
 	pthread_mutex_lock(&philo->verif);
 	me->count_of_eat++;
 	if (me->count_of_eat == philo->count_of_eat)
@@ -55,19 +54,16 @@ void	ft_printtime(t_philo *philo)
 
 void	ft_isdead(t_myphilo me, t_philo *philo)
 {
-		pthread_mutex_unlock(&philo->verif);
-
 	long long	time;
 
+	pthread_mutex_unlock(&philo->verif);
 	pthread_mutex_lock(&philo->time);
 	gettimeofday(&philo->tv, NULL);
 	time = (philo->tv.tv_sec * 1000) + (philo->tv.tv_usec / 1000);
 	pthread_mutex_unlock(&philo->time);
 	pthread_mutex_lock(&philo->verif);
-//	pthread_mutex_lock(&philo->time);
 	if (time - me.last_meat >= me.time_to_die && !philo->death)
 	{
-//	pthread_mutex_unlock(&philo->time);
 		pthread_mutex_unlock(&philo->verif);
 		pthread_mutex_lock(&philo->verif);
 		if (philo->death || philo->end_eat >= philo->count)
@@ -81,10 +77,8 @@ void	ft_isdead(t_myphilo me, t_philo *philo)
 	}
 	else
 	{
-//	pthread_mutex_unlock(&philo->time);
 		pthread_mutex_unlock(&philo->verif);
 	}
-
 }
 
 int	ft_fun(t_philo *philo)
@@ -98,12 +92,9 @@ int	ft_fun(t_philo *philo)
 
 void	*ft_death_thread(t_myphilo *me)
 {
-//	t_myphilo	*me;
 	t_philo		*philo;
 
-//	me = tmp->me;
 	philo = me->philo;
-//ft_print("test death", philo);
 	while (1)
 	{
 		pthread_mutex_lock(&philo->verif);
