@@ -1,0 +1,15 @@
+diviser en 10 categories les arguments
+push les categories 1 a 6 en meme temps, en faisant des rr pour les classer avec 2 - 5 en haut et 1 & 6 en bas
+push 7 en haut et 8 en bas
+push 9 en haut
+push 10 en haut
+
+push a:
+
+push 10 en mettant le plus grand en haut et le plus petit en bas, puis full RRA
+repeter pour 9, 8, 7
+push 6 et 1, 6 en haut et 1 en bas, puis trier 6
+idem avec 5 et 2, et 4 et 3
+trier 3 puis 2, puis 1
+
+END

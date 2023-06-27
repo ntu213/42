@@ -1,8 +1,8 @@
 NAME = minitalk
 
-NAME = philo
+NAME = philo_bonus
 
-SRC = instructions.c	instructions2.c	new.c	libft.c	new2.c
+SRC = instructions.c	instructions2.c	main.c	instructions3.c	main2.c
 
 FLAGS = -Wall -Werror -Wextra -pthread
 

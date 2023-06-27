@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 11:29:46 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/06/05 09:28:00 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/05 13:16:02 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,11 @@ void	ft_unlock(pthread_mutex_t *m1, pthread_mutex_t *m2,
 	if (m4)
 		pthread_mutex_unlock(m4);
 	return ;
+}
+
+void	ft_scenario(t_rules *rules)
+{
+	printf("[%.7d] Philosopher 1 has taken left fork\n", 0);
+	usleep(rules->time_to_die);
+	printf("[%.7d] Philosopher 1 is dead\n", rules->time_to_die);
 }
