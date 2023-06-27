@@ -6,7 +6,7 @@
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 08:57:36 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/06/27 15:53:09 by vgiraudo         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:09:17 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -801,6 +801,7 @@ int	ft_is_on_top(t_lst *a, t_lst *b)
 	int	i;
 	int	target;
 
+	(void)b;
 	i = 0;
 	target = ft_lst_min(a);
 	while (a && a->val != target)
@@ -826,7 +827,7 @@ t_lst	*ft_kebab(t_lst *a)
 	{
 		if (a->next && a->next->pos == a->pos - 1)
 			ft_sa(&a, &b);
-		else if (b && a->pos == b->pos + 1)
+		else if ((b && a->pos == b->pos + 1) || a->pos == 0)
 			ft_pb(&a, &b);
 		else if (ft_is_on_top(a, b))
 			a = ft_ra(a, b, "ra\n");
@@ -870,7 +871,7 @@ int	main(int argc, char **argv)
 		return (ft_putstr("Error\n"), 0);
 	if (ft_hasdubs(lst))
 		return (ft_free_lst(lst), ft_putstr("Error\n"), 0);
-	if (ft_lstsize(lst) < 30)
+	if (ft_lstsize(lst) < 50)
 		lst = ft_kebab(lst);
 	else
 		lst = ft_quicksort(lst);
