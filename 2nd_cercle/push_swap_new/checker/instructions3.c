@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   instructions3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgiraudo <vgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 09:01:39 by vgiraudo          #+#    #+#             */
-/*   Updated: 2023/06/25 18:13:35 by vgiraudo         ###   ########.fr       */
+/*   Created: 2023/07/01 16:59:22 by vgiraudo          #+#    #+#             */
+/*   Updated: 2023/07/01 17:00:24 by vgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "checker.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct s_lst
+void	ft_ss(t_lst **a, t_lst **b)
 {
-	int				val;
-	int				pos;
-	int				category;
-	char			**str;
-	struct s_lst	*first;
-	struct s_lst	*next;
-}			t_lst;
+	t_lst	*tmp;
 
-int		ft_atoi(const char *str);
-size_t	ft_strlen(const char *c);
-char	*ft_strdup(const char *s);
-void	ft_putstr(char *str);
-
-#endif
+	tmp = *a;
+	*a = (*a)->next;
+	tmp->next = *a;
+	tmp->next = (*a)->next;
+	(*a)->next = tmp;
+	tmp = *b;
+	*b = (*b)->next;
+	tmp->next = *b;
+	tmp->next = (*b)->next;
+	(*b)->next = tmp;
+}
