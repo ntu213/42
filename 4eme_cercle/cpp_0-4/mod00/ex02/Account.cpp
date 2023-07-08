@@ -50,7 +50,7 @@ Account::~Account()
 
 void	Account::_displayTimestamp()
 {
-	std::time_t	res = std::time(nullptr);
+	std::time_t	res = std::time(NULL);
 	std::cout << std::setfill('0') << "["
 		<< std::setw(4) << std::localtime(&res)->tm_year + 1900
 		<< std::setw(2) << std::localtime(&res)->tm_mon + 1

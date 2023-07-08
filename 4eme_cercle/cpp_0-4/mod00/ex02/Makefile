@@ -1,8 +1,7 @@
-NAME = ex01
+NAME = ex02
 
-SRC =	Contact.cpp\
-		PhoneBook.cpp\
-		main.cpp
+SRC =	tests.cpp\
+		Account.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
