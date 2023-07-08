@@ -10,6 +10,7 @@ Contact::Contact()
 	this->_darkest_secret = "";
 }
 
+Contact::~Contact(){}
 
 Contact::Contact(std::string s1, std::string s2, std::string s3, std::string s4, std::string s5)
 {

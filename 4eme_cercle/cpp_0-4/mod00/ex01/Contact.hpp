@@ -14,6 +14,7 @@ class Contact
 		std::string	_darkest_secret;
 	public:
 		Contact();
+		~Contact();
 		Contact(std::string s1, std::string s2, std::string s3, std::string s4, std::string s5);
 		void	contact_print();
 		std::string	get_first_name();
