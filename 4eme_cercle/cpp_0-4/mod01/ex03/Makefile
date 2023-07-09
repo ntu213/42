@@ -1,4 +1,4 @@
-NAME = ex02
+NAME = ex03
 
 SRC =	main.cpp\
 		Weapon.cpp\
