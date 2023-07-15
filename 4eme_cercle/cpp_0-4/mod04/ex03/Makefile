@@ -2,6 +2,7 @@ NAME = ex03
 
 SRC =	main.cpp\
 		AMateria.cpp\
+		Materias.cpp\
 		Character.cpp\
 		MateriaSource.cpp
 

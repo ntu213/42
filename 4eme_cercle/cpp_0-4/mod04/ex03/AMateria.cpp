@@ -1,39 +1,41 @@
 
 #include "AMateria.hpp"
 
-AMateria(std::string const & typ)
+AMateria::AMateria(const std::string & typ)
 {
 	type = typ;
 	std::cout << "New item of type \"" << type << "\" created\n";
 }
 
-~AMateria()
+AMateria::~AMateria()
 {
-	std::cout << "Item \"" << this->type << "\" destoyed\n";
+	std::cout << "Item \"" << this->type << "\" destroyed\n";
 }
 
-AMateria(const AMateria & src)
+AMateria::AMateria(const AMateria & src)
 {
 	type = src.type;
-	std::cout << "Item \"" << type << "\" Cloned\n";
+	std::cout << "Item \"" << type << "\" cloned\n";
 }
 
-AMateria & operator=(const AMateria & src)
+AMateria & AMateria::operator=(const AMateria & src)
 {
 	this->type = src.type;
-	std::cout << "Item \"" << type << "\" Cloned by operator\n";
+	std::cout << "Item \"" << type << "\" cloned by operator\n";
+	return (*this);
 }
 
-std::string const & getType() const
+std::string const & AMateria::getType() const
 {
 	return (this->type);
 }
 
-virtual AMateria* clone() const = 0
+AMateria* AMateria::clone() const
 {
-	AMateria *res = new AMateria(*this);
-	return (res);
+	return (new AMateria(*this));
 }
 
-virtual void use(ICharacter& target)
-{}
+void AMateria::use(Character& target)
+{
+	(void) target;
+}

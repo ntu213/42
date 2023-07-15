@@ -1,19 +1,19 @@
 
 #include <iostream>
-#include "Character.hpp"
 
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
+#include "Character.hpp"
 
 class AMateria
 {
 	private:
 		AMateria();
 	protected:
-		std::string typ;
+		std::string type;
 	public:
-		AMateria(std::string const & typ);
-		~AMateria();
+		AMateria(const std::string & typ);
+		virtual ~AMateria();
 		AMateria(const AMateria & src);
 		AMateria & operator=(const AMateria & src);
 		std::string const & getType() const; //Returns the materia type
