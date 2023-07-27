@@ -25,6 +25,7 @@ class Form
 		bool getSigned() const;
 		int getRank() const;
 		int getExec() const;
+		virtual int execute(Bureaucrat const & executor) const = 0;
 		class GradeTooLowException: public std::exception
 		{
 			public:
