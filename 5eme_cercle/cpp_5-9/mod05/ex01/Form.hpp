@@ -20,25 +20,25 @@ class Form
 		Form(const Form & src);
 		~Form();
 		Form & operator=(const Form & src);
-		void beSigned(const Bureaucrat & src) const;
-		std::string Form::getName();
-		bool Form::getSigned();
-		int Form::getMin();
-		int Form::getMax();
+		void beSigned(const Bureaucrat & src);
+		std::string getName() const;
+		bool getSigned() const;
+		int getMin() const;
+		int getMax() const;
 		class GradeTooHighException: public std::exception
 		{
 			public:
-				virtual const std::string what() const throw();
+				virtual const char *what() const throw();
 		};
 		class GradeTooLowException: public std::exception
 		{
 			public:
-				virtual const std::string what() const throw();
+				virtual const char *what() const throw();
 		};
 		class AlreadySignedExeption: public std::exception
 		{
 			public:
-				virtual const std::string what() const throw();
+				virtual const char *what() const throw();
 		};
 };
 

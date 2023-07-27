@@ -33,7 +33,7 @@ Form::Form(std::string name, int min, int max)
 
 Form::~Form()
 {
-	std::cout << "BURN " << this->name << " IN THE FIRE OF HELL\n";
+	std::cout << "BURN " << this->_name << " IN THE FIRE OF HELL\n";
 }
 
 Form::Form(const Form & src)
@@ -50,29 +50,30 @@ Form & Form::operator=(const Form & src)
 	this->_signed = src.getSigned();
 	this->_minGrade = src.getMin();
 	this->_maxGrade = src.getMax();
+	return (*this);
 }
 
-std::string Form::getName()
+std::string Form::getName() const
 {
 	return (this->_name);
 }
 
-bool Form::getSigned()
+bool Form::getSigned() const
 {
 	return (this->_signed);
 }
 
-int Form::getMin()
+int Form::getMin() const
 {
 	return (this->_minGrade);
 }
 
-int Form::getMax()
+int Form::getMax() const
 {
 	return (this->_maxGrade);
 }
 
-void Form::beSigned(const Bureaucrat & src) const
+void Form::beSigned(const Bureaucrat & src)
 {
 	try
 	{
@@ -84,25 +85,25 @@ void Form::beSigned(const Bureaucrat & src) const
 			throw Form::GradeTooLowException();
 		_signed = true;
 		std::cout << src.getName() << " just signed "
-			<< this->name;
+			<< this->_name << "\n";
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << src.getName() << " couldn't sign " << this->name << " because " << e.what() << '!\n';
+		std::cout << src.getName() << " couldn't sign " << this->_name << " because " << e.what() << "!\n";
 	}
 }
 
-const std::string Form::GradeTooHighException::what() const throw()
+const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("this file underrates your grade permissions");
+	return ("this file underrates grade permissions");
 }
 
-const std::string Form::GradeTooLowException::what() const throw()
+const char *Form::GradeTooLowException::what() const throw()
 {
-	return ("this file overrates your grade permissions");
+	return ("this file overrates grade permissions");
 }
 
-const std::string Form::AlreadySignedExeption::what() const throw()
+const char *Form::AlreadySignedExeption::what() const throw()
 {
 	return ("there is already a signature here");
 }
