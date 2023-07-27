@@ -11,25 +11,20 @@ class Form
 	private:
 		std::string _name;
 		bool _signed;
-		int _minGrade;
-		int _maxGrade;
+		int _rank;
+		int _exec;
 	public:
 		Form();
 		Form(std::string name);
-		Form(std::string name, int min, int max);
+		Form(std::string name, int rank, int exec);
 		Form(const Form & src);
 		~Form();
 		Form & operator=(const Form & src);
 		void beSigned(const Bureaucrat & src);
 		std::string getName() const;
 		bool getSigned() const;
-		int getMin() const;
-		int getMax() const;
-		class GradeTooHighException: public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
+		int getRank() const;
+		int getExec() const;
 		class GradeTooLowException: public std::exception
 		{
 			public:

@@ -100,3 +100,13 @@ const char *Form::AlreadySignedExeption::what() const throw()
 {
 	return ("there is already a signature here");
 }
+
+std::ostream & operator<<( std::ostream & o, Form const & src )
+{
+	o << src.getName() << " is "
+		<< (src.getSigned() ? "signed" : "unsigned")
+		<< ", needs grade " << src.getRank()
+		<< " to be signed and grade " << src.getExec()
+		<< " to be executed";
+	return (o);
+}

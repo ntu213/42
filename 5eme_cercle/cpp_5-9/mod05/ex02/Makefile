@@ -1,7 +1,10 @@
-NAME = ex01
+NAME = ex02
 
 SRC =	Bureaucrat.cpp\
 		Form.cpp\
+		ShrubberyCreationForm.cpp\
+		RobotomyRequestForm.cpp\
+		PresidentialPardonForm.cpp\
 		main.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
