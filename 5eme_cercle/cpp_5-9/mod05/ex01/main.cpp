@@ -19,7 +19,7 @@ int main()
 		<< gerard.getGrade() << " is not enough\n";
 	gerard.incrementGrade();
 	std::cout << "Okay, "
-		<< gerard.getGrade() << " is better\n Now you can sign this:\n";
+		<< gerard.getGrade() << " is better\nNow you can sign this:\n";
 	special.beSigned(gerard);
 	std::cout << "I think "
 		<< eric.getName() << " deserve a demote\n";

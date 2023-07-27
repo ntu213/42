@@ -5,30 +5,30 @@ Form::Form()
 {
 	_name = "Classic file";
 	_signed = false;
-	_minGrade = 150;
-	_maxGrade = 1;
+	_rank = 150;
+	_exec = 150;
 	std::cout << "Hey! I just stole "
-		<< _name << " from the archives! let's take a look at this!\n";
+		<< _name << " from the archives! Let's take a look at this!\n";
 }
 
 Form::Form(std::string name)
 {
 	_name = name;
 	_signed = false;
-	_minGrade = 150;
-	_maxGrade = 1;
+	_rank = 150;
+	_exec = 150;
 	std::cout << "Hey! I just stole "
-		<< _name << " from the archives! let's take a look at this!\n";
+		<< _name << " from the archives! Let's take a look at this!\n";
 }
 
-Form::Form(std::string name, int min, int max)
+Form::Form(std::string name, int rank, int exec)
 {
 	_name = name;
 	_signed = false;
-	_minGrade = min;
-	_maxGrade = max;
+	_rank = rank;
+	_exec = exec;
 	std::cout << "Hey! I just stole "
-		<< _name << " from the archives! let's take a look at this!\n";
+		<< _name << " from the archives! Let's take a look at this!\n";
 }
 
 Form::~Form()
@@ -40,16 +40,16 @@ Form::Form(const Form & src)
 {
 	this->_name = src.getName();
 	this->_signed = src.getSigned();
-	this->_minGrade = src.getMin();
-	this->_maxGrade = src.getMax();
+	this->_rank = src.getRank();
+	this->_exec = src.getExec();
 }
 
 Form & Form::operator=(const Form & src)
 {
 	this->_name = src.getName();
 	this->_signed = src.getSigned();
-	this->_minGrade = src.getMin();
-	this->_maxGrade = src.getMax();
+	this->_rank = src.getRank();
+	this->_exec = src.getExec();
 	return (*this);
 }
 
@@ -63,14 +63,14 @@ bool Form::getSigned() const
 	return (this->_signed);
 }
 
-int Form::getMin() const
+int Form::getRank() const
 {
-	return (this->_minGrade);
+	return (this->_rank);
 }
 
-int Form::getMax() const
+int Form::getExec() const
 {
-	return (this->_maxGrade);
+	return (this->_exec);
 }
 
 void Form::beSigned(const Bureaucrat & src)
@@ -79,9 +79,7 @@ void Form::beSigned(const Bureaucrat & src)
 	{
 		if (this->_signed)
 			throw Form::AlreadySignedExeption();
-		if (this->_maxGrade > src.getGrade())
-			throw Form::GradeTooHighException();
-		if (this->_minGrade < src.getGrade())
+		if (this->_rank > src.getGrade())
 			throw Form::GradeTooLowException();
 		_signed = true;
 		std::cout << src.getName() << " just signed "
@@ -91,11 +89,6 @@ void Form::beSigned(const Bureaucrat & src)
 	{
 		std::cout << src.getName() << " couldn't sign " << this->_name << " because " << e.what() << "!\n";
 	}
-}
-
-const char *Form::GradeTooHighException::what() const throw()
-{
-	return ("this file underrates grade permissions");
 }
 
 const char *Form::GradeTooLowException::what() const throw()
