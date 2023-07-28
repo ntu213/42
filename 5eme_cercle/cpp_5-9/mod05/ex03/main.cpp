@@ -14,9 +14,10 @@ int main()
 	Form special("Special file");
 	Form topSecret("Top Secret file", 30, 1);
 	Form notSecret("Top Not Secret file", 140, 80);
-	PresidentialPardonForm pres;
-	RobotomyRequestForm robot;
-	ShrubberyCreationForm tree;
+	Form *pres;
+	Form *robot;
+	Form *tree;
+	Intern littleGuy;
 
 	std::cout << "\nLet's promote "
 		<< gerard.getName() << "!\n";
