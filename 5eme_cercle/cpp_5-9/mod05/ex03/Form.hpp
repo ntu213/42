@@ -11,6 +11,7 @@ class Form
 {
 	private:
 		std::string _name;
+		std::string _target;
 		bool _signed;
 		int _rank;
 		int _exec;
@@ -18,6 +19,7 @@ class Form
 		Form();
 		Form(std::string name);
 		Form(std::string name, int rank, int exec);
+		Form(std::string name, int rank, int exec, std::struing const target);
 		Form(const Form & src);
 		~Form();
 		Form & operator=(const Form & src);

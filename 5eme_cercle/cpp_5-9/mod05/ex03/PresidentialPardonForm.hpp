@@ -10,6 +10,7 @@ class PresidentialPardonForm: public Form
 {
 	public:
 		PresidentialPardonForm();
+		PresidentialPardonForm(std::string target);
 		~PresidentialPardonForm();
 		int execute(Bureaucrat const & executor) const;
 };

@@ -4,6 +4,7 @@
 Form::Form()
 {
 	_name = "Classic file";
+	_target	= "Anyone";
 	_signed = false;
 	_rank = 150;
 	_exec = 150;
@@ -14,6 +15,7 @@ Form::Form()
 Form::Form(std::string name)
 {
 	_name = name;
+	_target	= "Anyone";
 	_signed = false;
 	_rank = 150;
 	_exec = 150;
@@ -24,6 +26,18 @@ Form::Form(std::string name)
 Form::Form(std::string name, int rank, int exec)
 {
 	_name = name;
+	_target	= "Anyone";
+	_signed = false;
+	_rank = rank;
+	_exec = exec;
+	std::cout << "Hey! I just stole "
+		<< _name << " from the archives! Let's take a look at this!\n";
+}
+
+Form::Form(std::string name, int rank, int exec, std::string taget)
+{
+	_name = name;
+	_target	= target;
 	_signed = false;
 	_rank = rank;
 	_exec = exec;
