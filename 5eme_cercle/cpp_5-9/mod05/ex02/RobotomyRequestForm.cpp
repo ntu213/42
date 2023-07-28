@@ -1,13 +1,13 @@
 
 #include "RobotomyRequestForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): Form("Robotomy Request Form", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(): Form("Robotomy Request Form", 72, 45)
 {}
 
-PresidentialPardonForm::~PresidentialPardonForm()
+RobotomyRequestForm::~RobotomyRequestForm()
 {}
 
-void execute(Bureaucrat const & executor) const
+int RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	try
 	{

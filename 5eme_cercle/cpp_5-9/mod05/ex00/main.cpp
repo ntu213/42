@@ -7,7 +7,7 @@ int main()
 	Bureaucrat bernard = Bureaucrat("Bernard", 12);
 	Bureaucrat eric = Bureaucrat("Eric", 121);
 
-	std::cout << "Let's promote "
+	std::cout << "\nLet's promote "
 		<< gerard.getName() << "!\n";
 	gerard.setGrade(10);
 	std::cout << "Humm... "
@@ -20,6 +20,6 @@ int main()
 	eric.decrementGrade();
 	std::cout << "It's not enough!\n";
 	eric.setGrade(180);
-	std::cout << "Pfff...\n";
+	std::cout << "Pfff...\n\n";
 	return (0);
 }

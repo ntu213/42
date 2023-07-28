@@ -12,14 +12,14 @@ int main()
 	Form topSecret("Top Secret file", 30, 1);
 	Form notSecret("Top Not Secret file", 140, 80);
 
-	std::cout << "Let's promote "
+	std::cout << "\nLet's promote "
 		<< gerard.getName() << "!\n";
 	gerard.setGrade(10);
 	std::cout << "Humm... "
 		<< gerard.getGrade() << " is not enough\n";
 	gerard.incrementGrade();
 	std::cout << "Okay, "
-		<< gerard.getGrade() << " is better\n Now you can sign this:\n";
+		<< gerard.getGrade() << " is better\nNow you can sign this:\n";
 	special.beSigned(gerard);
 	std::cout << "I think "
 		<< eric.getName() << " deserve a demote\n";
@@ -30,6 +30,6 @@ int main()
 	notSecret.beSigned(eric);
 	classic.beSigned(eric);
 	topSecret.beSigned(eric);
-	std::cout << "This one wasn't for you\n";
+	std::cout << "This one wasn't for you\n\n";
 	return (0);
 }

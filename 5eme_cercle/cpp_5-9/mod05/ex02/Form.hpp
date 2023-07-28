@@ -5,6 +5,7 @@
 # define FORM_HPP
 
 #include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form
 {
@@ -25,7 +26,7 @@ class Form
 		bool getSigned() const;
 		int getRank() const;
 		int getExec() const;
-		virtual int execute(Bureaucrat const & executor) const = 0;
+		virtual int execute(Bureaucrat const & executor) const;
 		class GradeTooLowException: public std::exception
 		{
 			public:

@@ -73,6 +73,22 @@ int Form::getExec() const
 	return (this->_exec);
 }
 
+int Form::execute(Bureaucrat const & executor) const
+{
+	try
+	{
+		if (executor.getGrade() > this->getExec())
+			throw Form::GradeTooLowException();
+		std::cout << this->_name << " has been executed\n";
+		return (1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << executor.getName() << " cannot execute this file: " << e.what() << "\n";
+		return (0);
+	}
+}
+
 void Form::beSigned(const Bureaucrat & src)
 {
 	try

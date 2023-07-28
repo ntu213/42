@@ -1,13 +1,13 @@
 
 #include "ShrubberyCreationForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): Form("Shrubbery Creation Form", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(): Form("Shrubbery Creation Form", 145, 137)
 {}
 
-PresidentialPardonForm::~PresidentialPardonForm()
+ShrubberyCreationForm::~ShrubberyCreationForm()
 {}
 
-static std::string & ft_tree()
+static std::string ft_tree()
 {
 	std::string tree = "";
 	tree.append("            ,@@@@@@@,\n");
@@ -34,7 +34,7 @@ int ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	{
 		if (executor.getGrade() > this->getExec())
 			throw Form::GradeTooLowException();
-		file.open(filename, std::ios::out | std::ios::trunc);
+		file.open(filename.c_str(), std::ios::out | std::ios::trunc);
 		file << ft_tree();
 		file.close();
 		return (1);
