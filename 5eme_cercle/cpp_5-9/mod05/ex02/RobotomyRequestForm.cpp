@@ -13,7 +13,13 @@ int RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	{
 		if (executor.getGrade() > this->getExec())
 			throw Form::GradeTooLowException();
-		std::cout << executor.getName() << " has been forgot by Zaphod Beeblebrox\n";
+		std::cout << "* Drill noises *" << std::endl;
+		std::srand(std::time(0));
+		sleep(2);
+		if (std::rand() % 2)
+			std::cout << executor.getName() << " is now a cyborg! Why do you think the gatling-arm was a bad idea?\n";
+		else
+			std::cout << "I'm sorry, but I think the operation of your child failed. Do you want to sell him as spare parts?\n";
 		return (1);
 	}
 	catch(const std::exception& e)

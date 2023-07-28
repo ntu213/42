@@ -42,6 +42,7 @@ Form::Form(const Form & src)
 	this->_signed = src.getSigned();
 	this->_rank = src.getRank();
 	this->_exec = src.getExec();
+	std::cout << this->_name << " has been copied";
 }
 
 Form & Form::operator=(const Form & src)
@@ -50,6 +51,7 @@ Form & Form::operator=(const Form & src)
 	this->_signed = src.getSigned();
 	this->_rank = src.getRank();
 	this->_exec = src.getExec();
+	std::cout << this->_name << " has been copied";
 	return (*this);
 }
 
@@ -95,7 +97,7 @@ void Form::beSigned(const Bureaucrat & src)
 	{
 		if (this->_signed)
 			throw Form::AlreadySignedExeption();
-		if (this->_rank > src.getGrade())
+		if (this->_rank < src.getGrade())
 			throw Form::GradeTooLowException();
 		_signed = true;
 		std::cout << src.getName() << " just signed "
