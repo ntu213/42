@@ -4,6 +4,8 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+#include "Form.hpp"
+
 class Bureaucrat
 {
 	private:

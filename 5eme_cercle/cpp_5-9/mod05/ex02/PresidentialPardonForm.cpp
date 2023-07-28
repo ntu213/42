@@ -7,7 +7,7 @@ PresidentialPardonForm::PresidentialPardonForm(): Form("Presidential Pardon Form
 PresidentialPardonForm::~PresidentialPardonForm()
 {}
 
-int execute(Bureaucrat const & executor) const
+int PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	try
 	{

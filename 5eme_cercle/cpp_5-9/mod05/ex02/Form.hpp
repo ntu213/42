@@ -1,10 +1,10 @@
 
 #include <iostream>
 
-#include "Bureaucrat.hpp"
-
 #ifndef FORM_HPP
 # define FORM_HPP
+
+#include "Bureaucrat.hpp"
 
 class Form
 {
