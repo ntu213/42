@@ -4,7 +4,7 @@
 ShrubberyCreationForm::ShrubberyCreationForm(): Form("Shrubbery Creation Form", 145, 137)
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): Form("Shrubbery Creation Form", 145, 137, target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target): Form("Shrubbery Creation Form", 145, 137, target)
 {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -44,7 +44,7 @@ int ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << this->_target<< " cannot execute this file: " << e.what() << "\n";
+		std::cout << this->getTarget() << " cannot execute this file: " << e.what() << "\n";
 		return (0);
 	}
 }

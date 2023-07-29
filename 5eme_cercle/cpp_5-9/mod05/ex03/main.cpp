@@ -4,6 +4,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
@@ -38,18 +39,22 @@ int main()
 	classic.beSigned(eric);
 	topSecret.beSigned(eric);
 	std::cout << "This one wasn't for you\nIntern! come here!\n";
-	littleGuy.makeForm("Presidential Pardon Form");
-	littleGuy.makeForm("Robotomy Request Form");
-	littleGuy.makeForm("Shrubbery Creation Form");
-	littleGuy.makeForm("hehe i don't exist");
+	pres = littleGuy.makeForm("Presidential Pardon Form", "titi");
+	robot = littleGuy.makeForm("Robotomy Request Form", "titi");
+	tree = littleGuy.makeForm("Shrubbery Creation Form", "titi");
+	littleGuy.makeForm("hehe i don't exist", "titi");
 	std::cout << "Sorry, I have some things to execute!\n";
-	gerard.executeForm(pres);
+	gerard.executeForm(*pres);
 	std::cout << "Huh, wait a second\n";
 	gerard.setGrade(5);
 	std::cout << "Okay, it must be fine\n";
-	gerard.executeForm(pres);
-	gerard.executeForm(tree);
-	gerard.executeForm(robot);
+	gerard.executeForm(*pres);
+	gerard.executeForm(*tree);
+	gerard.executeForm(*robot);
 	std::cout << "OK finished!\n\n";
+
+	delete pres;
+	delete robot;
+	delete tree;
 	return (0);
 }

@@ -1,7 +1,8 @@
-NAME = ex02
+NAME = ex03
 
 SRC =	Bureaucrat.cpp\
 		Form.cpp\
+		Intern.cpp\
 		ShrubberyCreationForm.cpp\
 		RobotomyRequestForm.cpp\
 		PresidentialPardonForm.cpp\

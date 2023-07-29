@@ -34,7 +34,7 @@ Form::Form(std::string name, int rank, int exec)
 		<< _name << " from the archives! Let's take a look at this!\n";
 }
 
-Form::Form(std::string name, int rank, int exec, std::string taget)
+Form::Form(std::string name, int rank, int exec, std::string target)
 {
 	_name = name;
 	_target	= target;
@@ -72,6 +72,11 @@ Form & Form::operator=(const Form & src)
 std::string Form::getName() const
 {
 	return (this->_name);
+}
+
+std::string Form::getTarget() const
+{
+	return (this->_target);
 }
 
 bool Form::getSigned() const

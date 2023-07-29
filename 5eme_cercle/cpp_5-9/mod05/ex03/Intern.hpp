@@ -10,7 +10,11 @@
 class Intern
 {
 	public:
-		Form & makeForm(std::string const type, std::string const target);
+		Intern();
+		~Intern();
+		Intern(const Intern & src);
+		Intern & operator=(const Intern & src);
+		Form * makeForm(std::string const type, std::string const target) const;
 };
 
 #endif

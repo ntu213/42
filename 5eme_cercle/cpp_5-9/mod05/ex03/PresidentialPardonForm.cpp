@@ -16,12 +16,12 @@ int PresidentialPardonForm::execute(Bureaucrat const & executor) const
 	{
 		if (executor.getGrade() > this->getExec())
 			throw Form::GradeTooLowException();
-		std::cout << this->_target << " has been forgot by Zaphod Beeblebrox\n";
+		std::cout << this->getTarget() << " has been forgot by Zaphod Beeblebrox\n";
 		return (1);
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << this->_target << " cannot execute this file: " << e.what() << "\n";
+		std::cout << this->getTarget() << " cannot execute this file: " << e.what() << "\n";
 		return (0);
 	}
 }

@@ -19,12 +19,13 @@ class Form
 		Form();
 		Form(std::string name);
 		Form(std::string name, int rank, int exec);
-		Form(std::string name, int rank, int exec, std::struing const target);
+		Form(std::string name, int rank, int exec, std::string const target);
 		Form(const Form & src);
-		~Form();
+		virtual ~Form();
 		Form & operator=(const Form & src);
 		void beSigned(const Bureaucrat & src);
 		std::string getName() const;
+		std::string getTarget() const;
 		bool getSigned() const;
 		int getRank() const;
 		int getExec() const;
