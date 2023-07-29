@@ -1,0 +1,17 @@
+
+SO ./textures/val/wall_s.xpm
+WE ./textures/val/wall_w.xpm
+NO ./textures/val/wall_n.xpm
+EA ./textures/val/wall_e.xpm
+
+F 220,100,0
+C 225,30,0
+
+111111111111
+100000000001
+100000000001
+10000N00000D
+100000000001
+100000000001
+111111111111
+

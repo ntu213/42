@@ -1,0 +1,22 @@
+
+SO ./textures/val/wall_s.xpm
+WE ./textures/val/wall_w.xpm
+NO ./textures/val/wall_n.xpm
+EA ./textures/val/wall_e.xpm
+
+F 220,100,0
+C 225,30,0
+
+DOOR ./textures/val/door.xpm
+FLOOR ./textures/val/xxxxxxxxxxxxxxxxxxxx.xpm
+CEIL ./textures/val/ceilling.xpm
+GUN ./textures/val/gunz.xpm
+
+111111111111
+100000000001
+100000000001
+10000N000001
+100000000001
+100000000001
+111111111111
+

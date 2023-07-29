@@ -1,0 +1,160 @@
+echo 😀⛔🟣❓
+clear
+make
+
+
+
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   empty
+valgrind  ./cub3d  ./maps/xtest/divers/empty.cub
+
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   not .cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/map404.cubbbbbb
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   map404
+valgrind  ./cub3d  ./maps/xtest/desc_error/map404.cub
+
+
+
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-0-a
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-0-a.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-0-b
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-0-b.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-0-c
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-0-c.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-0-d
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-0-d.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-0-e
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-0-e.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-0-f
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-0-f.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-0-g
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-0-g.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-0-h
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-0-h.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-0-i
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-0-i.cub
+
+
+
+
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-D-a.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-D-a.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-D-b.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-D-b.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-D-c.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-D-c.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d01-not-closes-D-d.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d01-not-closes-D-d.cub
+
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d03-char-after-desc.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d03-char-after-desc.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d04-forbiden-char.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d04-forbiden-char.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d05-player-missing.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d05-player-missing.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d06-player-missing.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d06-player-missing.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d07-player-missing.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d07-player-missing.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d08-player-x2.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d08-player-x2.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   d09-no-desc.cub
+valgrind  ./cub3d  ./maps/xtest/desc_error/d09-no-desc.cub
+
+
+
+
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   i01-xtra-info-01
+valgrind  ./cub3d  ./maps/xtest/info_missing/i01-xtra-info-01.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   i01-xtra-info-02
+valgrind  ./cub3d  ./maps/xtest/info_missing/i01-xtra-info-02.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   i02-duplicate-no
+valgrind  ./cub3d  ./maps/xtest/info_missing/i02-duplicate-no.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   i02-duplicate-floor.cub
+valgrind  ./cub3d  ./maps/xtest/info_missing/i02-duplicate-floor.cub.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   i02-duplicate-f.cub
+valgrind  ./cub3d  ./maps/xtest/info_missing/i02-duplicate-f.cub.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   i03-missing-no
+valgrind  ./cub3d  ./maps/xtest/info_missing/i03-missing-no.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   i03-missing-f-and-floor
+valgrind  ./cub3d  ./maps/xtest/info_missing/i03-missing-f-and-floor.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   i03-missing-c-and-ceil
+valgrind  ./cub3d  ./maps/xtest/info_missing/i03-missing-c-and-ceil.cub
+
+
+
+
+
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e01-texure404-we
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e01-texure404-we.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e01-texure404-wn
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e01-texure404-wn.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e01-texure404-ws
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e01-texure404-ws.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e01-texure404-ww
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e01-texure404-ww.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e02-texure404-door
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e02-texure404-door.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e02-texure404-door-b
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e02-texure404-door-b.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e02-texure404-ceil
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e02-texure404-ceil.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e02-texure404-floor
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e02-texure404-floor.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e02-texure404-gun
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e02-texure404-gun.cub
+
+
+
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e03-color-invalid
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e03-color-invalid.cub
+
+echo; echo; echo; echo 😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀   e03-color-2-many-args
+valgrind  ./cub3d  ./maps/xtest/texture_not_found/e03-color-2-many-args.cub
+
+
+
+
+
+
+

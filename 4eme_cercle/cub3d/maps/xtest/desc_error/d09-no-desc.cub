@@ -1,0 +1,13 @@
+
+SO ./textures/val/wall_s.xpm
+WE ./textures/val/wall_w.xpm
+NO ./textures/val/wall_n.xpm
+EA ./textures/val/wall_e.xpm
+
+F 220,100,0
+C 225,30,0
+
+DOOR ./textures/val/door.xpm
+CEIL ./textures/val/ceilling.xpm
+GUN ./textures/val/gunz.xpm
+
