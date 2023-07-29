@@ -37,7 +37,12 @@ int main()
 	notSecret.beSigned(eric);
 	classic.beSigned(eric);
 	topSecret.beSigned(eric);
-	std::cout << "This one wasn't for you\nSorry, I have some things to execute!\n";
+	std::cout << "This one wasn't for you\nIntern! come here!\n";
+	littleGuy.makeForm("Presidential Pardon Form");
+	littleGuy.makeForm("Robotomy Request Form");
+	littleGuy.makeForm("Shrubbery Creation Form");
+	littleGuy.makeForm("hehe i don't exist");
+	std::cout << "Sorry, I have some things to execute!\n";
 	gerard.executeForm(pres);
 	std::cout << "Huh, wait a second\n";
 	gerard.setGrade(5);
