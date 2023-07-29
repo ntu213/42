@@ -9,7 +9,8 @@
 
 class Intern
 {
-
+	public:
+		Form & makeForm(std::string const type, std::string const target);
 };
 
 #endif
