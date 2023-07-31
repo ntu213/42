@@ -5,7 +5,7 @@ CFLAGS		=	-Wall -Wextra -Werror
 MLX			=	mlx/Makefile.gen
 LFT			=	libft/libft.a
 INC			=	-I ./inc -I ./libft -I ./mlx
-LIB			=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
+LIB			=	-L ./libft -lft -L ./mlx -lmlx -lXext -lm -lbsd
 OBJDIR 		= 	obj
 
 SRC			=	src/main.c \
