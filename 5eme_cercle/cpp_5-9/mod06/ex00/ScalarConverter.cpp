@@ -60,7 +60,7 @@ void ScalarConverter::convert(std::string str)
 		c = c2;
 	std::cout << "Char: ";
 	if (c <= 126 && c >= 33)
-		std::cout << (char)c;
+		std::cout << "'" << (char)c << "'";
 	else
 		std::cout << ((c < 0 || c > 127) ? "impossible" : "non displayable");
 	std::cout << std::endl;
