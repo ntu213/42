@@ -1,7 +1,8 @@
-NAME = ex01
+NAME = ex02
 
-SRC =	Serializer.cpp\
-		Data.cpp
+SRC =	Letter.cpp\
+		Base.cpp\
+		main.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
