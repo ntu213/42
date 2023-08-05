@@ -1,24 +1,40 @@
 
 #include "Span.hpp"
 
-Span::Span(unsigned int n): _tab(std::array<int, n>), _size(n), _len(0)
+void debug(std::string str, int n)
+{
+	std::cout << "debug " << str << " | " << n << std::endl;
+}
+
+Span::Span(unsigned int n): _size(n), _len(0)
 {}
 
-Span::Span(const Span & src) _tab(std::array(int, src.getSize())), _size(src.getSize()), _len(src.getLen())
+Span::Span(const Span & src): _size(src.getSize()), _len(src.getLen())
 {
 	for (int i = 0; i < this->_len; i++)
-		this->tab[i] = src.getTab()[i];
+		this->_tab[i] = src.getTab()[i];
 }
 
 Span::~Span()
 {}
 
 Span & Span::operator=(const Span & src)
-{}
+{
+	this->_size = src.getSize();
+	this->_len = src.getLen();
+	for (int i = 0; i < this->_len; i++)
+		this->_tab[i] = src.getTab()[i];
+	return (*this);
+}
 
 void Span::addNumber(int n)
 {
-	this->_len < this->_size ? _tab[_len++] = n : throw std::exception("Span is full");
+	if (this->_len < static_cast<int>(this->_size))
+	{
+		_tab.push_back(n);
+		_len++;
+	} else
+		throw std::out_of_range("Span is full");
 }
 
 unsigned int Span::getSize() const
@@ -31,7 +47,7 @@ int Span::getLen() const
 	return (this->_len);
 }
 
-std::array<int> Span::getTab() const
+std::vector<int> Span::getTab() const
 {
 	return (this->_tab);
 }
@@ -47,21 +63,21 @@ int Span::shortestSpan()
 {
 	int res;
 	if (this->_len < 2)
-		throw std::exception("Span don't have enough arguments");
+		throw std::out_of_range("Span don't have enough arguments");
 	res = abs(this->_tab[0] - this->_tab[1]);
 	for (int i = 0; i < this->_len; i++){
-		for (int j = i; j < this->_len; j++)
+		for (int j = i + 1; j < this->_len; j++)
 			if (abs(this->_tab[i] - this->_tab[j]) < res)
 				res = abs(this->_tab[i] - this->_tab[j]);
 	}
 	return (res);
 }
 
-int Span::largestSpan()
+int Span::longestSpan()
 {
 	int res;
 	if (this->_len < 2)
-		throw std::exception("Span don't have enough arguments");
+		throw std::out_of_range("Span don't have enough arguments");
 	res = abs(this->_tab[0] - this->_tab[1]);
 	for (int i = 0; i < this->_len; i++){
 		for (int j = i; j < this->_len; j++)

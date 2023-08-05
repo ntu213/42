@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <vector>
 
 #ifndef SPAN_HPP
 # define SPAN_HPP
@@ -8,7 +9,7 @@ class Span
 {
 	private:
 		unsigned int _size;
-		int _tab[];
+		std::vector<int> _tab;
 		int _len;
 		Span();
 	public:
@@ -19,9 +20,9 @@ class Span
 		void addNumber(int n);
 		unsigned int getSize() const;
 		int getLen() const;
-		std::array<int> getTab() const;
+		std::vector<int> getTab() const;
 		int shortestSpan();
-		int largestSpan();
+		int longestSpan();
 		void addRange(int n1, int n2);
 };
 
