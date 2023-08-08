@@ -89,9 +89,9 @@ static void ft_splitter(DataBase & db, std::string & str, std::string sep)
 			j += sep.length();
 			while (str[j + k] && str[j + k] != '\n')
 				flot.push_back(str[j+k++]);
-			db[index] = atof(flot.c_str());
-			ft_print(db[index]);
 		}
+		db[index] = atof(flot.c_str());
+//		ft_print(db[index]);
 		j += k + 1;
 	}
 }
@@ -103,6 +103,8 @@ static void filename_to_db(DataBase & db, std::string const & filename)
 	char c[2];
 
 	file.open(filename.c_str(), std::ios::in);
+	if (!file)
+		throw std::out_of_range("Invalid file");
 	file.read(c, 1);
 	str.append(c);
 	while (!file.eof())
@@ -113,13 +115,84 @@ static void filename_to_db(DataBase & db, std::string const & filename)
 //	std::cout << str << std::endl;
 	std::string separator;
 	separator = ft_splitter_2(str);
-	std::cout << "sep = \"" << separator << "\"" << std::endl;
+//	std::cout << "sep = \"" << separator << "\"" << std::endl;
 	ft_splitter(db, str, separator);
+}
+
+static int isnumber(char c)
+{
+	if (c <= '9' && c >= '0')
+		return (1);
+	return (0);
+}
+
+static int str_format(std::string const & str, std::string const & format)
+{
+	int i = 0;
+	while (str[i] && format[i])
+	{
+		if (format[i] == 'X' && !isnumber(str[i]))
+			return (0);
+		else if (format[i] != 'X' && format[i] != str[i])
+			return (0);
+		i++;
+	}
+	if (str[i] || format[i])
+		return (0);
+	return (1);
+}
+
+static void ft_check(std::string const & str, float const n)
+{
+	if (n < 0)
+		throw std::out_of_range("Number too low");
+	if (n > 1000)
+		throw std::out_of_range("Number too high");
+	if (!(str_format(str, "XXXX-XX-X") || str_format(str, "XXXX-XX-XX")))
+		throw std::out_of_range("Invalid date");
+}
+
+static float getNearest(DataBase const & db, std::string const & str)
+{
+	for (std::map<std::string, float>::const_iterator it = db.getMap().begin();
+		it != db.getMap().end(); it++)
+	{
+		std::string tmp = it->first;
+		if (tmp == str)
+			return (it->second);
+		else if (tmp > str)
+		{
+			if (it == db.getMap().begin())
+				return (it->second);
+			if (&tmp - &str < &str - &(--it)->first)
+				return ((++it)->second);
+			return (it->second);
+		}
+	}
+	return ((--db.getMap().end())->second);
+}
+
+static void calculator(DataBase & db1, DataBase & db2)
+{
+	for (std::map<std::string, float>::const_iterator it = db2.getMap().begin();
+		it != db2.getMap().end(); it++)
+	{
+		try {
+			ft_check(it->first, it->second);
+			std::cout << it->first << " => "
+				<< it->second << " = "
+				<< it->second * getNearest(db1, it->first)
+				<< std::endl;
+		} catch (std::exception & e) {
+			std::cout << "Error: " << e.what() << std::endl;
+		}
+	}
 }
 
 int main(int argc, char **argv)
 {
 	DataBase db;
+	DataBase db2;
 	(void)argv;
 	if (argc != 2)
 	{
@@ -129,7 +202,8 @@ int main(int argc, char **argv)
 	try
 	{
 		filename_to_db(db, "data.csv");
-		filename_to_db(db, "data2.csv");
+		filename_to_db(db2, argv[1]);
+		calculator(db, db2);
 	} catch (std::exception &e){
 		std::cout << "Error: " << e.what() << std::endl;
 	}
