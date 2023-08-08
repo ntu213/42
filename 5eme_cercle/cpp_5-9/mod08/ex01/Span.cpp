@@ -52,12 +52,14 @@ std::vector<int> Span::getTab() const
 	return (this->_tab);
 }
 
-static int abs(int n)
+/*
+static int ft_abs(int n)
 {
 	if (n < 0)
 		n *= -1;
 	return (n);
 }
+*/
 
 int Span::shortestSpan()
 {
@@ -78,12 +80,7 @@ int Span::longestSpan()
 	int res;
 	if (this->_len < 2)
 		throw std::out_of_range("Span don't have enough arguments");
-	res = abs(this->_tab[0] - this->_tab[1]);
-	for (int i = 0; i < this->_len; i++){
-		for (int j = i; j < this->_len; j++)
-			if (abs(this->_tab[i] - this->_tab[j]) > res)
-				res = abs(this->_tab[i] - this->_tab[j]);
-	}
+	res = abs(*std::max_element(this->_tab.begin(), this->_tab.end()) - *std::min_element(this->_tab.begin(), this->_tab.end()));
 	return (res);
 }
 

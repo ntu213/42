@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 #ifndef SPAN_HPP
 # define SPAN_HPP

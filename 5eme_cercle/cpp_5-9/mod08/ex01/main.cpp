@@ -14,8 +14,8 @@ int main()
 	try
 	{
 //		sp.addRange(15, 13);
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+		std::cout << "Min: " << sp.shortestSpan() << std::endl;
+		std::cout << "Max: " << sp.longestSpan() << std::endl;
 	} catch (std::exception & e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}
