@@ -149,7 +149,7 @@ static void ft_check(std::string const & str, float const n)
 	if (n > 1000)
 		throw std::out_of_range("Number too high");
 	if (!(str_format(str, "XXXX-XX-X") || str_format(str, "XXXX-XX-XX")))
-		throw std::out_of_range("Invalid date");
+		throw std::out_of_range("Invalid date or separator");
 }
 
 static float getNearest(DataBase const & db, std::string const & str)
@@ -178,11 +178,14 @@ static void calculator(DataBase & db1, DataBase & db2)
 		it != db2.getMap().end(); it++)
 	{
 		try {
-			ft_check(it->first, it->second);
-			std::cout << it->first << " => "
-				<< it->second << " = "
-				<< it->second * getNearest(db1, it->first)
-				<< std::endl;
+			if (it->first != "" && it->first != "date")
+			{
+				ft_check(it->first, it->second);
+				std::cout << it->first << " => "
+					<< it->second << " = "
+					<< it->second * getNearest(db1, it->first)
+					<< std::endl;
+			}
 		} catch (std::exception & e) {
 			std::cout << "Error: " << e.what() << std::endl;
 		}
