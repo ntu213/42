@@ -1,6 +1,7 @@
-NAME = ex00
+NAME = RPN
 
-SRC =	main.cpp
+SRC =	main.cpp\
+		RPN.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
