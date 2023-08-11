@@ -37,13 +37,13 @@ float	DataBase::getValue(std::string key)
 {
 	for (std::map<std::string, float>::const_iterator it = this->_map.begin();
 		it != this->_map.end(); it++)
+	{
+		std::cout << "len = " << key.length() << " | " << it->first.length() << std::endl;
+		if ((*it).first == key)
 		{
-			std::cout << "len = " << key.length() << " | " << it->first.length() << std::endl;
-			if ((*it).first == key)
-			{
-				std::cout << key << std::endl;
-				return ((*it).second);
-			}
+			std::cout << key << std::endl;
+			return ((*it).second);
 		}
-		return (-1);
+	}
+	return (-1);
 }
