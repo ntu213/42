@@ -27,7 +27,7 @@ void checkIllegal(std::string const & str)
 		throw std::out_of_range("Not enough numbers");
 }
 
-void doAct(int & res, int n, char sym)
+int doAct(int res, int n, char sym)
 {
 	if (sym == '+')
 		res += n;
@@ -39,8 +39,10 @@ void doAct(int & res, int n, char sym)
 		res /= n;
 	else
 		throw std::out_of_range("Unknown");
+	return (res);
 }
 
+/*
 void funcRPN(std::string str)
 {
 	std::queue<int> nb;
@@ -72,15 +74,44 @@ void funcRPN(std::string str)
 	}
 	std::cout << "Result: " << res << std::endl;
 }
+*/
+
+void funcRPN(std::string str)
+{
+	std::list<int> pile;
+	checkIllegal(str);
+	for (int i = 0; str[i]; i++)
+	{
+		if (!(i % 2))
+		{
+			if (str[i] <= '9' && str[i] >= '0')
+				pile.push_front(str[i] - '0');
+			else
+			{
+				if (pile.empty())
+					throw std::out_of_range("Bad intentation");
+				int tmp = pile.front();
+				pile.pop_front();
+				if (pile.empty())
+					throw std::out_of_range("Bad intentation");
+				int tmp2 = pile.front();
+				pile.pop_front();
+				int res = doAct(tmp, tmp2, str[i]);
+				std::cout << tmp << str[i]
+					<< tmp2 << " = "
+					<< res << std::endl;
+				pile.push_front(res);
+			}
+		}
+	}
+	std::cout << "Result: " << pile.front() << std::endl;
+}
 
 int main(int argc, char **argv)
 {
-	if (argc != 2)
-	{
-		std::cout << "Error: I need 2 arguments!" << std::endl;	
-		return (1);
-	}
 	try {
+		if (argc != 2)
+			throw std::out_of_range("I need 2 arguments!");
 		funcRPN(argv[1]);
 	} catch (std::exception & e) {
 		std::cout << "Error: " << e.what() << std::endl;
