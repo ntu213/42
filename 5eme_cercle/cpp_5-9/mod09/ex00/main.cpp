@@ -209,7 +209,7 @@ void calculator(DataBase & db1, DataBase & db2, int n)
 			if (n)
 				calCheck(it->first, it->second);
 			std::cout << it->first << " => "
-				<< it->second << " = ";
+				<< it->second << " = "
 //				<< it->second << " * " << it2->second << " = "
 				<< it->second * it2->second << std::endl;
 //				printf("%0.2f\n", it->second * it2->second);
