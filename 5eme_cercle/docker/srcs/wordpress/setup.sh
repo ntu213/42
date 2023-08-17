@@ -25,7 +25,7 @@ else
         cd /var/www/html
         wp core download --allow-root
         wp core config --allow-root --dbhost=${MAR_ADDR} --dbname=${MAR_DB} --dbuser=${MAR_USER} --dbpass=${MAR_PASS}
-        wp core install --allow-root --url=${DOMAIN_NAME} --title=${WRP_NAME} --admin_user=${WRP_R_USER} --admin_password=${WRP_R_PASS} --admin_email=amori@42.fr
+        wp core install --allow-root --url=${DOMAIN_NAME} --title=${WRP_NAME} --admin_user=${WRP_R_USER} --admin_password=${WRP_R_PASS} --admin_email=vgiraudo@42.fr
         wp user create --allow-root ${WRP_USER} email@email.email --user_pass=${WRP_PASS};
 		wp config --allow-root set WP_DEBUG true
         wp config --allow-root set WP_MEMORY_LIMIT '64M'

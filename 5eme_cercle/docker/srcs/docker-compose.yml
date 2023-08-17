@@ -22,7 +22,8 @@ services:
       build: wordpress
       container_name: wordpress
       depends_on:
-        - maria:condition:service_healthy
+        maria:
+          condition: service_healthy
       env_file: .env
       ports:
         - 9000:9000
