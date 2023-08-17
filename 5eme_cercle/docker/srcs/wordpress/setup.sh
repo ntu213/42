@@ -34,6 +34,10 @@ else
 fi
 
 echo "
+define('WP_REDIS_HOST', 'localhost');
+define('WP_REDIS_PORT', 6379);" >> /var/www/html/wp-config.php
+
+echo "
 <?php
 	header('Location: https://127.0.0.1:1443/game/index.html');
 ?>" > /var/www/html/index.php
@@ -42,6 +46,11 @@ echo "
 <?php
 	phpinfo();
 ?>" > /var/www/html/info.php
+
+cd /var/www/html/
+wget -P wp-content/plugins/ https://downloads.wordpress.org/plugin/redis-cache.latest-stable.zip
+unzip wp-content/plugins/redis-cache.latest-stable.zip -d wp-content/plugins/
+chown -R www-data:www-data wp-content/plugins/redis-cache
 
 echo Wordpress start
 exec "$@"
