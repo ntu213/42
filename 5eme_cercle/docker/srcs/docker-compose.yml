@@ -1,52 +1,59 @@
 version: "3"
 services:
-    maria:
-      image: maria-inception
-      restart: always
-      container_name: maria
-      build: maria
-      env_file: .env
-      networks:
-        - intracep
-      volumes:
-        - maria-data:/var/lib/mysql
-      ports:
-        - 13306:3306
-      healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
-            timeout: 10s
-            retries: 20     
-    wordpress:
-      image: wordpress-inception
-      restart: always
-      build: wordpress
-      container_name: wordpress
-      depends_on:
-        maria:
-          condition: service_healthy
-      env_file: .env
-      ports:
-        - 9000:9000
-      networks:
-        - intracep
-      volumes:
-        - wrp-data:/var/www/html
-    nginx:
-      image: nginx-inception
-      restart: always
-      container_name: nginx
-      build: nginx
-      env_file: .env
-      depends_on:
-        - wordpress
-      networks:
-        - intracep
-      volumes:
-        - wrp-data:/var/www/html
-      ports:
-        - 1443:443
-    redis:
-      image: redis:latest
+  maria:
+    image: maria-inception
+    restart: always
+    container_name: maria
+    build: maria
+    env_file: .env
+    networks:
+      - intracep
+    volumes:
+      - maria-data:/var/lib/mysql
+    ports:
+      - 13306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      timeout: 10s
+      retries: 20     
+  wordpress:
+    image: wordpress-inception
+    restart: always
+    build: wordpress
+    container_name: wordpress
+    depends_on:
+      maria:
+        condition: service_healthy
+    env_file: .env
+    ports:
+      - 9000:9000
+    networks:
+      - intracep
+    volumes:
+      - wrp-data:/var/www/html
+  nginx:
+    image: nginx-inception
+    restart: always
+    container_name: nginx
+    build: nginx
+    env_file: .env
+    depends_on:
+      - wordpress
+    networks:
+      - intracep
+    volumes:
+      - wrp-data:/var/www/html
+    ports:
+      - 1443:443
+
+  redis:
+    image: redis:latest
+  adminer:
+    image: adminer
+    depends_on:
+      - maria
+    ports:
+      - "8080:8080"
 
 networks:
   intracep:
