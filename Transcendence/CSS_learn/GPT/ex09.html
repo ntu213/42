@@ -1,0 +1,36 @@
+<!--
+1. Créez un fichier HTML contenant un bouton.
+2. Appliquez des transitions pour créer des effets de survol sur le bouton, et éventuellement, ajoutez une animation.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	@keyframes anim {
+		0% {background-color: blue;}
+		25% {background-color: green;}
+		50% {background-color: yellow;}
+		75% {background-color: red;}
+		100% {background-color: blue;}
+	}
+	button {
+		width: 150px;
+		height: 50px;
+		font-size: small;
+		color: black;
+		transition: font-size 0.5s ease-in-out, color 0.5s ease-in-out;
+		animation: anim 5s infinite
+	}
+	button:hover {
+		font-size: large;
+		color: white;
+	}
+</style>
+<title>Exercice 9</title>
+</head>
+<body>
+	<button>bouton</button>
+</body>
+</html>
