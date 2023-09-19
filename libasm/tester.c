@@ -6,7 +6,7 @@
 /*   By: amori <amori@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 22:02:37 by amori             #+#    #+#             */
-/*   Updated: 2023/09/19 12:03:15 by amori            ###   ########.fr       */
+/*   Updated: 2023/09/19 19:04:17 by amori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,146 @@ extern char		*ft_strdup(const char *str);
 extern int		ft_atoi_base(char *str, char *base);
 extern void		ft_list_push_front(t_list **begin_list, void *data);
 extern int		ft_list_size(t_list *begin_list);
+extern void		ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_func)());
+extern void		ft_list_sort(t_list **begin_list, int (*cmp)());
 
-int	list_tester()
+int		cmp_sort(void *data1, void *data2) { return ((void *)data1 > (void *)data2); }
+int		list_sort_tester()
+{
+	int	out = 0;
+
+	printf("\n☆ ft_list_sort\n");
+
+	t_list *elem1 = malloc(sizeof(t_list));
+	t_list *elem2 = malloc(sizeof(t_list));
+	t_list *elem3 = malloc(sizeof(t_list));
+
+	elem1->data = (void *)1;
+	elem1->next = elem2;
+	elem2->data = (void *)2;
+	elem2->next = elem3;
+	elem3->data = (void *)3;
+	elem3->next = NULL;
+	ft_list_sort(&elem1, cmp_sort);
+	printf("Your : %p -> %p -> %p | Real : %p -> %p -> %p | %s", elem1->data, elem1->next->data, elem1->next->next->data, (void *)1, (void *)2, (void *)3, (elem1->data == (void *)1 && elem1->next->data == (void *)2 && elem1->next->next->data == (void *)3) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	if (elem1->data != (void *)1 || elem1->next->data != (void *)2 || elem1->next->next->data != (void *)3)
+		out = 1;
+
+	elem1->data = (void *)42;
+	elem2->data = (void *)36;
+	elem3->data = (void *)12;
+	ft_list_sort(&elem1, cmp_sort);
+	printf("Your : %p -> %p -> %p | Real : %p -> %p -> %p | %s", elem1->data, elem1->next->data, elem1->next->next->data, (void *)12, (void *)36, (void *)42, (elem1->data == (void *)12 && elem1->next->data == (void *)36 && elem1->next->next->data == (void *)42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	if (elem1->data != (void *)12|| elem1->next->data != (void *)36 || elem1->next->next->data != (void *)42)
+		out = 1;
+
+	elem1->next = NULL;
+	ft_list_sort(&elem1, cmp_sort);
+	printf("Your : %p | Real : %p | %s", elem1->data, (void *)12, (elem1->data == (void *)12) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	if (elem1->data != (void *)12)
+		out = 1;
+
+	elem1 = NULL;
+	ft_list_sort(&elem1, cmp_sort);
+	printf("(No segfault = OK) Your : %p | Real : %p | %s", elem1, NULL, "\x1B[32mOK\x1B[0m\n");
+
+	free(elem1);
+	free(elem2);
+	free(elem3);
+
+	return (out);
+}
+
+int		cmp(void *data, void *data_ref) { return (data == data_ref); }
+void	free_func(void *elem) { free(elem); }
+int	list_remove_if_tester()
+{
+	int out = 0;
+
+	printf("\n☆ ft_list_remove_if\n");
+
+	t_list *elem1 = malloc(sizeof(t_list));
+	t_list *elem2 = malloc(sizeof(t_list));
+	t_list *elem3 = malloc(sizeof(t_list));
+
+	elem1->data = (void *)42;
+	elem1->next = elem2;
+	elem2->data = (void *)21;
+	elem2->next = elem3;
+	elem3->data = (void *)99;
+	elem3->next = NULL;
+
+	ft_list_remove_if(&elem1, (void *)21, cmp, free_func);
+	if (elem1 && elem1->next)
+	{
+		printf("Your : %p -> %p | Real : %p -> %p | %s", elem1->data, elem1->next->data, (void *)42, (void *)99, (elem1->data == (void *)42 && elem1->next->data == (void *)99) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+		if (elem1->data != (void *)42 || elem1->next->data != (void *)99)
+			out = 1;
+	}
+	else
+	{
+		printf("Your list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
+		out = 1;
+	}
+
+	ft_list_remove_if(&elem1, (void *)42, cmp, free_func);
+	if (elem1)
+	{
+		printf("Your : %p | Real : %p | %s", elem1->data, (void *)99, (elem1->data == (void *)99) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+		if (elem1->data != (void *)99)
+			out = 1;
+	} else
+	{
+		printf("Your list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
+		out = 1;
+	}
+
+	ft_list_remove_if(&elem1, (void *)99, cmp, free_func);
+	printf("Your : %p | Real : %p | %s", elem1, NULL, (elem1 == NULL) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	if (elem1 != NULL)
+		out = 1;
+
+	return (out);
+}
+
+int	list_size_tester()
+{
+	int	out = 0;
+
+	t_list *elem1 = malloc(sizeof(t_list));
+	t_list *elem2 = malloc(sizeof(t_list));
+
+	char *data = malloc(sizeof(char) * 6);
+	char *data2 = malloc(sizeof(char) * 6);
+
+	strcpy(data, "Hello");
+	strcpy(data2, "Heyyy");
+
+	elem1->data = data;
+	elem1->next = elem2;
+	elem2->data = data2;
+	elem2->next = NULL;
+
+	printf("\n☆ ft_list_size\n");
+
+	int size = ft_list_size(elem1);
+	int sizeNull = ft_list_size(NULL);
+
+	printf("Your : %d | Real : %d | %s", size, 2, (size == 2) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Your : %d | Real : %d | %s", sizeNull, 0, (sizeNull == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+
+	if (size != 2 || sizeNull != 0)
+		out = 1;
+
+	free(elem1);
+	free(elem2);
+	free(data);
+	free(data2);
+
+	return (out);
+}
+
+int	list_push_front_tester()
 {
 	int out = 0;
 
@@ -50,8 +188,12 @@ int	list_tester()
 	char *data2 = malloc(sizeof(char) * 6);
 	strcpy(data, "Hello");
 	strcpy(data2, "Heyyy");
+	printf("debug %p|%p|%p\n", &list, data, list);
 	ft_list_push_front(&list, data);
+	printf("debug %p|%p|%p\n", &list, data2, list);
 	ft_list_push_front(&list, data2);
+	printf("debug %p|%p|%p|%p\n", &list, data2, list, list->next);
+	printf("debug: %p -> %p\n", list->data, list->next->data);
 
 	if (list && list->next)
 	{
@@ -65,22 +207,14 @@ int	list_tester()
 		out = 1;
 	}
 
-	printf("\n☆ ft_list_size\n");
-
-	int size = ft_list_size(list);
-	int sizeNull = ft_list_size(NULL);
-
-	printf("Your : %d | Real : %d | %s", size, 2, (size == 2) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("Your : %d | Real : %d | %s", sizeNull, 0, (sizeNull == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-
 	while (list)
 	{
 		t_list *tmp = list->next;
-		if (list->data)
-			free(list->data);
 		free(list);
 		list = tmp;
 	}
+	free(data);
+	free(data2);
 
 	return (out);
 }
@@ -153,14 +287,14 @@ int	read_tester()
 
 	printf("\n☆ read\n");
 
-	int fd = open("tester.c", O_RDONLY);
-	int fd2 = open("tester.c", O_RDONLY);
+	int fd = open("help.c", O_RDONLY);
+	int fd2 = open("help.c", O_RDONLY);
 
-	char *str_1 = calloc(sizeof(char), 13);
-	char *str_2 = calloc(sizeof(char), 13);
+	char *str_1 = calloc(sizeof(char), 19);
+	char *str_2 = calloc(sizeof(char), 19);
 
-	int sizeA = ft_read(fd, str_1, 13);
-	int sizeB = read(fd2, str_2, 13);
+	int sizeA = ft_read(fd, str_1, 19);
+	int sizeB = read(fd2, str_2, 19);
 
 	printf("Your : %d %s | Real : %d %s | %s", sizeA, str_1, sizeB, str_2, (strcmp(str_1, str_2) == 0 && sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
@@ -325,7 +459,11 @@ int	main()
 	ok += strdup_tester();
 	printf("\n✿ Libasm Bonus ✿\n");
 	ok += atoi_base_tester();
-	ok += list_tester();
+	ok += list_push_front_tester();
+	ok += list_size_tester();
+	ok += list_remove_if_tester();
+	ok += list_sort_tester();
+
 
 	if (ok == 0)
 		printf("\x1B[32m\nAll tests passed ✔\x1B[0m\n");

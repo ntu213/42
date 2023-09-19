@@ -2,7 +2,7 @@
 #include <errno.h>
 
 extern int *__errno_location();
-extern void* malloc(size_t size);
+extern void *malloc(size_t size);
 
 int	*__errno_wrapper()
 {
