@@ -322,7 +322,7 @@ int	main()
 	ok += strcpy_tester();
 	ok += strcmp_tester();
 	ok += read_tester();
-	//ok += strdup_tester();
+	ok += strdup_tester();
 	printf("\n✿ Libasm Bonus ✿\n");
 	ok += atoi_base_tester();
 	ok += list_tester();
