@@ -21,16 +21,34 @@
 		font-size: small;
 		color: black;
 		transition: font-size 0.5s ease-in-out, color 0.5s ease-in-out;
-		animation: anim 5s infinite
+		animation: anim 5s infinite;
+		border-radius: 15px;
 	}
 	button:hover {
 		font-size: large;
 		color: white;
 	}
 </style>
+<script>
+	async function addLetters() {
+		let s2 = " ask to be friends";
+		let i = 0;
+		let elem = getElementByClass("profilepicture");
+		while (true)
+		{
+			if (i < s2.length())
+			{
+				elem.textInnerHTML += s2.charAt(i);
+				i++;
+			}
+			await new Promise(r => setTimeout(r, 2000));
+		}
+	}
+	$( document ).ready(addLetters());
+</script>
 <title>Exercice 9</title>
 </head>
 <body>
-	<button>bouton</button>
+	<button class="profilepicture">bouton</button>
 </body>
 </html>

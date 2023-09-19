@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Effet de texte lettre par lettre</title>
+</head>
+<body>
+	<button id="monBouton">+</button><br>
+	<button id="monBouton2">+</button><br>
+	<button id="monBouton3">+</button><br>
+	<h1 id="blblbl">test</h1>
+	<h2 id="blblbl2">|</h2>
+
+	<script>
+		// Sélectionnez le bouton
+		
+		// Texte complet à afficher
+		const texteComplet = "Effet de texte lettre par lettre";
+		
+		function changeVal(elem, n)
+		{
+			elem.tmp = n;
+		}
+
+		async function ftFunction(id, str, n){
+			const elem = document.getElementById(id);
+			let i = 0;
+			elem.tmp = 0;
+
+			elem.addEventListener("mouseover", function() {changeVal(elem, 1)});
+			elem.addEventListener("mouseout", function() {changeVal(elem, 0)});
+
+			while (true)
+			{
+				if (elem.tmp == 1 && str[i])
+					elem.textContent += str[i++];
+				else if (elem.tmp != 1 && i > 0)
+				{
+					elem.textContent = elem.textContent.slice(0, -1);
+					i--;
+				}
+				await new Promise(r => setTimeout(r, n));
+			}
+		}
+		ftFunction("monBouton", " ask for friends", 250);
+		ftFunction("monBouton2", " ask for more friends", 50);
+		ftFunction("monBouton3", " ask for really more friends", 5);
+	</script>
+	<style>
+		@keyframes breaker {
+			0% {
+				width: 40px;
+				padding-right: 120px;
+			}
+			70% {
+				width: 160px;
+				padding-right: 0px;
+			}
+			71% {
+				width: 160px;
+				padding-right: 0px;
+			}
+			100% {
+				width: 40px;
+				padding-right: 120px;
+			}
+		}
+		@keyframes blblbl2 {
+			0% {color: transparent}
+			50% {color: transparent}
+			51% {color: black}
+		}
+		#blblbl {
+			overflow: hidden;
+			animation: breaker 2s ease-in infinite;
+			word-break: break-all;
+			font-size: 40px;
+			height: 40px;
+		}
+		#blblbl2 {
+			animation: blblbl2 1s ease-in-out infinite;
+		}
+	</style>
+</body>
+</html>

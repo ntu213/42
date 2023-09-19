@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Effet de texte lettre par lettre</title>
+</head>
+<body>
+    <button id="monBouton">Survolez-moi</button>
+
+    <script>
+        // Sélectionnez le bouton
+        const bouton = document.getElementById("monBouton");
+
+        // Texte complet à afficher
+        const texteComplet = "Effet de texte lettre par lettre";
+
+        // Écoutez l'événement de survol du bouton
+        bouton.addEventListener("mouseover", () => {
+            afficherTexteLettreParLettre(texteComplet, bouton);
+        });
+
+        // Fonction pour afficher le texte lettre par lettre
+        function afficherTexteLettreParLettre(texte, element) {
+            let index = 0;
+            element.textContent = "";
+            
+            function ajouterLettre() {
+                if (index < texte.length) {
+                    element.textContent += texte.charAt(index);
+                    index++;
+                    setTimeout(ajouterLettre, 100); // Délai entre chaque lettre (100ms)
+                }
+            }
+            
+            ajouterLettre();
+        }
+    </script>
+</body>
+</html>
