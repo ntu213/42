@@ -6,6 +6,7 @@ section .text
 	global ft_list_push_front
 
 	ft_list_push_front:
+		mov rsi, rsi
 		push rbx ; pointeur old first
 		push rcx ; pointeur new first
 		push r8 ; cache arg 0
@@ -19,20 +20,19 @@ section .text
 		mov r8, rdi
 		mov r9, rsi
 
-		mov rdi, 16
+		mov qword rdi, 16
 		call __malloc_wrapper
 		mov rcx, rax
-		mov qword [rcx], rsi
+
+		mov qword [rcx], r9
 
 		mov rbx, qword [r8]
 		mov qword [r8], rcx
 		mov qword [rcx + 8], rbx
 
-		ft_exit
-	
-	ft_exit:
-		pop r9
-		pop r8
-		pop rcx
-		pop rbx
-		ret
+		ft_exit:
+			pop r9
+			pop r8
+			pop rcx
+			pop rbx
+			ret

@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <errno.h>
 
 extern int *__errno_location();

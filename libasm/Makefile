@@ -9,10 +9,10 @@ OBJS_C = $(SRCS_C:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.s=.o)
 
 %.o: %.c
-	gcc -Wall -Werror -Wextra -c $< -o $@
+	gcc -g -Wall -Werror -Wextra -c $< -o $@
 
 %.o: %.s
-	nasm -f elf64 $< -o $@
+	nasm -g -f elf64 $< -o $@
 
 all: $(NAME)
 
@@ -23,12 +23,13 @@ bonus: $(OBJS) $(OBJS_C) $(OBJS_BONUS)
 	ar rcs $(NAME) $(OBJS) $(OBJS_C) $(OBJS_BONUS)
 
 test: bonus
-	gcc -Wall -Wextra -Werror -o tester tester.c $(NAME)
+	gcc -g -Wall -Wextra -Werror -o tester tester.c $(NAME)
 
 clean:
 	rm -f $(OBJS) $(OBJS_C) $(OBJS_BONUS)
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f tester
 
 re: fclean all

@@ -188,12 +188,12 @@ int	list_push_front_tester()
 	char *data2 = malloc(sizeof(char) * 6);
 	strcpy(data, "Hello");
 	strcpy(data2, "Heyyy");
-	printf("debug %p|%p|%p\n", &list, data, list);
+	// printf("debug %p|%p|%p\n", &list, data, list);
 	ft_list_push_front(&list, data);
-	printf("debug %p|%p|%p\n", &list, data2, list);
+	// printf("debug %p|%p|%p\n", &list, data2, list);
 	ft_list_push_front(&list, data2);
-	printf("debug %p|%p|%p|%p\n", &list, data2, list, list->next);
-	printf("debug: %p -> %p\n", list->data, list->next->data);
+	// printf("debug %p|%p|%p|%p\n", &list, data2, list, list->next);
+	// printf("debug: %p -> %p\n", list->data, list->next->data);
 
 	if (list && list->next)
 	{
