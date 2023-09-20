@@ -445,6 +445,8 @@ int	strlen_tester()
 	return (lenA == lenB) ? 0 : 1;
 }
 
+int ft_atoi_base_recursive(char *s, char *c);
+
 int	main()
 {
 	printf("✿ Libasm tester ✿\n");
@@ -464,6 +466,9 @@ int	main()
 	ok += list_remove_if_tester();
 	ok += list_sort_tester();
 
+	// char tmp[] = "FF\0";
+	// char tmp2[] = "0123456789ABCDEF";
+	// printf("%d\n", ft_atoi_base_recursive(tmp, tmp2));
 
 	if (ok == 0)
 		printf("\x1B[32m\nAll tests passed ✔\x1B[0m\n");
