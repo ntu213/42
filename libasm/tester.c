@@ -239,7 +239,7 @@ int	atoi_base_tester()
 	printf("2A b16 | Your (2A bas 16) : %d | Real : %d | %s", nbC, 42, (nbC == 42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	printf("pei bPoneyvif | Your : %d | Real : %d | %s", nbF, 30, (nbF == 30) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	printf("12a34 b10 | Your : %d | Real : %d | %s", nbD, 12, (nbD == 12) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("\\r\\n\\t\\f\\v -37 b10 | Your : %d | Real : %d | %s", nbE, -37, (nbE == -37) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("\\r\\n\\t\\f\\v-37 b10 | Your : %d | Real : %d | %s", nbE, -37, (nbE == -37) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	printf("+42 b10 | Your : %d | Real : %d | %s", nbG, 42, (nbG == 42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	printf("42 (invalid base) | Your : %d | Real : %d | %s", nbH, 0, (nbH == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 

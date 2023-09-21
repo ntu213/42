@@ -1,41 +1,10 @@
 bits 64
 
 extern ft_strlen
+extern ft_test
 
 section .text
 	global ft_atoi_base
-	global ft_atoi_base_recursive
-
-; ft_getpos:
-;         push    rbp
-;         mov     rbp, rsp
-;         mov     QWORD [rbp-24], rdi
-;         mov     eax, esi
-;         mov     BYTE [rbp-28], al
-;         mov     DWORD [rbp-4], 0
-;         jmp     .L2
-; .L4:
-;         add     DWORD [rbp-4], 1
-; .L2:
-;         mov     eax, DWORD [rbp-4]
-;         movsx   rdx, eax
-;         mov     rax, QWORD [rbp-24]
-;         add     rax, rdx
-;         movzx   eax, BYTE [rax]
-;         test    al, al
-;         je      .L6
-;         mov     eax, DWORD [rbp-4]
-;         movsx   rdx, eax
-;         mov     rax, QWORD [rbp-24]
-;         add     rax, rdx
-;         movzx   eax, BYTE [rax]
-;         cmp     BYTE [rbp-28], al
-;         jne     .L4
-;         nop
-; .L6:
-;         nop
-;         pop     rbp
-;         ret
 
 	ft_getpos:
 
@@ -63,8 +32,6 @@ section .text
 		push r12 ; len
 
 		mov r15, 0
-		mov r14, 0
-		; mov r14, rdx
 		mov r13, rdi
 		mov rdi, rsi
 		call ft_strlen
@@ -73,9 +40,11 @@ section .text
 		rec_loop:
 			cmp byte [r13 + r14], 0
 			je stop_recursive
-			imul r15, r12
 			mov rsi, [r13 + r14]
 			call ft_getpos
+			cmp rax, r12
+			je stop_recursive
+			imul r15, r12
 			add r15, rax
 			inc r14
 			jmp rec_loop
@@ -139,44 +108,40 @@ section .text
 		breaker:
 			nop
 
-		dec r14
+		mov r14, -1
 
 		loop0:
 			inc r14
-			cmp byte [rdi + r14], 32 ; ' '
+			cmp byte [rbx + r14], 32 ; ' '
 			je loop0
-			cmp byte [rdi + r14], 9 ; '\t'
+			cmp byte [rbx + r14], 9 ; '\t'
 			je loop0
-			cmp byte [rdi + r14], 10 ; '\n'
+			cmp byte [rbx + r14], 10 ; '\n'
 			je loop0
-			cmp byte [rdi + r14], 11 ; '\v'
+			cmp byte [rbx + r14], 11 ; '\v'
 			je loop0
-			cmp byte [rdi + r14], 12 ; '\f'
+			cmp byte [rbx + r14], 12 ; '\f'
 			je loop0
-			cmp byte [rdi + r14], 13 ; '\r'
+			cmp byte [rbx + r14], 13 ; '\r'
 			je loop0
 
 		dec r14
 		jmp loop1
 
 		invert:
-			imul r13, -1
+			neg r13
 			jmp loop1
 
 		loop1:
 			inc r14
-			cmp byte [rdi + r14], 45 ; '-'
+			cmp byte [rbx + r14], 45 ; '-'
 			je invert
-			cmp byte [rdi + r14], 43 ; '+'
+			cmp byte [rbx + r14], 43 ; '+'
 			je loop1
 
 		mov rdi, rbx
 		mov rsi, rcx
-		push rdx
-		mov rdx, 0
-		mov rdx, r14
 		call ft_atoi_base_recursive
-		pop rdx
 		imul rax, r13
 		jmp ft_exit
 
