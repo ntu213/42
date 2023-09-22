@@ -29,17 +29,17 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-extern size_t	ft_strlen(const char *str);
-extern size_t	ft_write(int fd, const char *str, size_t size);
-extern size_t	ft_read(int fd, const char *str, size_t size);
-extern char		*ft_strcpy(const char *dest, const char *src);
-extern int		ft_strcmp(const char *s1, const char *s2);
-extern char		*ft_strdup(const char *str);
-extern int		ft_atoi_base(char *str, char *base);
-extern void		ft_list_push_front(t_list **begin_list, void *data);
-extern int		ft_list_size(t_list *begin_list);
-extern void		ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_func)());
-extern void		ft_list_sort(t_list **begin_list, int (*cmp)());
+size_t	ft_strlen(const char *str);
+size_t	ft_write(int fd, const char *str, size_t size);
+size_t	ft_read(int fd, const char *str, size_t size);
+char	*ft_strcpy(const char *dest, const char *src);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strdup(const char *str);
+int		ft_atoi_base(char *str, char *base);
+void	ft_list_push_front(t_list **begin_list, void *data);
+int		ft_list_size(t_list *begin_list);
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_func)());
+void	ft_list_sort(t_list **begin_list, int (*cmp)());
 
 int		cmp_sort(void *data1, void *data2) { return ((void *)data1 > (void *)data2); }
 int		list_sort_tester()
@@ -59,27 +59,27 @@ int		list_sort_tester()
 	elem3->data = (void *)3;
 	elem3->next = NULL;
 	ft_list_sort(&elem1, cmp_sort);
-	printf("Your : %p -> %p -> %p | Real : %p -> %p -> %p | %s", elem1->data, elem1->next->data, elem1->next->next->data, (void *)1, (void *)2, (void *)3, (elem1->data == (void *)1 && elem1->next->data == (void *)2 && elem1->next->next->data == (void *)3) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %p -> %p -> %p | Real : %p -> %p -> %p | %s", elem1->data, elem1->next->data, elem1->next->next->data, (void *)1, (void *)2, (void *)3, (elem1->data == (void *)1 && elem1->next->data == (void *)2 && elem1->next->next->data == (void *)3) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	if (elem1->data != (void *)1 || elem1->next->data != (void *)2 || elem1->next->next->data != (void *)3)
 		out = 1;
 
 	elem1->data = (void *)42;
 	elem2->data = (void *)36;
-	elem3->data = (void *)12;
+	elem3->data = (void *)12;\
 	ft_list_sort(&elem1, cmp_sort);
-	printf("Your : %p -> %p -> %p | Real : %p -> %p -> %p | %s", elem1->data, elem1->next->data, elem1->next->next->data, (void *)12, (void *)36, (void *)42, (elem1->data == (void *)12 && elem1->next->data == (void *)36 && elem1->next->next->data == (void *)42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %p -> %p -> %p | Real : %p -> %p -> %p | %s", elem1->data, elem1->next->data, elem1->next->next->data, (void *)12, (void *)36, (void *)42, (elem1->data == (void *)12 && elem1->next->data == (void *)36 && elem1->next->next->data == (void *)42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	if (elem1->data != (void *)12|| elem1->next->data != (void *)36 || elem1->next->next->data != (void *)42)
 		out = 1;
 
 	elem1->next = NULL;
 	ft_list_sort(&elem1, cmp_sort);
-	printf("Your : %p | Real : %p | %s", elem1->data, (void *)12, (elem1->data == (void *)12) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %p | Real : %p | %s", elem1->data, (void *)12, (elem1->data == (void *)12) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	if (elem1->data != (void *)12)
 		out = 1;
 
 	elem1 = NULL;
 	ft_list_sort(&elem1, cmp_sort);
-	printf("(No segfault = OK) Your : %p | Real : %p | %s", elem1, NULL, "\x1B[32mOK\x1B[0m\n");
+	printf("Yours : %p | Real : %p | %s", elem1, NULL, "\x1B[32mNo Segfault OK\x1B[0m\n");
 
 	free(elem1);
 	free(elem2);
@@ -110,30 +110,30 @@ int	list_remove_if_tester()
 	ft_list_remove_if(&elem1, (void *)21, cmp, free_func);
 	if (elem1 && elem1->next)
 	{
-		printf("Your : %p -> %p | Real : %p -> %p | %s", elem1->data, elem1->next->data, (void *)42, (void *)99, (elem1->data == (void *)42 && elem1->next->data == (void *)99) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+		printf("Yours : %p -> %p | Real : %p -> %p | %s", elem1->data, elem1->next->data, (void *)42, (void *)99, (elem1->data == (void *)42 && elem1->next->data == (void *)99) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 		if (elem1->data != (void *)42 || elem1->next->data != (void *)99)
 			out = 1;
 	}
 	else
 	{
-		printf("Your list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
+		printf("Yours list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
 		out = 1;
 	}
 
 	ft_list_remove_if(&elem1, (void *)42, cmp, free_func);
 	if (elem1)
 	{
-		printf("Your : %p | Real : %p | %s", elem1->data, (void *)99, (elem1->data == (void *)99) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+		printf("Yours : %p | Real : %p | %s", elem1->data, (void *)99, (elem1->data == (void *)99) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 		if (elem1->data != (void *)99)
 			out = 1;
 	} else
 	{
-		printf("Your list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
+		printf("Yours list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
 		out = 1;
 	}
 
 	ft_list_remove_if(&elem1, (void *)99, cmp, free_func);
-	printf("Your : %p | Real : %p | %s", elem1, NULL, (elem1 == NULL) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %p | Real : %p | %s", elem1, NULL, (elem1 == NULL) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	if (elem1 != NULL)
 		out = 1;
 
@@ -163,8 +163,8 @@ int	list_size_tester()
 	int size = ft_list_size(elem1);
 	int sizeNull = ft_list_size(NULL);
 
-	printf("Your : %d | Real : %d | %s", size, 2, (size == 2) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("Your : %d | Real : %d | %s", sizeNull, 0, (sizeNull == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", size, 2, (size == 2) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", sizeNull, 0, (sizeNull == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (size != 2 || sizeNull != 0)
 		out = 1;
@@ -197,13 +197,13 @@ int	list_push_front_tester()
 
 	if (list && list->next)
 	{
-		printf("Your list : %s -> %s | Real list : %s -> %s | %s", (char *)list->data, (char *)list->next->data, "Heyyy", "Hello", (strcmp((char *)list->data, "Heyyy") == 0 && strcmp((char *)list->next->data, "Hello") == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+		printf("Yours list : %s -> %s | Real list : %s -> %s | %s", (char *)list->data, (char *)list->next->data, "Heyyy", "Hello", (strcmp((char *)list->data, "Heyyy") == 0 && strcmp((char *)list->next->data, "Hello") == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 		if (strcmp((char *)list->data, "Heyyy") != 0 || strcmp((char *)list->next->data, "Hello") != 0)
 			out = 1;
 	}
 	else
 	{
-		printf("Your list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
+		printf("Yours list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
 		out = 1;
 	}
 
@@ -234,14 +234,14 @@ int	atoi_base_tester()
 	int nbG = ft_atoi_base("+42", "0123456789");
 	int nbH = ft_atoi_base("42", "01+234\r56789-");
 
-	printf("42 b10 | Your : %d | Real : %d | %s", nbA, 42, (nbA == 42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("-42 b10 | Your : %d | Real : %d | %s", nbB, -42, (nbB == -42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("2A b16 | Your (2A bas 16) : %d | Real : %d | %s", nbC, 42, (nbC == 42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("pei bPoneyvif | Your : %d | Real : %d | %s", nbF, 30, (nbF == 30) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("12a34 b10 | Your : %d | Real : %d | %s", nbD, 12, (nbD == 12) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("\\r\\n\\t\\f\\v-37 b10 | Your : %d | Real : %d | %s", nbE, -37, (nbE == -37) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("+42 b10 | Your : %d | Real : %d | %s", nbG, 42, (nbG == 42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("42 (invalid base) | Your : %d | Real : %d | %s", nbH, 0, (nbH == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("42 b10 | Yours : %d | Real : %d | %s", nbA, 42, (nbA == 42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("-42 b10 | Yours : %d | Real : %d | %s", nbB, -42, (nbB == -42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("2A b16 | Yours (2A bas 16) : %d | Real : %d | %s", nbC, 42, (nbC == 42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("pei bPoneyvif | Yours : %d | Real : %d | %s", nbF, 30, (nbF == 30) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("12a34 b10 | Yours : %d | Real : %d | %s", nbD, 12, (nbD == 12) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("\\r\\n\\t\\f\\v-37 b10 | Yours : %d | Real : %d | %s", nbE, -37, (nbE == -37) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("+42 b10 | Yours : %d | Real : %d | %s", nbG, 42, (nbG == 42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("42 (invalid base) | Yours : %d | Real : %d | %s", nbH, 0, (nbH == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (nbA != 42 || nbB != -42 || nbC != 42 || nbF != 30 || nbD != 12 || nbE != -37 || nbG != 42 || nbH != 0)
 		out = 1;
@@ -259,7 +259,7 @@ int	strdup_tester()
 	char *str_2 = ft_strdup(str_1);
 	char *str_3 = strdup(str_1);
 
-	printf("Your : %s | Real : %s | %s", str_2, str_3, (strcmp(str_2, str_3) == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %s | Real : %s | %s", str_2, str_3, (strcmp(str_2, str_3) == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (strcmp(str_2, str_3) != 0)
 		out = 1;
@@ -270,7 +270,7 @@ int	strdup_tester()
 	char *str_4 = ft_strdup("");
 	char *str_5 = strdup("");
 
-	printf("Your : %s | Real : %s | %s", str_4, str_5, (strcmp(str_4, str_5) == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %s | Real : %s | %s", str_4, str_5, (strcmp(str_4, str_5) == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (strcmp(str_4, str_5) != 0)
 		out = 1;
@@ -296,7 +296,7 @@ int	read_tester()
 	int sizeA = ft_read(fd, str_1, 19);
 	int sizeB = read(fd2, str_2, 19);
 
-	printf("Your : %d %s | Real : %d %s | %s", sizeA, str_1, sizeB, str_2, (strcmp(str_1, str_2) == 0 && sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d %s | Real : %d %s | %s", sizeA, str_1, sizeB, str_2, (strcmp(str_1, str_2) == 0 && sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (strcmp(str_1, str_2) != 0)
 		out = 1;
@@ -307,8 +307,8 @@ int	read_tester()
 	sizeB = read(-1, str_2, 0);
 	int erreurB = errno;
 
-	printf("Your : %d | Real : %d | %s", sizeA, sizeB, (sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("Your errno : %d | Real errno : %d | %s", erreurA, erreurB, (erreurA == erreurB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", sizeA, sizeB, (sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours errno : %d | Real errno : %d | %s", erreurA, erreurB, (erreurA == erreurB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (sizeA != sizeB || erreurA != erreurB)
 		out = 1;
@@ -332,7 +332,7 @@ int	strcmp_tester()
 	int cmpA = ft_strcmp(str_1, str_2);
 	int cmpB = strcmp(str_1, str_2);
 
-	printf("Your : %d | Real : %d | %s", cmpA, cmpB, (cmpA == cmpB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", cmpA, cmpB, (cmpA == cmpB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (cmpA != cmpB)
 		out = 1;
@@ -340,7 +340,7 @@ int	strcmp_tester()
 	cmpA = ft_strcmp(str_2, str_1);
 	cmpB = strcmp(str_2, str_1);
 
-	printf("Your : %d | Real : %d | %s", cmpA, cmpB, (cmpA == cmpB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", cmpA, cmpB, (cmpA == cmpB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (cmpA != cmpB)
 		out = 1;
@@ -348,7 +348,7 @@ int	strcmp_tester()
 	cmpA = ft_strcmp(str_1, str_1);
 	cmpB = strcmp(str_1, str_1);
 
-	printf("Your : %d | Real : %d | %s", cmpA, cmpB, (cmpA == cmpB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", cmpA, cmpB, (cmpA == cmpB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (cmpA != cmpB)
 		out = 1;
@@ -369,7 +369,7 @@ int	strcpy_tester()
 	char *strA = ft_strcpy(str_2, str_1);
 	char *strB = strcpy(str_3, str_1);
 
-	printf("Your : %s | Real : %s | %s", strA, strB, (strcmp(str_1, str_2) == 0 && strA == str_2 && strB == str_3) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %s | Real : %s | %s", strA, strB, (strcmp(str_1, str_2) == 0 && strA == str_2 && strB == str_3) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (strcmp(strA, strB) != 0)
 		out = 1;
@@ -384,7 +384,7 @@ int	strcpy_tester()
 	strA = ft_strcpy(str_5, str_4);
 	strB = strcpy(str_6, str_4);
 
-	printf("Your : %s | Real : %s | %s", strA, strB, (strcmp(str_4, str_5) == 0 && strA == str_5 && strB == str_6) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %s | Real : %s | %s", strA, strB, (strcmp(str_4, str_5) == 0 && strA == str_5 && strB == str_6) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (strcmp(strA, strB) != 0)
 		out = 1;
@@ -404,7 +404,7 @@ int	write_tester()
 	int sizeA = ft_write(1, "Hello World!\n", 13);
 	int sizeB = write(1, "Hello World!\n", 13);
 
-	printf("Your : %d | Real : %d | %s", sizeA, sizeB, (sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", sizeA, sizeB, (sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (sizeA != sizeB)
 		out = 1;
@@ -412,7 +412,7 @@ int	write_tester()
 	sizeA = ft_write(1, "Hello World!\n", 0);
 	sizeB = write(1, "Hello World!\n", 0);
 
-	printf("Your : %d | Real : %d | %s", sizeA, sizeB, (sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", sizeA, sizeB, (sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (sizeA != sizeB)
 		out = 1;
@@ -422,8 +422,8 @@ int	write_tester()
 	sizeB = write(-1, "Hello World!\n", 13);
 	int erreurB = errno;
 
-	printf("Your : %d | Real : %d | %s", sizeA, sizeB, (sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("Your errno : %d | Real errno : %d | %s", erreurA, erreurB, (erreurA == erreurB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", sizeA, sizeB, (sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours errno : %d | Real errno : %d | %s", erreurA, erreurB, (erreurA == erreurB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (sizeA != sizeB || erreurA != erreurB)
 		out = 1;
@@ -440,7 +440,7 @@ int	strlen_tester()
 
 	printf("\n☆ ft_strlen\n");
 
-	printf("Your : %d | Real : %d | %s", lenA, lenB, (lenA == lenB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", lenA, lenB, (lenA == lenB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	return (lenA == lenB) ? 0 : 1;
 }

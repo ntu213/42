@@ -13,8 +13,3 @@ int	*__errno_wrapper()
 void* __malloc_wrapper(size_t size) {
     return malloc(size);
 }
-
-void ft_test(int n)
-{
-	printf("nsm: %d\n", n);
-}
