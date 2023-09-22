@@ -116,7 +116,7 @@ int	list_remove_if_tester()
 	}
 	else
 	{
-		printf("Yours list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
+		printf("Your list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
 		out = 1;
 	}
 
@@ -128,7 +128,7 @@ int	list_remove_if_tester()
 			out = 1;
 	} else
 	{
-		printf("Yours list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
+		printf("Your list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
 		out = 1;
 	}
 
@@ -203,7 +203,7 @@ int	list_push_front_tester()
 	}
 	else
 	{
-		printf("Yours list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
+		printf("Your list is empty or half empty | %s", "\x1B[31mKO\x1B[0m\n");
 		out = 1;
 	}
 
