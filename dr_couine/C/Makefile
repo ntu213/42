@@ -1,5 +1,5 @@
 
-COOLEEN = Cooleen
+COOLEEN = Colleen
 GRACE = Grace
 SULLY = Sully
 
@@ -8,14 +8,14 @@ COOL_OBJ = ${COOL_SRC:.c=.o}
 GRACE_SRC = Grace.c
 GRACE_OBJ = ${GRACE_SRC:.c=.o}
 SULLY_SRC = Sully.c
-SULLY_FAKE = ${addsuffix _*.c,$(SULLY)}
+SULLY_FAKE = ${addsuffix _*,$(SULLY)}
 SULLY_OBJ = ${SULLY_SRC:.c=.o}
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 
 %.o:%.c
-	@$(CC) $(FLAGS) -o $@ -c $<
+	@$(CC) $(FLAGS) -o $@ -c $< -g
 
 all: $(COOLEEN) $(GRACE) $(SULLY)
 
