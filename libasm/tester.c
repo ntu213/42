@@ -65,7 +65,7 @@ int		list_sort_tester()
 
 	elem1->data = (void *)42;
 	elem2->data = (void *)36;
-	elem3->data = (void *)12;\
+	elem3->data = (void *)12;
 	ft_list_sort(&elem1, cmp_sort);
 	printf("Yours : %p -> %p -> %p | Real : %p -> %p -> %p | %s", elem1->data, elem1->next->data, elem1->next->next->data, (void *)12, (void *)36, (void *)42, (elem1->data == (void *)12 && elem1->next->data == (void *)36 && elem1->next->next->data == (void *)42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	if (elem1->data != (void *)12|| elem1->next->data != (void *)36 || elem1->next->next->data != (void *)42)
@@ -85,6 +85,15 @@ int		list_sort_tester()
 	free(elem2);
 	free(elem3);
 
+	t_list *elem = malloc(sizeof(t_list));
+	elem->data = (void *)42;
+	elem->next = NULL;
+	ft_list_sort(&elem1, NULL);
+	printf("NULL comparison | %s", "\x1B[32mNo Segfault OK\x1B[0m\n");
+	ft_list_sort(NULL, cmp_sort);
+	printf("NULL element | %s", "\x1B[32mNo Segfault OK\x1B[0m\n");
+
+	free(elem);
 	return (out);
 }
 
@@ -137,6 +146,18 @@ int	list_remove_if_tester()
 	if (elem1 != NULL)
 		out = 1;
 
+
+	t_list *elem = malloc(sizeof(t_list));
+	elem->data = (void *)42;
+	elem->next = NULL;
+	ft_list_remove_if(NULL, (void *)99, cmp, free_func);
+	printf("NULL element | %s", "\x1B[32mNo Segfault OK\x1B[0m\n");
+	ft_list_remove_if(&elem, (void *)99, NULL, free_func);
+	printf("NULL comparison | %s", "\x1B[32mNo Segfault OK\x1B[0m\n");
+	ft_list_remove_if(&elem, (void *)99, cmp, NULL);
+	printf("NULL free | %s", "\x1B[32mNo Segfault OK\x1B[0m\n");
+
+	free(elem);
 	return (out);
 }
 
@@ -164,7 +185,7 @@ int	list_size_tester()
 	int sizeNull = ft_list_size(NULL);
 
 	printf("Yours : %d | Real : %d | %s", size, 2, (size == 2) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-	printf("Yours : %d | Real : %d | %s", sizeNull, 0, (sizeNull == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", sizeNull, 0, (sizeNull == 0) ? "\x1B[32mNo Segfault OK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (size != 2 || sizeNull != 0)
 		out = 1;
@@ -185,20 +206,23 @@ int	list_push_front_tester()
 
 	t_list *list = NULL;
 	char *data = malloc(sizeof(char) * 6);
-	char *data2 = malloc(sizeof(char) * 6);
-	strcpy(data, "Hello");
-	strcpy(data2, "Heyyy");
-	// printf("debug %p|%p|%p\n", &list, data, list);
-	ft_list_push_front(&list, data);
-	// printf("debug %p|%p|%p\n", &list, data2, list);
-	ft_list_push_front(&list, data2);
-	// printf("debug %p|%p|%p|%p\n", &list, data2, list, list->next);
-	// printf("debug: %p -> %p\n", list->data, list->next->data);
+	char *data2 = malloc(sizeof(char) * 11);
+	strcpy(data, "Eater");
+	strcpy(data2, "Spaghettis");
 
+	ft_list_push_front(&list, data);
+	if (list)
+	{
+		printf("Yours list : %s | Real list : %s | %s", (char *)list->data, "Eater", (strcmp((char *)list->data, "Eater") == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+		if (strcmp((char *)list->data, "Eater") != 0)
+			out = 1;
+	}
+
+	ft_list_push_front(&list, data2);
 	if (list && list->next)
 	{
-		printf("Yours list : %s -> %s | Real list : %s -> %s | %s", (char *)list->data, (char *)list->next->data, "Heyyy", "Hello", (strcmp((char *)list->data, "Heyyy") == 0 && strcmp((char *)list->next->data, "Hello") == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
-		if (strcmp((char *)list->data, "Heyyy") != 0 || strcmp((char *)list->next->data, "Hello") != 0)
+		printf("Yours list : %s -> %s | Real list : %s -> %s | %s", (char *)list->data, (char *)list->next->data, "Spaghettis", "Eater", (strcmp((char *)list->data, "Spaghettis") == 0 && strcmp((char *)list->next->data, "Eater") == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+		if (strcmp((char *)list->data, "Spaghettis") != 0 || strcmp((char *)list->next->data, "Eater") != 0)
 			out = 1;
 	}
 	else
@@ -242,6 +266,11 @@ int	atoi_base_tester()
 	printf("\\r\\n\\t\\f\\v-37 b10 | Yours : %d | Real : %d | %s", nbE, -37, (nbE == -37) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	printf("+42 b10 | Yours : %d | Real : %d | %s", nbG, 42, (nbG == 42) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 	printf("42 (invalid base) | Yours : %d | Real : %d | %s", nbH, 0, (nbH == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+
+	ft_atoi_base(NULL, "0123456789");
+	printf("NULL number | %s", "\x1B[32mNo Segfault OK\x1B[0m\n");
+	ft_atoi_base("42", NULL);
+	printf("NULL base | %s", "\x1B[32mNo Segfault OK\x1B[0m\n");
 
 	if (nbA != 42 || nbB != -42 || nbC != 42 || nbF != 30 || nbD != 12 || nbE != -37 || nbG != 42 || nbH != 0)
 		out = 1;
@@ -296,7 +325,7 @@ int	read_tester()
 	int sizeA = ft_read(fd, str_1, 19);
 	int sizeB = read(fd2, str_2, 19);
 
-	printf("Yours : %d %s | Real : %d %s | %s", sizeA, str_1, sizeB, str_2, (strcmp(str_1, str_2) == 0 && sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d \"%s\" | Real : %d \"%s\" | %s", sizeA, str_1, sizeB, str_2, (strcmp(str_1, str_2) == 0 && sizeA == sizeB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	if (strcmp(str_1, str_2) != 0)
 		out = 1;
@@ -437,10 +466,13 @@ int	strlen_tester()
 
 	int		lenA = ft_strlen(str_1);
 	int		lenB = strlen(str_1);
+	int		lenC = ft_strlen("");
+	int		lenD = strlen("");
 
 	printf("\n☆ ft_strlen\n");
 
 	printf("Yours : %d | Real : %d | %s", lenA, lenB, (lenA == lenB) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
+	printf("Yours : %d | Real : %d | %s", lenC, lenD, (lenC == lenD) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
 
 	return (lenA == lenB) ? 0 : 1;
 }
@@ -449,7 +481,7 @@ int ft_atoi_base_recursive(char *s, char *c);
 
 int	main()
 {
-	printf("✿ Libasm tester ✿\n");
+	printf("\n \e[1;34mLibasm Basic Tests\e[0m\n");
 
 	int ok = 0;
 
@@ -459,19 +491,15 @@ int	main()
 	ok += strcmp_tester();
 	ok += read_tester();
 	ok += strdup_tester();
-	printf("\n✿ Libasm Bonus ✿\n");
+	printf("\n \e[1;34mLibasm Bonus Tests\e[0m\n");
 	ok += atoi_base_tester();
 	ok += list_push_front_tester();
 	ok += list_size_tester();
 	ok += list_remove_if_tester();
 	ok += list_sort_tester();
 
-	// char tmp[] = "FF\0";
-	// char tmp2[] = "0123456789ABCDEF";
-	// printf("%d\n", ft_atoi_base_recursive(tmp, tmp2));
-
 	if (ok == 0)
-		printf("\x1B[32m\nAll tests passed ✔\x1B[0m\n");
+		printf("\x1B[32m\n ✔ Obviously, all tests passed ✔\x1B[0m\n\n");
 	else
-		printf("\x1B[31m\nSome tests failed ❌\x1B[0m\n\n");
+		printf("\x1B[31m\n ❌ Uh... Some tests failed ❌\x1B[0m\n\n");
 }

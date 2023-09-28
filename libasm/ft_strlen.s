@@ -7,6 +7,9 @@ section .text
 		mov rdi, rdi
 		mov rcx, 0
 
+		cmp rdi, 0
+		je loop_end
+
 		loop:
 			cmp byte [rdi + rcx], 0 ; comparer les 8 premiers bits de rdi[rcx] et 0
 			je loop_end ; si ==, executer loop_end
