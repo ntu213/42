@@ -14,7 +14,7 @@ SULLY_OBJ = ${SULLY_SRC:.s=.o}
 CC = nasm
 FLAGS =  -f elf64
 
-all: $(COOLEEN)
+all: $(COOLEEN) $(GRACE)
 
 %.o:%.s
 	@$(CC) $(FLAGS) $@ -o $<
@@ -24,11 +24,13 @@ $(COOLEEN):
 	@nasm -f elf64 Colleen.s
 	@gcc -no-pie Colleen.o -o Colleen -lm
 
-$(GRACE): $(GRACE_OBJ)
-#	@ld -s $(GRACE_OBJ) -o $(GRACE)
+$(GRACE):
+	@nasm -f elf64 Grace.s
+	@gcc -no-pie Grace.o -o Grace -lm
 
-$(SULLY): $(SULLY_OBJ)
-#	@ld -s $(SULLY_OBJ) -o $(SULLY)
+$(SULLY):
+	@nasm -f elf64 Sully.s
+	@gcc -no-pie Sully.o -o Sully -lm
 
 clean:
 	@rm -f $(COOL_OBJ)
