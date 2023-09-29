@@ -3,42 +3,42 @@ COOLEEN = Colleen
 GRACE = Grace
 SULLY = Sully
 
-COOL_SRC = Colleen.s
-COOL_OBJ = ${COOL_SRC:.s=.o}
-GRACE_SRC = Grace.s
-GRACE_OBJ = ${GRACE_SRC:.s=.o}
-SULLY_SRC = Sully.s
+COOL_SRC = Colleen.c
+COOL_OBJ = ${COOL_SRC:.c=.o}
+GRACE_SRC = Grace.c
+GRACE_OBJ = ${GRACE_SRC:.c=.o}
+SULLY_SRC = Sully.c
 SULLY_FAKE = ${addsuffix _*,$(SULLY)}
-SULLY_OBJ = ${SULLY_SRC:.s=.o}
+SULLY_OBJ = ${SULLY_SRC:.c=.o}
 
-CC = nasm
-FLAGS = -f elf64
+CC = gcc
+FLAGS = -Wall -Werror -Wextra
 
-%.o:%.s
-	@$(CC) $(FLAGS) -o $@ -c $<
+%.o:%.c
+	@$(CC) $(FLAGS) -o $@ -c $< -g
 
 all: $(COOLEEN) $(GRACE) $(SULLY)
 
 $(COOLEEN): $(COOL_OBJ)
-	@ld -s $(COOL_OBJ) -o $(COOLEEN)
+	@$(CC) $(FLAGS) $(COOL_OBJ) -o $(COOLEEN)
 
 $(GRACE): $(GRACE_OBJ)
-	@ld -s $(GRACE_OBJ) -o $(GRACE)
+	@$(CC) $(FLAGS) $(GRACE_OBJ) -o $(GRACE)
 
 $(SULLY): $(SULLY_OBJ)
-	@ld -s $(SULLY_OBJ) -o $(SULLY)
+	@$(CC) $(FLAGS) $(SULLY_OBJ) -o $(SULLY)
 
 clean:
 	@rm -f $(COOL_OBJ)
 	@rm -f $(GRACE_OBJ)
 	@rm -f $(SULLY_OBJ)
 	@echo ✅ All sources deleted
- 
+
 fclean: clean
 	@rm -f $(COOLEEN)
 	@echo ✅ File deleted: $(COOLEEN)
 	@rm -f $(GRACE)
-	@rm -f Grace_kid.s
+	@rm -f Grace_kid.c
 	@echo ✅ File deleted: $(GRACE)
 	@rm -f $(SULLY)
 	@rm -f $(SULLY_FAKE)
