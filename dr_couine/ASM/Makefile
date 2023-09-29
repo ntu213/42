@@ -14,7 +14,7 @@ SULLY_OBJ = ${SULLY_SRC:.s=.o}
 CC = nasm
 FLAGS =  -f elf64
 
-all: $(COOLEEN) $(GRACE)
+all: $(COOLEEN) $(GRACE) $(SULLY)
 
 %.o:%.s
 	@$(CC) $(FLAGS) $@ -o $<
