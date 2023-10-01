@@ -21,6 +21,7 @@ section .text
 		
 		loop_end:
 			mov rax, 0
+			mov rbx, 0
 			mov al, [rdi + rcx]
 			mov bl, [rsi + rcx]
 			sub rax, rbx

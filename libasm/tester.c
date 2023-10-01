@@ -217,8 +217,9 @@ int	list_push_front_tester()
 		if (strcmp((char *)list->data, "Eater") != 0)
 			out = 1;
 	}
-
+printf("%p\n", list);
 	ft_list_push_front(&list, data2);
+// printf("%p|%p\n", list, list->next);
 	if (list && list->next)
 	{
 		printf("Yours list : %s -> %s | Real list : %s -> %s | %s", (char *)list->data, (char *)list->next->data, "Spaghettis", "Eater", (strcmp((char *)list->data, "Spaghettis") == 0 && strcmp((char *)list->next->data, "Eater") == 0) ? "\x1B[32mOK\x1B[0m\n" : "\x1B[31mKO\x1B[0m\n");
