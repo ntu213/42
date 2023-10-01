@@ -1,4 +1,4 @@
-let i = 5;
+let i = 4;
 const main = function main(){
 	const fs = require('fs')
 	if (i <= 0)
