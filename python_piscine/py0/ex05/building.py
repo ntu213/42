@@ -3,7 +3,7 @@ import sys as system
 
 
 def main():
-    """the main function"""
+    """The main function"""
 
     argv = system.argv
     argc = len(argv)
