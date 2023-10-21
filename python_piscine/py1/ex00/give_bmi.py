@@ -39,9 +39,25 @@ def apply_limit(lst, limit):
         return (res)
 
     for i in range(len(lst)):
-        if (lst[i] <= limit):
+        if (lst[i] > limit):
             res.append(True)
         else:
             res.append(False)
 
     return (res)
+
+
+def main():
+    """the main function"""
+
+    height = [2.71, 1.15]
+    weight = [165.3, 38.4]
+
+    bmi = give_bmi(height, weight)
+    print(bmi, type(bmi))
+    print(apply_limit(bmi, 26))
+    return 0
+
+
+if __name__ == "__main__":
+    main()
