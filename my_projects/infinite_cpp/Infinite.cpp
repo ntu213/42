@@ -106,6 +106,14 @@ static int countAfterDot(const std::string & str)
 	return (str.length() - (lastBeforeDot(str) + 2));
 }
 
+std::string addFront(char c, std::string const str)
+{
+	std::string res;
+	res.push_back(c);
+	res.append(str);
+	return (res);
+}
+
 
 
 Infinite::Infinite()
@@ -157,6 +165,25 @@ Infinite::Infinite(const std::string & src)
 {
 	std::string tmp = checkValid(src);
 	this->nbr = tmp;
+}
+
+Infinite Infinite::round(int n) const
+{
+	int i = lastBeforeDot(this->nbr) + 2;
+	std::string res(this->nbr.substr(0, i));
+	if (n <= 0)
+		res.append("0");
+	else
+	{
+		i++;
+		n += i;
+		while (i < n && this->nbr[i])
+		{
+			res.push_back(this->nbr[i]);
+			i++;
+		}
+	}
+	return (Infinite(res));
 }
 
 const std::string & Infinite::get() const
@@ -231,15 +258,51 @@ bool Infinite::operator!=(const Infinite & src) const
 Infinite Infinite::operator+(const Infinite & src) const
 {
 	int ret = 0;
-	Infinite res(0);
-	if (src.get()[0] == '-')
+	int pos = 1;
+	int roundable;
+	std::string res = "";
+	// if (src.get()[0] == '-')
+	// {
+	// 	res = src;
+	// 	res.nbr.erase(0, 1);
+	// 	// return (*this - res);
+	// }
+	roundable = std::min(countAfterDot(this->nbr), countAfterDot(src.get()));
+	while ((ret || (int)src.round(roundable).nbr.length() - pos >= 0 || (int)this->round(roundable).nbr.length() - pos >= 0) && pos < 20)
 	{
-		res = src;
-		res.nbr.erase(0, 1);
-		return (*this - res);
+		int n1, n2, n3;
+		if (src.nbr[src.round(roundable).nbr.length() - pos] == '.')
+		{
+			res = addFront('.', res);
+			pos++;
+			// std::cout << "-- DOT --" << std::endl;
+			continue;
+		}
+		if (src.round(roundable).nbr.length() - pos >= 0 && src.nbr[src.round(roundable).nbr.length() - pos] != '-')
+			n1 = src.nbr[src.round(roundable).nbr.length() - pos] - 48;
+		else
+			n1 = 0;
+		if (this->round(roundable).nbr.length() - pos >= 0 && this->nbr[this->round(roundable).nbr.length() - pos] != '-')
+			n2 = this->nbr[this->round(roundable).nbr.length() - pos] - 48;
+		else
+			n2 = 0;
+		n3 = n1 + n2 + ret;
+		// std::cout << "n1: " << n1 << std::endl;
+		// std::cout << "n2: " << n2 << std::endl;
+		// std::cout << "n3: " << n3 << std::endl;
+		// std::cout << "ret: " << ret << std::endl;
+		// std::cout << "res: " << res << std::endl;
+		ret = n3 / 10;
+		res = addFront((n3 % 10) + 48, res);
+		pos++;
 	}
-	if (countAfterDot(this->nbr) == std::max(countAfterDot(this->nbr), countAfterDot(src.get())))
-	{}
+	pos = std::max(this->nbr.length(), src.nbr.length());
+	ret = std::min(this->nbr.length(), src.nbr.length());
+	if (pos == this->nbr.length())
+		res.append(this->nbr.substr(ret, pos - ret));
+	else
+		res.append(src.nbr.substr(ret, pos - ret));
+	return (Infinite(res));
 }
 
 /*

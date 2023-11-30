@@ -17,6 +17,7 @@ class Infinite
 		Infinite(const float & src);
 		Infinite(const double & src);
 		Infinite(const std::string & src);
+		Infinite round(int n) const;
 		const std::string & get() const;
 		Infinite & operator=(const Infinite & src);
 		template <typename T>
