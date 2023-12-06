@@ -5,48 +5,48 @@
 
 
 def ft_invert(array):
-	"""Inverts the colors of image"""
-	copy = array.copy()
-	copy[:, :, 0] = 255 - copy[:, :, 0]
-	copy[:, :, 1] = 255 - copy[:, :, 1]
-	copy[:, :, 2] = 255 - copy[:, :, 2]
-	print(copy)
-	return copy
+    """Inverts the colors of image"""
+    copy = array.copy()
+    copy[:, :, 0] = 255 - copy[:, :, 0]
+    copy[:, :, 1] = 255 - copy[:, :, 1]
+    copy[:, :, 2] = 255 - copy[:, :, 2]
+    print(copy)
+    return copy
 
 
 def ft_red(array):
-	"""Turns the image on red mode"""
-	copy = array.copy()
-	copy[:, :, 0] = 0
-	copy[:, :, 1] = 0
-	return copy
+    """Turns the image on red mode"""
+    copy = array.copy()
+    copy[:, :, 0] = 0
+    copy[:, :, 1] = 0
+    return copy
 
 
 def ft_green(array):
-	"""Turns the image on green mode"""
-	copy = array.copy()
-	copy[:, :, 0] = 0
-	copy[:, :, 2] = 0
-	return copy
+    """Turns the image on green mode"""
+    copy = array.copy()
+    copy[:, :, 0] = 0
+    copy[:, :, 2] = 0
+    return copy
 
 
 def ft_blue(array):
-	"""Turns the image on blue mode"""
-	copy = array.copy()
-	copy[:, :, 1] = 0
-	copy[:, :, 2] = 0
-	return copy
+    """Turns the image on blue mode"""
+    copy = array.copy()
+    copy[:, :, 1] = 0
+    copy[:, :, 2] = 0
+    return copy
 
 
 def ft_grey(array):
-	"""Turns the image on B&W mode"""
-	copy = array.copy()
-	print(copy[:, :, 0] + copy[:, :, 1] + copy[:, :, 2])
-	copy[:, :, 0] = (copy[:, :, 0] // 3) + (copy[:, :, 1] // 3) + (copy[:, :, 2] // 3)
-	copy[:, :, 1] = copy[:, :, 0]
-	copy[:, :, 2] = copy[:, :, 0]
-	print(copy)
-	return copy
+    """Turns the image on B&W mode"""
+    copy = array.copy()
+    print(copy[:, :, 0] + copy[:, :, 1] + copy[:, :, 2])
+    copy[:, :, 0] = (copy[:, :, 0]//3)+(copy[:, :, 1]//3)+(copy[:, :, 2]//3)
+    copy[:, :, 1] = copy[:, :, 0]
+    copy[:, :, 2] = copy[:, :, 0]
+    print(copy)
+    return copy
 
 
 # array = ft_load("landscape.jpg")
