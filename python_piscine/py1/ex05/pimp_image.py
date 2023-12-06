@@ -1,7 +1,7 @@
 
-import matplotlib.pyplot as plt
-import cv2 as cv
-from load_image import ft_load
+# import matplotlib.pyplot as plt
+# import cv2 as cv
+# from load_image import ft_load
 
 
 def ft_invert(array):
@@ -49,17 +49,17 @@ def ft_grey(array):
 	return copy
 
 
-array = ft_load("landscape.jpg")
-plt.imshow(array[..., ::-1])
-plt.show()
-plt.imshow(ft_invert(array)[..., ::-1])
-plt.show()
-plt.imshow(ft_red(array)[..., ::-1])
-plt.show()
-plt.imshow(ft_green(array)[..., ::-1])
-plt.show()
-plt.imshow(ft_blue(array)[..., ::-1])
-plt.show()
-plt.imshow(ft_grey(array)[..., ::-1])
-plt.show()
-print(ft_invert.__doc__)
+# array = ft_load("landscape.jpg")
+# plt.imshow(array[..., ::-1])
+# plt.show()
+# plt.imshow(ft_invert(array)[..., ::-1])
+# plt.show()
+# plt.imshow(ft_red(array)[..., ::-1])
+# plt.show()
+# plt.imshow(ft_green(array)[..., ::-1])
+# plt.show()
+# plt.imshow(ft_blue(array)[..., ::-1])
+# plt.show()
+# plt.imshow(ft_grey(array)[..., ::-1])
+# plt.show()
+# print(ft_invert.__doc__)
